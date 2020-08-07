@@ -1,9 +1,10 @@
-/*global createCanvas, imageMode, Virus, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, imageMode, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let canvas,
   livingRoomImg,
   imgX,
   imgY,
+  font,
   finalImg,
   virusImg,
   viruses,
@@ -13,7 +14,7 @@ let canvas,
   gameIsOver = false, gameOverText = "", timerCushion, userIsInfected = false, infectedViruses = [];
 
 function preload() {
-  Font = loadFont('https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-Regular-trial.ttf?v=1596834499234');
+  font = loadFont('https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-Regular-trial.ttf?v=1596834499234');
   livingRoomImg = loadImage(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fliving-room-interior-cartoon-vector-20941629.jpg?v=1596816373329"
   );
@@ -65,9 +66,12 @@ function draw() {
     textAlign(CENTER);
     fill("black")
     text("Oh no! The virus got too close and infected you!", width/2, height/2 - 10);
-    text("Your health is decreasing! Look for medicine to heal you!", width/2, height/2 + 10);
+    text("Your health is decreasing!", width/2, height/2 + 10);
+    text("Look for medicine to heal you!", width/2, height/2 + 30);
   }
-  
+  stroke(255)
+  strokeWeight(4)
+  textFont(font);
   handleTime();
   handleHealth("");
   fill("black");
@@ -154,16 +158,17 @@ function handleTime() {
 }
   
   fill(timer / timerCushion, 100, 100);
+  
     rectMode(CORNER);
     rect(10, 20, timer / timerCushion, 10);
 }
 
-function handleHealth(result) {
-  if (result === "infected") {
-   // userIsFighting = false;
-    userIsInfected = true;
-    health -= .5;
-  }
+function handleHealth() {
+    if(userIsInfected){
+      health -= .5;
+    }
+  
+  
 
   if (health > 0) {
     fill(health / 10, 100, 100);

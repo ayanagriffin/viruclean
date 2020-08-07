@@ -1,4 +1,4 @@
-/*global createCanvas, gameIsOver, livingRoomImg, virusImg, infectedViruses, removeDeadVirus, handleHealth, imageMode, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, gameIsOver, userIsInfected, livingRoomImg, virusImg, infectedViruses, removeDeadVirus, handleHealth, imageMode, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 class Virus {
   constructor() {
@@ -37,7 +37,8 @@ class Virus {
     if (this.size < this.maxSize) {
       this.size += 0.25;
     } else {
-      handleHealth("infected");
+      handleHealth();
+      userIsInfected = true;
       this.infectedUser = true;
       //userIsFighting = false;
     }
