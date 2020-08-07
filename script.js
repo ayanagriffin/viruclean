@@ -1,4 +1,4 @@
-/*global createCanvas, imageMode, image, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, imageMode, random, image, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 
 let canvas, livingRoomImg, imgX, imgY, finalImg, vx, vy;
@@ -11,12 +11,13 @@ function setup() {
   colorMode(HSB);
   imgX = width / 2;
   imgY = height / 2;
-   vx = windowWidth / 2;
+   vx = random(windowWidth * .75);
    vy = windowHeight / 2;
   
   
   
   console.log(windowWidth, windowHeight)
+  console.log(vx, vy)
   
 }
 
@@ -40,6 +41,9 @@ function draw() {
 function checkMousePosition(){
   let endX = imgX + windowWidth / 2
   let endY = imgY + livingRoomImg.height / 2
+  console.log(vx, endX);
+  // console.log("mouse" + mouseX, mouseY)
+  // console.log(vx, vy)
   if(mouseX > width  && endX > width) {
     
     imgX -= 1;
