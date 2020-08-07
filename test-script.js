@@ -12,11 +12,12 @@ let canvas,
   viruses,
   title,
   currentVirus,
+    hitVirus,
   timer,
   health,
   gameIsOver,
   gameOverText,
-  timerCushion,
+  timerCushion, healthCushion,
   userIsInfected,
   infectedViruses,
   screen = 0,
@@ -34,6 +35,7 @@ let canvas,
   hardButtonClicked, numViruses;
 
 function preload() {
+  hitVirus= loadSound("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fhit_virus.wav?v=1596840265502")
   select = loadSound(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fselect.wav?v=1596839457762"
   );
@@ -86,10 +88,16 @@ function draw() {
 function playScreenSetup() {
   if(level === 0){
     numViruses = 3;
+    timer = 1000;
+    health = 1000;
   }else if(level === 1){
     numViruses = 6;
+    timer = 1500;
+    health = 750;
   }else if(level === 2){
     numViruses = 9;
+    timer = 2000;
+    health = 500;
   }
   infectedViruses = [];
   viruses = [];
@@ -105,9 +113,10 @@ function playScreenSetup() {
     viruses.push(new Virus());
   }
 
-  timer = 1000;
   timerCushion = timer / 100;
-  health = 1000;
+ 
+ // health = 1000;
+  healthCushion = health / 100;
 }
 
 function drawStartScreen() {
@@ -166,9 +175,11 @@ function drawPlayScreen() {
   text("Time", 10, 15);
   textAlign(RIGHT);
   text("Health", width - 20, 15);
+  console.log(viruses.length);
 }
 
 function drawEndScreen() {
+  noStroke();
   background("#ffc9b2");
   fill(255);
   textFont(font);
@@ -311,7 +322,7 @@ function removeDeadVirus() {
   for (let i = viruses.length - 1; i >= 0; i--) {
     if (viruses[i] === currentVirus) {
       viruses.splice(i, 1);
-  
+   hitVirus.play()
     }
   }
 
@@ -337,13 +348,14 @@ function handleTime() {
 
 function handleHealth() {
   if (userIsInfected) {
+    
     health -= 0.5;
   }
 
   if (health > 0) {
-    fill(health / 10, 100, 100);
+    fill(health / healthCushion, 100, 100);
     rectMode(CORNERS);
-    rect(width - 10, 20, width - health / 10, 30);
+    rect(width - 10, 20, width - health / healthCushion, 30);
   } else {
     gameOver("health");
   }
