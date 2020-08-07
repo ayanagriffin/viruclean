@@ -16,7 +16,7 @@ let canvas,
   gameOverText,
   timerCushion,
   userIsInfected,
-  infectedViruses, screen = 0, buttonW, buttonH, buttonFill, buttonShadowFill, level, easyButtonY;
+  infectedViruses, screen = 0, buttonW, buttonH, buttonFill, buttonShadowFill, level, easyButtonY, easyButtonClicked;
 
 function preload() {
     title = loadFont("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-ExtraBold-trial.ttf?v=1596837029666")
@@ -47,7 +47,6 @@ function setup() {
   
   
 }
-
 function draw() {
   
   if(screen === 0){
@@ -83,7 +82,7 @@ function drawStartScreen(){
   fill(255)
   textFont(title)
   textSize(70)
-  textAscent(200)
+ // textAscent(200)
   textAlign(CENTER);
   text("title", width /2, height * .25);
   textFont(font)
@@ -153,28 +152,18 @@ function drawButtons(){
   rect(width / 4, height * .75 + 5, buttonW, buttonH, 10);
   rect(width * .75, height * .75 + 5, buttonW, buttonH, 10);
   fill(buttonFill);
-  rect(width / 2, easyButtonY, buttonW, buttonH, 10);
-  rect(width / 4, height * .75, buttonW, buttonH, 10);
+  rect(width / 2, height * .75, buttonW, buttonH, 10);
+  rect(width / 4, easyButtonY, buttonW, buttonH, 10);
   rect(width * .75, height * .75, buttonW, buttonH, 10);
   textAlign(CENTER);
   fill("white")
-  text("easy", width / 4, height * .75)
-  text("medium", width / 2, height * .75)
-  text("hard", width * .75, height * .75)
+  text("easy", width / 4, height * .76)
+  text("medium", width / 2, height * .76)
+  text("hard", width * .75, height * .76)
 }
 function mouseClicked() {
   
-  if(screen === 0){
-    let easyButtonClicked = collidePointRect(mouseX, mouseY, width / 2, height * .75 + 5, buttonW, buttonH);
-    if(easyButtonClicked){
-      level = 0;
-      easyButtonY +=5;
-      drawButtons();
-    }
-    //screen++;
-   // setTimeout(setup, 500);
-   
-  }else if(screen === 2){
+   if(screen === 2){
     screen=0;
     setup();
   }
@@ -189,6 +178,31 @@ function mouseClicked() {
   }
 }
 
+
+function mousePressed(){
+  if(screen === 0){
+    easyButtonClicked = collidePointRect(mouseX, mouseY, width / 4, - buttonW easyButtonY, buttonW, buttonH);
+    console.log(easyButtonClicked)
+    if(easyButtonClicked){
+      console.log("clicked")
+      //level = 0;
+      easyButtonY +=5;
+      //drawButtons();
+    }
+    //screen++;
+   // setTimeout(setup, 500);
+   
+  }
+}
+function mouseReleased(){
+  if(screen === 0){
+    if(easyButtonClicked){
+      console.log("undo")
+      easyButtonClicked = false;
+      easyButtonY -= 5;
+    }
+  }
+}
 function keyPressed() {
   if (screen === 1 && key === "a") {
     currentVirus.isAttacked = false;
