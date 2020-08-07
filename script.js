@@ -1,4 +1,4 @@
-/*global createCanvas, imageMode, random, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, imageMode, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let canvas,
   livingRoomImg,
@@ -56,6 +56,15 @@ function mouseClicked() {
   }
 }
 
+function keyPressed(){
+  if(userIsFighting && key === 'a'){
+    console.log("dead");
+    currentVirus.isAttacked = false;
+    currentVirus.isAlive = false;
+    userIsFighting = false;
+    setTimeout(removeDeadVirus, 2000);
+  }
+}
 function checkMousePosition() {
   if (!userIsFighting) {
     let endX = imgX + windowWidth / 2;
@@ -85,6 +94,10 @@ function checkMousePosition() {
   }
 }
 
+function removeDeadVirus(){
+  
+}
+
 class Virus {
   constructor() {
     this.size = 50;
@@ -94,6 +107,7 @@ class Virus {
       livingRoomImg.height * 0.7 - this.size
     );
     this.isAttacked = false;
+    this.isAlive = true;
     this.maxSize = 500;
   }
 
@@ -103,12 +117,20 @@ class Virus {
 
     if (this.isAttacked) {
       this.grow();
+    }else if(!this.isAlive){
+      this.die();
     }
   }
 
   grow() {
     if (this.size < this.maxSize) {
       this.size += 0.25;
+    }
+  }
+  
+  die(){
+    if(this.size > 1){
+      this.size --;
     }
   }
   move(xResult, yResult) {
