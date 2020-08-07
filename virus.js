@@ -1,4 +1,4 @@
-/*global createCanvas, livingRoomImg, virusImg, infectedViruses, removeDeadVirus, handleHealth, imageMode, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, gameIsOver, livingRoomImg, virusImg, infectedViruses, removeDeadVirus, handleHealth, imageMode, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 class Virus {
   constructor() {
@@ -16,20 +16,20 @@ class Virus {
 
   show() {
     imageMode(CENTER);
-    
-    if(!this.infectedUser){
-      image(virusImg, this.x, this.y, this.size, this.size);
-     }else{
-       infectedViruses.push(new InfectedVirus(this.x, this.y));
-       removeDeadVirus();
-     }
-    
-    
 
-    if (this.isAttacked) {
-      this.grow();
-    } else if (!this.isAlive) {
-      this.die();
+    if (!this.infectedUser) {
+      image(virusImg, this.x, this.y, this.size, this.size);
+    } else {
+      infectedViruses.push(new InfectedVirus(this.x, this.y));
+      removeDeadVirus();
+    }
+
+    if (!gameIsOver) {
+      if (this.isAttacked) {
+        this.grow();
+      } else if (!this.isAlive) {
+        this.die();
+      }
     }
   }
 
@@ -71,16 +71,14 @@ class Virus {
   }
 }
 
-
-class InfectedVirus{
-  constructor(x, y){
+class InfectedVirus {
+  constructor(x, y) {
     this.x = x;
     this.y = y;
     this.size = 150;
-    
   }
-  
-  show(){
+
+  show() {
     image(virusImg, this.x, this.y, this.size, this.size);
   }
 }

@@ -7,13 +7,13 @@ let canvas,
   finalImg,
   virusImg,
   viruses,
-  //userIsFighting = false,
   currentVirus,
   timer,
   health,
   gameIsOver = false, gameOverText = "", timerCushion, userIsInfected = false, infectedViruses = [];
 
 function preload() {
+  Font = loadFont('https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-Regular-trial.ttf?v=1596834499234');
   livingRoomImg = loadImage(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fliving-room-interior-cartoon-vector-20941629.jpg?v=1596816373329"
   );
@@ -76,7 +76,6 @@ function draw() {
   textAlign(RIGHT);
   text("Health", width - 20, 15)
   
-  //console.log(userIsFighting);
   
 }
 
@@ -97,7 +96,7 @@ function keyPressed() {
   if (key === "a") {
     currentVirus.isAttacked = false;
     currentVirus.isAlive = false;
-   // userIsFighting = false;
+
   }
 }
 function checkMousePosition() {
