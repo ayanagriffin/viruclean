@@ -8,7 +8,7 @@ let canvas,
   virusImg,
   viruses,
   userIsFighting = false,
-  currentVirus, timer;
+  currentVirus, timer, health, gameLost = false;
 
 function preload() {
   livingRoomImg = loadImage(
@@ -31,8 +31,9 @@ function setup() {
   for (let i = 0; i < 3; i++) {
     viruses.push(new Virus());
   }
-  timer = 10000;
   
+  timer = 1000;
+  health = 1000;
   
 
 }
@@ -48,7 +49,9 @@ function draw() {
   }
   
   handleTime();
-  text(round(timer/100), 10, 10);
+  handleHealth("");
+  fill("black")
+  text("Time", 10, 15);
 }
 
 
@@ -121,8 +124,24 @@ function removeDeadVirus(){
 function handleTime(){
   if(timer > 0){
     timer--;
+    
+   
+    fill(timer/10, 100, 100)
+    rect(10, 20, timer/10, 10);
+  }else{
+    gameLost = true;
   }
 }
+
+function handleHealth(result){
+  if(result === "infected"){
+    health -= 100;
+  }
+  
+  fill(health/10, 100, 100);
+  rect(width - 10, 20, width - health/10, 30)
+}
+
 class Virus {
   constructor() {
     this.size = 50;
@@ -134,6 +153,7 @@ class Virus {
     this.isAttacked = false;
     this.isAlive = true;
     this.maxSize = 500;
+    this.infectedUser = false;
   }
 
   show() {
@@ -150,6 +170,9 @@ class Virus {
   grow() {
     if (this.size < this.maxSize) {
       this.size += 0.25;
+    }else{
+      this.infectedUser = true;
+      handleHealth("infected");
     }
   }
   
