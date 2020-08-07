@@ -11,7 +11,7 @@ let canvas,
   currentVirus,
   timer,
   health,
-  gameIsOver = false, gameOverText = "";
+  gameIsOver = false, gameOverText = "", timerCushion, userIsInfected = false;
 
 function preload() {
   livingRoomImg = loadImage(
@@ -35,7 +35,8 @@ function setup() {
     viruses.push(new Virus());
   }
 
-  timer = 5000;
+  timer = 1000;
+  timerCushion = timer / 100;
   health = 1000;
 }
 
@@ -51,8 +52,17 @@ function draw() {
 
   
   if(gameIsOver){
+    fill("black")
+    userIsInfected = false;
     textAlign(CENTER);
     text(gameOverText, width/2, height/2);
+  }
+  
+  if(userIsInfected){
+    textAlign(CENTER);
+    fill("black")
+    text("Oh no! The virus got too close and infected you!", width/2, height/2 - 10);
+    text("Your health is decreasing! Look for medicine to heal you!", width/2, height/2 + 10);
   }
   
   handleTime();
@@ -121,15 +131,16 @@ function removeDeadVirus() {
   if (viruses.length === 0) {
     gameOver("win");
   }
+
 }
 
 function handleTime() {
   if (timer > 0) {
     timer--;
 
-    fill(timer / 10, 100, 100);
+    fill(timer / timerCushion, 100, 100);
     rectMode(CORNER);
-    rect(10, 20, timer / 10, 10);
+    rect(10, 20, timer / timerCushion, 10);
   } else {
     gameOver("time");
   }
@@ -137,7 +148,8 @@ function handleTime() {
 
 function handleHealth(result) {
   if (result === "infected") {
-    health -= .25;
+    userIsInfected = true;
+    health -= .5;
   }
 
   if (health > 0) {
@@ -161,6 +173,9 @@ function gameOver(result){
   
   gameIsOver = true;
 }
+
+
+
 class Virus {
   constructor() {
     this.size = 50;
@@ -172,11 +187,18 @@ class Virus {
     this.isAttacked = false;
     this.isAlive = true;
     this.maxSize = 75;
+    this.infectedUser = false;
   }
 
   show() {
     imageMode(CENTER);
-    image(virusImg, this.x, this.y, this.size, this.size);
+    
+    if(!this.infectedUser){
+      image(virusImg, this.x, this.y, this.size, this.size);
+    }else{
+      image(virusImg, width/2, height/2, this.size, this.size);
+    }
+    
 
     if (this.isAttacked) {
       this.grow();
@@ -190,6 +212,7 @@ class Virus {
       this.size += 0.25;
     } else {
       handleHealth("infected");
+      this.infectedUser = true;
     }
   }
 
