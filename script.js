@@ -11,23 +11,27 @@ function setup() {
   console.log(windowWidth, windowHeight)
   imgX = -300;
   imgY = -75;
-  checkMousePosition();
+  
   
 }
 
 function draw() {
   background(95);
-  finalImg = image(livingRoomImg, imgX, imgY)
-  finalImg.resize(windowWidth, 0)
+  image(livingRoomImg, imgX, imgY)
+  livingRoomImg.resize(windowWidth, 0)
+  checkMousePosition();
   
 
  
 }
 
-function mousePressed(){
-  imgX += 5;
-}
 
 function checkMousePosition(){
-  
+  console.log("mouseX :" + mouseX);
+  console.log(windowWidth)
+  if(mouseX > width){
+    imgX -= 1;
+  }else if(mouseX < 0){
+    imgX -= 1;
+  }
 }
