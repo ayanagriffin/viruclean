@@ -9,6 +9,8 @@ let canvas,
   virusImg,
   viruses,
   currentVirus,
+  virus_attach,
+  get_medicine,
   timer,
   title,
   health,
@@ -19,6 +21,7 @@ let canvas,
   infectedViruses = [], screen;
 
 function preload() {
+  virus_attach = loadSound("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fvirus_attach.wav?v=1596838911494")
   title = loadFont("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FYear%202000.ttf?v=1596836354238")
   font = loadFont(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-Regular-trial.ttf?v=1596834499234"

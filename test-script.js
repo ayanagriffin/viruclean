@@ -7,7 +7,9 @@ let canvas,
   font,
   finalImg,
   virusImg,
-  viruses,
+  virusAttach,
+  getMedicine,
+  viruses = [],
   title,
   currentVirus,
   timer,
@@ -16,10 +18,30 @@ let canvas,
   gameOverText,
   timerCushion,
   userIsInfected,
-  infectedViruses, screen = 0, buttonW, buttonH, buttonFill, buttonShadowFill, level, easyButtonY, easyButtonClicked;
+  infectedViruses = [],
+  screen = 0,
+  buttonW,
+  buttonH,
+  select,
+  buttonFill,
+  buttonShadowFill,
+  level,
+  easyButtonY,
+  mediumButtonY,
+  hardButtonY,
+  easyButtonClicked,
+  mediumButtonClicked,
+  hardButtonClicked;
 
 function preload() {
-    title = loadFont("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-ExtraBold-trial.ttf?v=1596837029666")
+  select = loadSound("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fselect.wav?v=1596839457762")
+  getMedicine = loadSound("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fget_medicine.wav?v=1596838831595")
+  virusAttach = loadSound(
+    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fvirus_attach.wav?v=1596838911494"
+  );
+  title = loadFont(
+    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-ExtraBold-trial.ttf?v=1596837029666"
+  );
   font = loadFont(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-Regular-trial.ttf?v=1596834499234"
   );
@@ -40,34 +62,34 @@ function setup() {
   buttonShadowFill = [5, 60, 100];
   buttonW = width / 5;
   buttonH = height / 12;
-  easyButtonY = height * .75;
-  if(screen === 1){
+  easyButtonY = height * 0.75;
+  mediumButtonY = height * 0.75;
+  hardButtonY = height * 0.75;
+  if (screen === 1) {
     playScreenSetup();
   }
-  
-  
 }
 function draw() {
-  
-  if(screen === 0){
+  if (screen === 0) {
     drawStartScreen();
-  } else if(screen === 1){
+  } else if (screen === 1) {
     drawPlayScreen();
-  } else if (screen === 2){
+  } else if (screen === 2) {
     drawEndScreen();
   }
 }
 
-function playScreenSetup(){
+function playScreenSetup() {
   infectedViruses = [];
+ // viruses = [];
   userIsInfected = false;
   gameIsOver = false;
-  gameOverText = ""
+  gameOverText = "";
   imgX = width / 2;
   imgY = height / 2;
   image(livingRoomImg, imgX, imgY);
   livingRoomImg.resize(windowWidth, 0);
-  viruses = [];
+  
   for (let i = 0; i < 3; i++) {
     viruses.push(new Virus());
   }
@@ -77,23 +99,22 @@ function playScreenSetup(){
   health = 1000;
 }
 
-function drawStartScreen(){
+function drawStartScreen() {
   background("#ffc9b2");
-  fill(255)
-  textFont(title)
-  textSize(70)
- // textAscent(200)
+  fill(255);
+  textFont(title);
+  textSize(70);
+  // textAscent(200)
   textAlign(CENTER);
-  text("title", width /2, height * .25);
-  textFont(font)
-  textSize(12)
-  text("instructions", width /2, height * .45);
-  text("click to start", width /2, height * .55);
-  text("made for melonjam twentytwenty", width /2, height * .95);
+  text("title", width / 2, height * 0.25);
+  textFont(font);
+  textSize(12);
+  text("instructions", width / 2, height * 0.45);
+  text("click to start", width / 2, height * 0.55);
+  text("made for melonjam twentytwenty", width / 2, height * 0.95);
   drawButtons();
-  
 }
-function drawPlayScreen(){
+function drawPlayScreen() {
   imageMode(CENTER);
   image(livingRoomImg, imgX, imgY);
 
@@ -136,35 +157,33 @@ function drawPlayScreen(){
   text("Health", width - 20, 15);
 }
 
-function drawEndScreen(){
+function drawEndScreen() {
   background(100);
   textAlign(CENTER);
-  text(gameOverText, width /2, height * .45);
-  text("click to try again", width /2, height * .55);
-  
+  text(gameOverText, width / 2, height * 0.45);
+  text("click to try again", width / 2, height * 0.55);
 }
 
-function drawButtons(){
+function drawButtons() {
   rectMode(CENTER);
   noStroke();
   fill(buttonShadowFill);
-  rect(width / 2, height * .75 + 5, buttonW, buttonH, 10);
-  rect(width / 4, height * .75 + 5, buttonW, buttonH, 10);
-  rect(width * .75, height * .75 + 5, buttonW, buttonH, 10);
+  rect(width / 2, height * 0.75 + 5, buttonW, buttonH, 10);
+  rect(width / 4, height * 0.75 + 5, buttonW, buttonH, 10);
+  rect(width * 0.75, height * 0.75 + 5, buttonW, buttonH, 10);
   fill(buttonFill);
-  rect(width / 2, height * .75, buttonW, buttonH, 10);
+  rect(width / 2, mediumButtonY, buttonW, buttonH, 10);
   rect(width / 4, easyButtonY, buttonW, buttonH, 10);
-  rect(width * .75, height * .75, buttonW, buttonH, 10);
+  rect(width * 0.75, hardButtonY, buttonW, buttonH, 10);
   textAlign(CENTER);
-  fill("white")
-  text("easy", width / 4, height * .76)
-  text("medium", width / 2, height * .76)
-  text("hard", width * .75, height * .76)
+  fill("white");
+  text("easy", width / 4, height * 0.76);
+  text("medium", width / 2, height * 0.76);
+  text("hard", width * 0.75, height * 0.76);
 }
 function mouseClicked() {
-  
-   if(screen === 2){
-    screen=0;
+  if (screen === 2) {
+    screen = 0;
     setup();
   }
   if (screen === 1 && !gameIsOver) {
@@ -178,28 +197,63 @@ function mouseClicked() {
   }
 }
 
-
-function mousePressed(){
-  if(screen === 0){
-    easyButtonClicked = collidePointRect(mouseX, mouseY, width / 4, - buttonW easyButtonY, buttonW, buttonH);
-    console.log(easyButtonClicked)
-    if(easyButtonClicked){
-      console.log("clicked")
-      //level = 0;
-      easyButtonY +=5;
-      //drawButtons();
+function mousePressed() {
+  if (screen === 0) {
+    easyButtonClicked = collidePointRect(
+      mouseX,
+      mouseY,
+      width / 4 - buttonW / 2,
+      easyButtonY - buttonH / 2,
+      buttonW,
+      buttonH
+    );
+    mediumButtonClicked = collidePointRect(
+      mouseX,
+      mouseY,
+      width / 2 - buttonW / 2,
+      mediumButtonY - buttonH / 2,
+      buttonW,
+      buttonH
+    );
+    
+    hardButtonClicked = collidePointRect(
+      mouseX,
+      mouseY,
+      width *.75 - buttonW / 2,
+      hardButtonY - buttonH / 2,
+      buttonW,
+      buttonH
+    );
+    console.log(easyButtonClicked);
+    if (easyButtonClicked) {
+      console.log("clicked");
+      select.play();
+     
+      easyButtonY += 5;
+      level = 0;
+    } else if (mediumButtonClicked) {
+      mediumButtonY += 5;
+      level = 1;
+    }else if(hardButtonClicked){
+      hardButtonY += 5;
+      level = 2
     }
-    //screen++;
-   // setTimeout(setup, 500);
-   
+    screen++;
+    setTimeout(setup, 500);
   }
 }
-function mouseReleased(){
-  if(screen === 0){
-    if(easyButtonClicked){
-      console.log("undo")
+function mouseReleased() {
+  if (screen === 0) {
+    if (easyButtonClicked) {
+      console.log("undo");
       easyButtonClicked = false;
       easyButtonY -= 5;
+    }else if(mediumButtonClicked){
+      mediumButtonClicked = false;
+      mediumButtonY -= 5;
+    }else if(hardButtonClicked){
+      hardButtonClicked = false;
+      hardButtonY -=5;
     }
   }
 }
@@ -268,6 +322,7 @@ function handleTime() {
 function handleHealth() {
   if (userIsInfected) {
     health -= 0.5;
+    virusAttach.play();
   }
 
   if (health > 0) {
@@ -289,5 +344,5 @@ function gameOver(result) {
   }
 
   gameIsOver = true;
-  screen++
+  screen++;
 }
