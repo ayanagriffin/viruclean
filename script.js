@@ -1,4 +1,4 @@
-/*global createCanvas, imageMode, random, image, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, imageMode, random, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let canvas, livingRoomImg, imgX, imgY, finalImg, virusImg, viruses;
 
@@ -20,7 +20,7 @@ function setup() {
   image(livingRoomImg, imgX, imgY);
   livingRoomImg.resize(windowWidth, 0);
   viruses = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 1; i++) {
     viruses.push(new Virus());
   }
 }
@@ -35,6 +35,14 @@ function draw() {
     viruses[i].show();
   }
 }
+
+function mouseClicked(){
+  for (let i = 0; i < viruses.length; i++) {
+    viruses[i].checkClicked();
+  }
+  
+}
+
 
 function checkMousePosition() {
   let endX = imgX + windowWidth / 2;
@@ -63,14 +71,13 @@ function checkMousePosition() {
 
 class Virus {
   constructor() {
-
-    this.x = random(-windowWidth * 0.15, windowWidth * 0.85);
-    this.y = random(-livingRoomImg.height * .05 + this.size, livingRoomImg.height);
+    this.size = 50;
+    this.x = random(-windowWidth * 0.3, windowWidth * 0.65);
+    this.y = random(-livingRoomImg.height * .05 + this.size, livingRoomImg.height * .7 - this.size);
+    this.isAttacked = false;
+   
     
-    //this.size = random(10, 30);
-    this.size = 10;
-    this.y = livingRoomImg.height * .7 - this.size
-    console.log(this.y)
+  
   }
 
   show() {
@@ -81,5 +88,13 @@ class Virus {
   move(xResult, yResult) {
     this.x += xResult;
     this.y += yResult;
+    
+  }
+  
+  checkClicked(){
+    let virusClicked = collidePointCircle(mouseX, mouseY, this.x, this.y, this.size)
+    if(virusClicked){
+      console.log("hit");
+    }
   }
 }
