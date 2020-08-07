@@ -7,7 +7,7 @@ let canvas,
   finalImg,
   virusImg,
   viruses,
-  userIsFighting = false,
+  //userIsFighting = false,
   currentVirus,
   timer,
   health,
@@ -73,32 +73,32 @@ function draw() {
   textAlign(RIGHT);
   text("Health", width - 40, 15)
   
-  console.log(userIsFighting);
+  //console.log(userIsFighting);
   
 }
 
 function mouseClicked() {
-  if (!userIsFighting) {
+  //if (!userIsFighting) {
     for (let i = 0; i < viruses.length; i++) {
       if (viruses[i].checkClicked()) {
         console.log("clicked");
-        userIsFighting = true;
+        //userIsFighting = true;
         currentVirus = viruses[i];
         
-      }
+     // }
     }
   }
 }
 
 function keyPressed() {
-  if (userIsFighting && key === "a") {
+  if (key === "a") {
     currentVirus.isAttacked = false;
     currentVirus.isAlive = false;
-    userIsFighting = false;
+   // userIsFighting = false;
   }
 }
 function checkMousePosition() {
-  if (!userIsFighting && !gameIsOver) {
+  if (!gameIsOver) {
     let endX = imgX + windowWidth / 2;
     let endY = imgY + livingRoomImg.height / 2;
     let xMove = 0;
@@ -126,6 +126,8 @@ function checkMousePosition() {
 }
 
 function removeDeadVirus() {
+  
+  
   for (let i = viruses.length - 1; i >= 0; i--) {
     if (viruses[i] === currentVirus) {
       viruses.splice(i, 1);
@@ -139,7 +141,8 @@ function removeDeadVirus() {
 }
 
 function handleTime() {
-  if (timer > 0) {
+  if(!gameIsOver){
+    if (timer > 0) {
     timer--;
 
     fill(timer / timerCushion, 100, 100);
@@ -148,6 +151,7 @@ function handleTime() {
   } else {
     gameOver("time");
   }
+}
 }
 
 function handleHealth(result) {
@@ -192,15 +196,17 @@ class Virus {
     this.isAttacked = false;
     this.isAlive = true;
     this.maxSize = 75;
-    //this.infectedUser = false;
+    this.infectedUser = false;
   }
 
   show() {
     imageMode(CENTER);
     
-    //if(!this.infectedUser){
+    if(!this.infectedUser){
       image(virusImg, this.x, this.y, this.size, this.size);
-    // }else{
+     }else{
+       removeDeadVirus();
+     }
     //   image(virusImg, width/2, height * .75, this.size, this.size);
     // }
     
@@ -217,7 +223,7 @@ class Virus {
       this.size += 0.25;
     } else {
       handleHealth("infected");
-      //this.infectedUser = true;
+      this.infectedUser = true;
       //userIsFighting = false;
     }
   }
