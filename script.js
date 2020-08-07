@@ -1,4 +1,4 @@
-/*global createCanvas, imageMode, round, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, imageMode, round, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let canvas,
   livingRoomImg,
@@ -127,6 +127,7 @@ function handleTime(){
     
    
     fill(timer/10, 100, 100)
+    rectMode(CORNER);
     rect(10, 20, timer/10, 10);
   }else{
     gameLost = true;
@@ -135,11 +136,17 @@ function handleTime(){
 
 function handleHealth(result){
   if(result === "infected"){
-    health -= 100;
+    health -= .1;
+  }else{
+   // health --;
   }
   
-  fill(health/10, 100, 100);
+  if(health > 0){
+    fill(health/10, 100, 100);
+  rectMode(CORNERS);
   rect(width - 10, 20, width - health/10, 30)
+  }
+  
 }
 
 class Virus {
@@ -152,8 +159,8 @@ class Virus {
     );
     this.isAttacked = false;
     this.isAlive = true;
-    this.maxSize = 500;
-    this.infectedUser = false;
+    this.maxSize = 75;
+   
   }
 
   show() {
@@ -171,11 +178,16 @@ class Virus {
     if (this.size < this.maxSize) {
       this.size += 0.25;
     }else{
-      this.infectedUser = true;
       handleHealth("infected");
     }
   }
   
+  infect(){
+    if(this.infectedUser === 1){
+      handleHealth("infected");
+    }
+    
+  }
   die(){
     if(this.size > 5){
       this.size /=2;
