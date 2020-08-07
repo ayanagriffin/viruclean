@@ -30,21 +30,19 @@ function draw() {
 
 
 function checkMousePosition(){
- // console.log("mouseX :" + mouseX);
- console.log();
-  if(mouseX > width) {
+  let endX = imgX + windowWidth / 2
+  let endY = imgY + livingRoomImg.height / 2
+  if(mouseX > width  && endX > width) {
     
     imgX -= 1;
-    console.log(imgX, w)
-  }else if(mouseX < 0 && imgX < 375){
+  }else if(mouseX < 0 && endX < windowWidth){
     imgX += 1;
-    console.log(imgX);
+
   }
   
-  if(mouseY > height && imgY > 100){
+  if(mouseY > height && endY > height){
     imgY -= 1;
-    console.log(imgY)
-  }else if(mouseY < 0){
+  }else if(mouseY < 0   && endY < livingRoomImg.height){
     imgY += 1;
   }
 }
