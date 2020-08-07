@@ -31,10 +31,12 @@ let canvas,
   mediumButtonY,
   hardButtonY,
   easyButtonClicked,
+  virusClicked,
   mediumButtonClicked,
   hardButtonClicked, numViruses;
 
 function preload() {
+  virusClicked= loadSound("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fclick_virus.wav?v=1596841270818")
   hitVirus= loadSound("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fhit_virus.wav?v=1596840265502")
   select = loadSound(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fselect.wav?v=1596839457762"
@@ -257,9 +259,11 @@ function mousePressed() {
     } else if (mediumButtonClicked) {
       mediumButtonY += 5;
       level = 1;
+      select.play();
     } else if (hardButtonClicked) {
       hardButtonY += 5;
       level = 2;
+      select.play();
     }
   }
 }
