@@ -1,7 +1,7 @@
 /*global createCanvas, imageMode, random, image, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 
-let canvas, livingRoomImg, imgX, imgY, finalImg, vx, vy;
+let canvas, livingRoomImg, imgX, imgY, finalImg, vx, vy, viruses;
 
 
 function setup() {
@@ -11,27 +11,29 @@ function setup() {
   colorMode(HSB);
   imgX = width / 2;
   imgY = height / 2;
-   vx = random(windowWidth * .75);
-   vy = windowHeight / 2;
+  image(livingRoomImg, imgX, imgY)
+  livingRoomImg.resize(windowWidth, 0)
   
-  
-  
-  console.log(windowWidth, windowHeight)
-  console.log(vx, vy)
-  
+//   vx = random(-windowWidth * .3, windowWidth * .85);
+
+//   vy = random(-livingRoomImg.height *.15, livingRoomImg.height);
+ 
+  viruses = [];
+  for(let i = 0; i < 10; i++){
+    vir
+  }
 }
 
 function draw() {
   background(95);
   imageMode(CENTER)
   image(livingRoomImg, imgX, imgY)
-  livingRoomImg.resize(windowWidth, 0)
+  //livingRoomImg.resize(windowWidth, 0)
  
  // console.log(livingRoomImg.width, livingRoomImg.height)
  // console.log(imgX, imgY);
   checkMousePosition();
-  fill("red")
-  ellipse(vx, vy, 30);
+  
   
 
  
@@ -41,7 +43,7 @@ function draw() {
 function checkMousePosition(){
   let endX = imgX + windowWidth / 2
   let endY = imgY + livingRoomImg.height / 2
-  console.log(vx, endX);
+  //console.log(vx, endX);
   // console.log("mouse" + mouseX, mouseY)
   // console.log(vx, vy)
   if(mouseX > width  && endX > width) {
@@ -67,7 +69,13 @@ function checkMousePosition(){
 
 class Virus{
   constructor(){
-    this.x = random(windowWidth);
-    this.y = random(windowHeight);
+    this.x = random(-windowWidth * .3, windowWidth * .85);
+    this.y = random(-livingRoomImg.height *.15, livingRoomImg.height);
+    this.size = random(10, 30);
+  }
+  
+  show(){
+    fill("red")
+    ellipse(this.x, this.y, this.size);
   }
 }
