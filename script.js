@@ -1,7 +1,7 @@
-/*global createCanvas, colorMode, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, colorMode, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let alarmSound, bgColor = [0], centerButtonIsVisible = true, centerButtonX , 
-    centerButtonY, buttonW , buttonH, centerButtonClicked, centerButtonFill ;
+    centerButtonY, buttonW , buttonH, centerButtonClicked, centerButtonFill, centerButtonText, myFont ;
 
 function preload(){
   soundFormats("mp3");
@@ -17,7 +17,11 @@ function setup() {
   buttonW = width / 5
   buttonH = height / 10
   centerButtonFill = [5, 50, 100];
-  //alarmSound.play();
+  centerButtonText = "Stop Alarm";
+  myFont = loadFont(
+    "https://cdn.glitch.com/aaab3da2-4498-416a-b626-0e83a89f16f3%2FRoboto-Medium.ttf?v=1596767884892"
+  );
+  alarmSound.play();
 }
 
 function draw() {
@@ -30,16 +34,17 @@ function mousePressed(){
   
   centerButtonClicked = collideRectCircle(centerButtonX - buttonW/2, centerButtonY - buttonH/2, buttonW, buttonH, mouseX, mouseY, 10);
   if(centerButtonIsVisible && centerButtonClicked){
-    
-    console.log("clicked")
+    centerButtonY += 5;
+    alarmSound.stop();
   }
   
-  alarmSound.stop();
+  
 }
 
 function mouseReleased(){
   if(centerButtonIsVisible){
     centerButtonClicked = false;
+    centerButtonY -= 5;
   }
 }
 
@@ -55,7 +60,10 @@ function drawButtons(){
     }
     fill(centerButtonFill);
     rect(centerButtonX, centerButtonY, buttonW, buttonH, 10);
-    
+    textFont(myFont);
+    fill("white");
+    textAlign(CENTER, CENTER);
+    text(centerButtonText, centerButtonX, centerButtonY);
     
   }
   
