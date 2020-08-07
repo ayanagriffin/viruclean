@@ -9,13 +9,13 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(windowWidth * 2 / 3, windowHeight * 2 / 3);
   colorMode(HSB, 360, 100, 100);
+  createCanvas(windowWidth * 2 / 3, windowHeight * 2 / 3);
   centerButtonX = width / 2
   centerButtonY = height / 2
   centerButtonW = width / 6
   centerButtonH = height / 10
-  centerButtonFill = 
+  centerButtonFill = (90, 90, 90);
   //alarmSound.play();
 }
 
