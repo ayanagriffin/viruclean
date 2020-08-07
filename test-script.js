@@ -1,4 +1,4 @@
-/*global createCanvas, imageMode, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, imageMode, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let canvas,
   livingRoomImg,
@@ -16,10 +16,10 @@ let canvas,
   gameOverText,
   timerCushion,
   userIsInfected,
-  infectedViruses, screen = 0, buttonW, buttonH, buttonFill, buttonShadowFill;
+  infectedViruses, screen = 0, buttonW, buttonH, buttonFill, buttonShadowFill, level, easyButtonY;
 
 function preload() {
-    title = loadFont("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FYear%202000.ttf?v=1596836354238")
+    title = loadFont("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-ExtraBold-trial.ttf?v=1596837029666")
   font = loadFont(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-Regular-trial.ttf?v=1596834499234"
   );
@@ -36,9 +36,11 @@ function setup() {
   canvas = createCanvas(400, 400);
   canvas.parent("canvas-div");
   colorMode(HSB);
-  buttonFill = [5, 50, 100]
+  buttonFill = [5, 50, 100];
+  buttonShadowFill = [5, 60, 100];
   buttonW = width / 5;
   buttonH = height / 12;
+  easyButtonY = height * .75;
   if(screen === 1){
     playScreenSetup();
   }
@@ -77,17 +79,17 @@ function playScreenSetup(){
 }
 
 function drawStartScreen(){
-  background(100);
+  background("#ffc9b2");
+  fill(255)
   textFont(title)
   textSize(70)
   textAscent(200)
   textAlign(CENTER);
-  text("Melonjam", width /2, height * .25);
+  text("title", width /2, height * .25);
   textFont(font)
   textSize(12)
   text("instructions", width /2, height * .45);
   text("click to start", width /2, height * .55);
-  textAlign(RIGHT);
   text("made for melonjam twentytwenty", width /2, height * .95);
   drawButtons();
   
@@ -146,21 +148,34 @@ function drawEndScreen(){
 function drawButtons(){
   rectMode(CENTER);
   noStroke();
-  fill(5, 60, 100);
+  fill(buttonShadowFill);
   rect(width / 2, height * .75 + 5, buttonW, buttonH, 10);
-  fill(5, 50, 100);
-  rect(width / 2, height * .75, buttonW, buttonH, 10);
+  rect(width / 4, height * .75 + 5, buttonW, buttonH, 10);
+  rect(width * .75, height * .75 + 5, buttonW, buttonH, 10);
+  fill(buttonFill);
+  rect(width / 2, easyButtonY, buttonW, buttonH, 10);
+  rect(width / 4, height * .75, buttonW, buttonH, 10);
+  rect(width * .75, height * .75, buttonW, buttonH, 10);
   textAlign(CENTER);
-  fill("black")
-  text("medium", width / 2, height * .8)
+  fill("white")
+  text("easy", width / 4, height * .75)
+  text("medium", width / 2, height * .75)
+  text("hard", width * .75, height * .75)
 }
 function mouseClicked() {
   
   if(screen === 0){
-    screen++;
-    setup();
+    let easyButtonClicked = collidePointRect(mouseX, mouseY, width / 2, height * .75 + 5, buttonW, buttonH);
+    if(easyButtonClicked){
+      level = 0;
+      easyButtonY +=5;
+      drawButtons();
+    }
+    //screen++;
+   // setTimeout(setup, 500);
+   
   }else if(screen === 2){
-    screen--;
+    screen=0;
     setup();
   }
   if (screen === 1 && !gameIsOver) {
