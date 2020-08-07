@@ -9,7 +9,7 @@ let canvas,
   virusImg,
   virusAttach,
   getMedicine,
-  viruses = [],
+  viruses,
   title,
   currentVirus,
   timer,
@@ -18,7 +18,7 @@ let canvas,
   gameOverText,
   timerCushion,
   userIsInfected,
-  infectedViruses = [],
+  infectedViruses,
   screen = 0,
   buttonW,
   buttonH,
@@ -31,11 +31,15 @@ let canvas,
   hardButtonY,
   easyButtonClicked,
   mediumButtonClicked,
-  hardButtonClicked;
+  hardButtonClicked, numViruses;
 
 function preload() {
-  select = loadSound("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fselect.wav?v=1596839457762")
-  getMedicine = loadSound("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fget_medicine.wav?v=1596838831595")
+  select = loadSound(
+    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fselect.wav?v=1596839457762"
+  );
+  getMedicine = loadSound(
+    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fget_medicine.wav?v=1596838831595"
+  );
   virusAttach = loadSound(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fvirus_attach.wav?v=1596838911494"
   );
@@ -50,7 +54,7 @@ function preload() {
   );
 
   virusImg = loadImage(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2F6bb45751-0572-4522-8e4d-c9c572b8fe52_smilie-4901128_960_720.png?v=1596824410604"
+    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fvirus.png?v=1596839714148"
   );
 }
 
@@ -58,6 +62,9 @@ function setup() {
   canvas = createCanvas(400, 400);
   canvas.parent("canvas-div");
   colorMode(HSB);
+  if (screen === 1) {
+    playScreenSetup();
+  }
   buttonFill = [5, 50, 100];
   buttonShadowFill = [5, 60, 100];
   buttonW = width / 5;
@@ -65,9 +72,6 @@ function setup() {
   easyButtonY = height * 0.75;
   mediumButtonY = height * 0.75;
   hardButtonY = height * 0.75;
-  if (screen === 1) {
-    playScreenSetup();
-  }
 }
 function draw() {
   if (screen === 0) {
@@ -80,8 +84,15 @@ function draw() {
 }
 
 function playScreenSetup() {
+  if(level === 0){
+    numViruses = 3;
+  }else if(level === 1){
+    numViruses = 6;
+  }else if(level === 2){
+    numViruses = 9;
+  }
   infectedViruses = [];
- // viruses = [];
+  viruses = [];
   userIsInfected = false;
   gameIsOver = false;
   gameOverText = "";
@@ -89,8 +100,8 @@ function playScreenSetup() {
   imgY = height / 2;
   image(livingRoomImg, imgX, imgY);
   livingRoomImg.resize(windowWidth, 0);
-  
-  for (let i = 0; i < 3; i++) {
+
+  for (let i = 0; i < numViruses; i++) {
     viruses.push(new Virus());
   }
 
@@ -104,7 +115,6 @@ function drawStartScreen() {
   fill(255);
   textFont(title);
   textSize(70);
-  // textAscent(200)
   textAlign(CENTER);
   text("title", width / 2, height * 0.25);
   textFont(font);
@@ -144,6 +154,7 @@ function drawPlayScreen() {
     );
     text("Your health is decreasing!", width / 2, height / 2 + 10);
     text("Look for medicine to heal you!", width / 2, height / 2 + 30);
+    // virusAttach.play();
   }
   stroke(255);
   strokeWeight(4);
@@ -158,7 +169,10 @@ function drawPlayScreen() {
 }
 
 function drawEndScreen() {
-  background(100);
+  background("#ffc9b2");
+  fill(255);
+  textFont(font);
+  textSize(12);
   textAlign(CENTER);
   text(gameOverText, width / 2, height * 0.45);
   text("click to try again", width / 2, height * 0.55);
@@ -215,45 +229,46 @@ function mousePressed() {
       buttonW,
       buttonH
     );
-    
+
     hardButtonClicked = collidePointRect(
       mouseX,
       mouseY,
-      width *.75 - buttonW / 2,
+      width * 0.75 - buttonW / 2,
       hardButtonY - buttonH / 2,
       buttonW,
       buttonH
     );
-    console.log(easyButtonClicked);
     if (easyButtonClicked) {
-      console.log("clicked");
       select.play();
-     
+
       easyButtonY += 5;
       level = 0;
     } else if (mediumButtonClicked) {
       mediumButtonY += 5;
       level = 1;
-    }else if(hardButtonClicked){
+    } else if (hardButtonClicked) {
       hardButtonY += 5;
-      level = 2
+      level = 2;
     }
-    screen++;
-    setTimeout(setup, 500);
   }
 }
 function mouseReleased() {
   if (screen === 0) {
     if (easyButtonClicked) {
-      console.log("undo");
       easyButtonClicked = false;
       easyButtonY -= 5;
-    }else if(mediumButtonClicked){
+      screen++;
+      setup();
+    } else if (mediumButtonClicked) {
       mediumButtonClicked = false;
       mediumButtonY -= 5;
-    }else if(hardButtonClicked){
+      screen++;
+      setup();
+    } else if (hardButtonClicked) {
       hardButtonClicked = false;
-      hardButtonY -=5;
+      hardButtonY -= 5;
+      screen++;
+      setup();
     }
   }
 }
@@ -296,6 +311,7 @@ function removeDeadVirus() {
   for (let i = viruses.length - 1; i >= 0; i--) {
     if (viruses[i] === currentVirus) {
       viruses.splice(i, 1);
+  
     }
   }
 
@@ -322,7 +338,6 @@ function handleTime() {
 function handleHealth() {
   if (userIsInfected) {
     health -= 0.5;
-    virusAttach.play();
   }
 
   if (health > 0) {
