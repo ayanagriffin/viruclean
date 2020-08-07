@@ -1,4 +1,4 @@
-/*global createCanvas, imageMode, image, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, imageMode, image, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 
 let livingRoomImg, imgX, imgY, finalImg;
@@ -31,10 +31,11 @@ function draw() {
 
 function checkMousePosition(){
  // console.log("mouseX :" + mouseX);
- 
-  if(mouseX > width && (imgX  + windowWidth / 2) > (windowWidth / 2 + width / 2)) {
+ console.log();
+  if(mouseX > width) {
+    
     imgX -= 1;
-    console.log(imgX)
+    console.log(imgX, w)
   }else if(mouseX < 0 && imgX < 375){
     imgX += 1;
     console.log(imgX);
