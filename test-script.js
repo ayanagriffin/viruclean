@@ -8,16 +8,18 @@ let canvas,
   finalImg,
   virusImg,
   viruses,
+  title,
   currentVirus,
   timer,
   health,
-  gameIsOver = false,
-  gameOverText = "",
+  gameIsOver,
+  gameOverText,
   timerCushion,
-  userIsInfected = false,
-  infectedViruses = [], screen = 1;
+  userIsInfected,
+  infectedViruses, screen = 0;
 
 function preload() {
+    title = loadFont("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FYear%202000.ttf?v=1596836354238")
   font = loadFont(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-Regular-trial.ttf?v=1596834499234"
   );
@@ -46,13 +48,18 @@ function draw() {
   
   if(screen === 0){
     drawStartScreen();
-  }
-  if(screen === 1){
-    drawPlay();
+  } else if(screen === 1){
+    drawPlayScreen();
+  } else if (screen === 2){
+    drawEndScreen();
   }
 }
 
 function playScreenSetup(){
+  infectedViruses = [];
+  userIsInfected = false;
+  gameIsOver = false;
+  gameOverText = ""
   imgX = width / 2;
   imgY = height / 2;
   image(livingRoomImg, imgX, imgY);
@@ -68,10 +75,13 @@ function playScreenSetup(){
 }
 
 function drawStartScreen(){
+  background(100);
+  textAlign(CENTER);
+  text("instructions", width /2, height * .45);
+  text("click to start", width /2, height * .55);
   
 }
-function playScreenDraw(){
-  background(95);
+function drawPlayScreen(){
   imageMode(CENTER);
   image(livingRoomImg, imgX, imgY);
 
@@ -114,8 +124,23 @@ function playScreenDraw(){
   text("Health", width - 20, 15);
 }
 
+function drawEndScreen(){
+  background(100);
+  textAlign(CENTER);
+  text(gameOverText, width /2, height * .45);
+  text("click to try again", width /2, height * .55);
+  
+}
 function mouseClicked() {
-  if (!gameIsOver) {
+  
+  if(screen === 0){
+    screen++;
+    setup();
+  }else if(screen === 2){
+    screen--;
+    setup();
+  }
+  if (screen === 1 && !gameIsOver) {
     for (let i = 0; i < viruses.length; i++) {
       if (viruses[i].checkClicked()) {
         console.log("clicked");
@@ -127,11 +152,12 @@ function mouseClicked() {
 }
 
 function keyPressed() {
-  if (key === "a") {
+  if (screen === 1 && key === "a") {
     currentVirus.isAttacked = false;
     currentVirus.isAlive = false;
   }
 }
+
 function checkMousePosition() {
   if (!gameIsOver) {
     let endX = imgX + windowWidth / 2;
@@ -211,4 +237,5 @@ function gameOver(result) {
   }
 
   gameIsOver = true;
+  screen++
 }

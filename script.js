@@ -10,6 +10,7 @@ let canvas,
   viruses,
   currentVirus,
   timer,
+  title,
   health,
   gameIsOver = false,
   gameOverText = "",
@@ -18,6 +19,7 @@ let canvas,
   infectedViruses = [], screen;
 
 function preload() {
+  title = loadFont("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FYear%202000.ttf?v=1596836354238")
   font = loadFont(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-Regular-trial.ttf?v=1596834499234"
   );
