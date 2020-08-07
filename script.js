@@ -1,6 +1,7 @@
-/*global createCanvas, colorMode, HSB, background, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, colorMode, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
-let alarmSound, backgroundColor = "black", centerButtonIsVisible = true;
+let alarmSound, backgroundColor = "black", centerButtonIsVisible = true, centerButtonX , 
+    centerButtonY, centerButtonW , centerButtonH, centerButtonClicked, centerButtonFill ;
 
 function preload(){
   soundFormats("mp3");
@@ -10,6 +11,11 @@ function preload(){
 function setup() {
   createCanvas(windowWidth * 2 / 3, windowHeight * 2 / 3);
   colorMode(HSB, 360, 100, 100);
+  centerButtonX = width / 2
+  centerButtonY = height / 2
+  centerButtonW = width / 6
+  centerButtonH = height / 10
+  centerButtonFill = 
   //alarmSound.play();
 }
 
@@ -20,16 +26,23 @@ function draw() {
 }
 
 function mouseClicked(){
+  
+  centerButtonClicked = collideRectCircle(centerButtonX - centerButtonW/2, centerButtonY - centerButtonH/2, centerButtonW, centerButtonH, mouseX, mouseY, 10);
+  if(centerButtonIsVisible && centerButtonClicked){
+    console.log("clicked")
+  }
   alarmSound.stop();
 }
 
 
 function drawButtons(){
   rectMode(CENTER);
-  fill("red");
+  
   
   if(centerButtonIsVisible){
-    rect(width / 2, height / 2, width / 6, height / 10, 10);
+    fill(centerButtonFill);
+    rect(centerButtonX, centerButtonY, centerButtonW, centerButtonH, 10);
+    
     
   }
   
