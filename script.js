@@ -19,9 +19,10 @@ function setup() {
 //   vy = random(-livingRoomImg.height *.15, livingRoomImg.height);
  
   viruses = [];
-  for(let i = 0; i < 10; i++){
-    vir
+  for(let i = 0; i < 3; i++){
+    viruses.push(new Virus());
   }
+  
 }
 
 function draw() {
@@ -33,7 +34,9 @@ function draw() {
  // console.log(livingRoomImg.width, livingRoomImg.height)
  // console.log(imgX, imgY);
   checkMousePosition();
-  
+  for(let i = 0; i < viruses.length; i++){
+    viruses[i].show();
+  }
   
 
  
@@ -43,26 +46,38 @@ function draw() {
 function checkMousePosition(){
   let endX = imgX + windowWidth / 2
   let endY = imgY + livingRoomImg.height / 2
+  let xMove = 0;
+  let yMove = 0;
   //console.log(vx, endX);
   // console.log("mouse" + mouseX, mouseY)
   // console.log(vx, vy)
   if(mouseX > width  && endX > width) {
     
-    imgX -= 1;
-    vx-=1;
+    //imgX -= 1;
+    xMove = -1;
+    //vx-=1;
     
   }else if(mouseX < 0 && endX < windowWidth){
-    imgX += 1;
-     vx+=1
+   // imgX += 1;
+    xMove = 1;
+    // vx+=1
 
   }
   
   if(mouseY > height && endY > height){
-    imgY -= 1;
-    vy -=1
+   // imgY -= 1;
+    yMove = -1;
+   // vy -=1
   }else if(mouseY < 0   && endY < livingRoomImg.height){
-    imgY += 1;
-    vy+=1
+   // imgY += 1;
+    yMove = 1;
+   // vy+=1
+  }
+  
+  imgX += xMove;
+  imgY += yMove;
+  for(let i = 0; i < viruses.length; i++){
+    viruses[i].move(xMove, yMove);
   }
 }
 
@@ -72,10 +87,16 @@ class Virus{
     this.x = random(-windowWidth * .3, windowWidth * .85);
     this.y = random(-livingRoomImg.height *.15, livingRoomImg.height);
     this.size = random(10, 30);
+    console.log(this.x, this.y);
   }
   
   show(){
     fill("red")
     ellipse(this.x, this.y, this.size);
+  }
+  
+  move(xResult, yResult){
+    this.x += xResult;
+    this.y += yResult;
   }
 }
