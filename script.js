@@ -1,4 +1,4 @@
-/*global createCanvas, imageMode, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, imageMode, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let canvas,
   livingRoomImg,
@@ -68,10 +68,12 @@ function draw() {
   handleTime();
   handleHealth("");
   fill("black");
-  textAlign(CORNER);
+  textAlign(LEFT);
   text("Time", 10, 15);
+  textAlign(RIGHT);
   text("Health", width - 40, 15)
   
+  console.log(userIsFighting);
   
 }
 
@@ -79,8 +81,10 @@ function mouseClicked() {
   if (!userIsFighting) {
     for (let i = 0; i < viruses.length; i++) {
       if (viruses[i].checkClicked()) {
-        currentVirus = viruses[i];
+        console.log("clicked");
         userIsFighting = true;
+        currentVirus = viruses[i];
+        
       }
     }
   }
@@ -148,6 +152,7 @@ function handleTime() {
 
 function handleHealth(result) {
   if (result === "infected") {
+   // userIsFighting = false;
     userIsInfected = true;
     health -= .5;
   }
@@ -187,17 +192,17 @@ class Virus {
     this.isAttacked = false;
     this.isAlive = true;
     this.maxSize = 75;
-    this.infectedUser = false;
+    //this.infectedUser = false;
   }
 
   show() {
     imageMode(CENTER);
     
-    if(!this.infectedUser){
+    //if(!this.infectedUser){
       image(virusImg, this.x, this.y, this.size, this.size);
-    }else{
-      image(virusImg, width/2, height/2, this.size, this.size);
-    }
+    // }else{
+    //   image(virusImg, width/2, height * .75, this.size, this.size);
+    // }
     
 
     if (this.isAttacked) {
@@ -212,7 +217,8 @@ class Virus {
       this.size += 0.25;
     } else {
       handleHealth("infected");
-      this.infectedUser = true;
+      //this.infectedUser = true;
+      //userIsFighting = false;
     }
   }
 
@@ -241,5 +247,12 @@ class Virus {
     }
 
     return virusClicked;
+  }
+}
+
+
+class infectedVirus{
+  constructor(){
+    
   }
 }
