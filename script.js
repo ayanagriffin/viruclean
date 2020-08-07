@@ -1,6 +1,6 @@
 /*global createCanvas, colorMode, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
-let alarmSound, backgroundColor, centerButtonIsVisible = true, centerButtonX , 
+let alarmSound, bgColor, centerButtonIsVisible = true, centerButtonX , 
     centerButtonY, centerButtonW , centerButtonH, centerButtonClicked, centerButtonFill ;
 
 function preload(){
@@ -9,19 +9,21 @@ function preload(){
 }
 
 function setup() {
-  colorMode(HSB, 360, 100, 100);
+  
   createCanvas(windowWidth * 2 / 3, windowHeight * 2 / 3);
+  colorMode(HSB);
   centerButtonX = width / 2
   centerButtonY = height / 2
   centerButtonW = width / 6
   centerButtonH = height / 10
   centerButtonFill = (90, 90, 90);
-  backgroundColor = (100, 100, 100);
+  bgColor = (255, 0, 255);
+  centerButtonFill = (100, 100, 100);
   //alarmSound.play();
 }
 
 function draw() {
-  background(backgroundColor);
+  background(bgColor);
   drawButtons();
   
 }
