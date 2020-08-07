@@ -1,4 +1,4 @@
-/*global createCanvas, colorMode, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, imageMode, image, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let alarmSound,
   bgColor = [0],
@@ -11,9 +11,12 @@ let alarmSound,
   centerButtonFill,
   centerText,
   myFont,
-  curScreen = 0;
+  curScreen = 0, redShirt,
+    yellowShirt;
 
 function preload() {
+  redShirt = loadImage("https://cdn.glitch.com/aaab3da2-4498-416a-b626-0e83a89f16f3%2Fred-shirt-clipart-2.png?v=1596770945846")
+  yellowShirt = loadImage("https://cdn.glitch.com/aaab3da2-4498-416a-b626-0e83a89f16f3%2Ft-shirt.png?v=1596771352298")
   soundFormats("mp3");
   alarmSound = loadSound(
     "https://cdn.glitch.com/aaab3da2-4498-416a-b626-0e83a89f16f3%2FAlarm-ringtone.mp3?v=1596763108789"
@@ -64,8 +67,14 @@ function draw() {
     centerText = "Start"
     drawText(14);
   }else if(curScreen === 5){
+    redShirt.resize(150, 0);
+    imageMode(CENTER);
+    image(redShirt, width / 4, centerY / 2);
+    yellowShirt.resize(150, 0);
+    image(yellowShirt, width * .75, centerY / 2)
     centerText = "First decision! Which shirt do you want to wear?"
     drawText(20);
+    
   }
   if (getAudioContext().state !== "running") {
     getAudioContext().resume();
