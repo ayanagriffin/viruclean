@@ -1,9 +1,9 @@
-/*global createCanvas, colorMode, HSB, background*/
+/*global createCanvas, colorMode, HSB, background, windowWidth, windowHeight*/
 
 let variables;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, 400);
   colorMode(HSB, 360, 100, 100);
 }
 
