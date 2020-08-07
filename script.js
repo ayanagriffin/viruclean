@@ -1,4 +1,4 @@
-/*global createCanvas, colorMode, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, colorMode, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let alarmSound, bgColor = [0], centerButtonIsVisible = true, centerButtonX , 
     centerButtonY, buttonW , buttonH, centerButtonClicked, centerButtonFill, centerButtonText, myFont ;
@@ -27,15 +27,21 @@ function setup() {
 function draw() {
   background(bgColor);
   drawButtons();
+  if (getAudioContext().state !== "running") {
+    getAudioContext().resume();
+  }
   
 }
 
 function mousePressed(){
   
+  
+  
   centerButtonClicked = collideRectCircle(centerButtonX - buttonW/2, centerButtonY - buttonH/2, buttonW, buttonH, mouseX, mouseY, 10);
   if(centerButtonIsVisible && centerButtonClicked){
     centerButtonY += 5;
     alarmSound.stop();
+    setTimeout(changeScreen, 1000);
     
   }
   
@@ -43,7 +49,7 @@ function mousePressed(){
 }
 
 function mouseReleased(){
-  if(centerButtonIsVisible){
+  if(centerButtonIsVisible && centerButtonClicked){
     centerButtonClicked = false;
     centerButtonY -= 5;
   }
@@ -70,4 +76,6 @@ function drawButtons(){
   
 }
 
-
+function changeScreen(){
+  console.log("delayed");
+}
