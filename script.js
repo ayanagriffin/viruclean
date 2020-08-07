@@ -11,7 +11,7 @@ let canvas,
   currentVirus,
   timer,
   health,
-  gameIsOver = false, gameOverText = "", timerCushion, userIsInfected = false;
+  gameIsOver = false, gameOverText = "", timerCushion, userIsInfected = false, infectedViruses = [];
 
 function preload() {
   livingRoomImg = loadImage(
@@ -50,6 +50,9 @@ function draw() {
     viruses[i].show();
   }
 
+  for(let i = 0; i < infectedViruses.length; i++){
+    infectedViruses[i].show();
+  }
   
   if(gameIsOver){
     fill("black")
@@ -71,7 +74,7 @@ function draw() {
   textAlign(LEFT);
   text("Time", 10, 15);
   textAlign(RIGHT);
-  text("Health", width - 40, 15)
+  text("Health", width - 20, 15)
   
   //console.log(userIsFighting);
   
@@ -145,13 +148,15 @@ function handleTime() {
     if (timer > 0) {
     timer--;
 
-    fill(timer / timerCushion, 100, 100);
-    rectMode(CORNER);
-    rect(10, 20, timer / timerCushion, 10);
+    
   } else {
     gameOver("time");
   }
 }
+  
+  fill(timer / timerCushion, 100, 100);
+    rectMode(CORNER);
+    rect(10, 20, timer / timerCushion, 10);
 }
 
 function handleHealth(result) {
@@ -195,7 +200,7 @@ class Virus {
     );
     this.isAttacked = false;
     this.isAlive = true;
-    this.maxSize = 75;
+    this.maxSize = 150;
     this.infectedUser = false;
   }
 
@@ -205,10 +210,10 @@ class Virus {
     if(!this.infectedUser){
       image(virusImg, this.x, this.y, this.size, this.size);
      }else{
+       infectedViruses.push(new InfectedVirus());
        removeDeadVirus();
      }
-    //   image(virusImg, width/2, height * .75, this.size, this.size);
-    // }
+    
     
 
     if (this.isAttacked) {
@@ -257,8 +262,15 @@ class Virus {
 }
 
 
-class infectedVirus{
+class InfectedVirus{
   constructor(){
+    this.x = random(width);
+    this.y = random(height);
+    this.size = 150;
     
+  }
+  
+  show(){
+    image(virusImg, this.x, this.y, this.size, this.size);
   }
 }
