@@ -16,7 +16,7 @@ let canvas,
   gameOverText,
   timerCushion,
   userIsInfected,
-  infectedViruses, screen = 0;
+  infectedViruses, screen = 0, buttonW, buttonH, buttonFill, buttonShadowFill;
 
 function preload() {
     title = loadFont("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FYear%202000.ttf?v=1596836354238")
@@ -36,7 +36,9 @@ function setup() {
   canvas = createCanvas(400, 400);
   canvas.parent("canvas-div");
   colorMode(HSB);
-  
+  buttonFill = [5, 50, 100]
+  buttonW = width / 5;
+  buttonH = height / 12;
   if(screen === 1){
     playScreenSetup();
   }
@@ -76,9 +78,18 @@ function playScreenSetup(){
 
 function drawStartScreen(){
   background(100);
+  textFont(title)
+  textSize(70)
+  textAscent(200)
   textAlign(CENTER);
+  text("Melonjam", width /2, height * .25);
+  textFont(font)
+  textSize(12)
   text("instructions", width /2, height * .45);
   text("click to start", width /2, height * .55);
+  textAlign(RIGHT);
+  text("made for melonjam twentytwenty", width /2, height * .95);
+  drawButtons();
   
 }
 function drawPlayScreen(){
@@ -130,6 +141,18 @@ function drawEndScreen(){
   text(gameOverText, width /2, height * .45);
   text("click to try again", width /2, height * .55);
   
+}
+
+function drawButtons(){
+  rectMode(CENTER);
+  noStroke();
+  fill(5, 60, 100);
+  rect(width / 2, height * .75 + 5, buttonW, buttonH, 10);
+  fill(5, 50, 100);
+  rect(width / 2, height * .75, buttonW, buttonH, 10);
+  textAlign(CENTER);
+  fill("black")
+  text("medium", width / 2, height * .8)
 }
 function mouseClicked() {
   

@@ -2,7 +2,7 @@
 
 class Virus {
   constructor() {
-    this.size = 50;
+    this.size = random(25, 60);
     this.x = random(-windowWidth * 0.3, windowWidth * 0.65);
     this.y = random(
       -livingRoomImg.height * 0.05 + this.size,
