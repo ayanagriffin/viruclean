@@ -9,7 +9,7 @@ let alarmSound,
   buttonH,
   centerButtonClicked,
   centerButtonFill,
-  centerButtonText,
+  centerText,
   myFont,
   curScreen = 0;
 
@@ -48,21 +48,24 @@ function draw() {
   drawButtons();
   
   if (curScreen === 0) {
-    centerButtonText = "Stop Alarm";
+    centerText = "Stop Alarm";
     drawText(14);
   }else if(curScreen === 1){
-    centerButtonText = "Good morning! Today you have a very special task..."
+    centerText = "Good morning! Today you have a very special task..."
     drawText(20);
   }else if(curScreen === 2){
-    centerButtonText = "But it's the same task as every other day since March."
+    centerText = "But it's the same task as every other day since March."
     drawText(20);
   }else if(curScreen === 3){
-    centerButtonText = "Avoid the virus! Make smart decisions to stay safe. "
+    centerText = "Avoid the virus! Make smart decisions to stay safe. "
     drawText(20);
   }else if(curScreen === 4){
     centerButtonIsVisible = true;
-    centerButtonText = "Start"
+    centerText = "Start"
     drawText(14);
+  }else if(curScreen === 5){
+    centerText = "First decision! Which shirt do you want to wear?"
+    drawText(20);
   }
   if (getAudioContext().state !== "running") {
     getAudioContext().resume();
@@ -79,12 +82,13 @@ function mousePressed() {
     mouseY,
     10
   );
-  if (centerButtonClicked && curScreen === 0) {
+  if (centerButtonClicked && curScreen === 0 ) {
     centerY += 5;
     alarmSound.stop();
     setTimeout(changeScreen, 1000);
   }else if(centerButtonClicked && curScreen === 4){
-    
+    centerY += 5;
+    setTimeout(changeScreen, 1000);
   }
   
   if(curScreen === 1 || curScreen === 2 || curScreen === 3) {
@@ -120,17 +124,19 @@ function drawText(size) {
   textFont(myFont);
   fill("white");
   textAlign(CENTER, CENTER);
-  text(centerButtonText, centerX, centerY);
+  text(centerText, centerX, centerY);
 }
 
 function changeScreen() {
   curScreen++;
   if (curScreen === 1) {
-    centerButtonIsVisible = false;
+    
     bgColor = [200, 35, 100];
   }
+  
+  centerButtonIsVisible = false;
 }
 
 function changeText(newText){
-  centerButtonText = newText;
+  centerText = newText;
 }
