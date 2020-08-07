@@ -21,7 +21,8 @@ function draw() {
   image(livingRoomImg, imgX, imgY)
   livingRoomImg.resize(windowWidth, 0)
   checkMousePosition();
-  console.log(livingRoomImg.width, livingRoomImg.height)
+ // console.log(livingRoomImg.width, livingRoomImg.height)
+ // console.log(imgX, imgY);
   
 
  
@@ -31,7 +32,7 @@ function draw() {
 function checkMousePosition(){
  // console.log("mouseX :" + mouseX);
  
-  if(mouseX > width && imgX  > 25) {
+  if(mouseX > width && (imgX  + windowWidth / 2) > (windowWidth / 2 + width / 2)) {
     imgX -= 1;
     console.log(imgX)
   }else if(mouseX < 0 && imgX < 375){
