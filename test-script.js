@@ -15,7 +15,7 @@ let canvas,
   gameOverText = "",
   timerCushion,
   userIsInfected = false,
-  infectedViruses = [], screen;
+  infectedViruses = [], screen = 1;
 
 function preload() {
   font = loadFont(
@@ -34,6 +34,25 @@ function setup() {
   canvas = createCanvas(400, 400);
   canvas.parent("canvas-div");
   colorMode(HSB);
+  
+  if(screen === 1){
+    playScreenSetup();
+  }
+  
+  
+}
+
+function draw() {
+  
+  if(screen === 0){
+    drawStartScreen();
+  }
+  if(screen === 1){
+    drawPlay();
+  }
+}
+
+function playScreenSetup(){
   imgX = width / 2;
   imgY = height / 2;
   image(livingRoomImg, imgX, imgY);
@@ -48,7 +67,10 @@ function setup() {
   health = 1000;
 }
 
-function draw() {
+function drawStartScreen(){
+  
+}
+function playScreenDraw(){
   background(95);
   imageMode(CENTER);
   image(livingRoomImg, imgX, imgY);
