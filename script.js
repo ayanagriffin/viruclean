@@ -1,4 +1,4 @@
-/*global createCanvas, imageMode, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, imageMode, round, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let canvas,
   livingRoomImg,
@@ -8,7 +8,7 @@ let canvas,
   virusImg,
   viruses,
   userIsFighting = false,
-  currentVirus;
+  currentVirus, timer;
 
 function preload() {
   livingRoomImg = loadImage(
@@ -31,6 +31,10 @@ function setup() {
   for (let i = 0; i < 3; i++) {
     viruses.push(new Virus());
   }
+  timer = 10000;
+  
+  
+
 }
 
 function draw() {
@@ -42,7 +46,12 @@ function draw() {
   for (let i = 0; i < viruses.length; i++) {
     viruses[i].show();
   }
+  
+  handleTime();
+  text(round(timer/100), 10, 10);
 }
+
+
 
 function mouseClicked() {
   if (!userIsFighting) {
@@ -50,7 +59,7 @@ function mouseClicked() {
       if (viruses[i].checkClicked()) {
         currentVirus = viruses[i];
         userIsFighting = true;
-        console.log(currentVirus);
+        
       }
     }
   }
@@ -58,11 +67,11 @@ function mouseClicked() {
 
 function keyPressed(){
   if(userIsFighting && key === 'a'){
-    console.log("dead");
+   
     currentVirus.isAttacked = false;
     currentVirus.isAlive = false;
     userIsFighting = false;
-    setTimeout(removeDeadVirus, 2000);
+    
   }
 }
 function checkMousePosition() {
@@ -96,8 +105,24 @@ function checkMousePosition() {
 
 function removeDeadVirus(){
   
+  
+  for(let i = viruses.length - 1; i >= 0; i--){
+    if(viruses[i] === currentVirus){
+      viruses.splice(i, 1);
+     
+    }
+  }
+  
+  if(viruses.length === 0){
+    console.log("yay");
+  }
 }
 
+function handleTime(){
+  if(timer > 0){
+    timer--;
+  }
+}
 class Virus {
   constructor() {
     this.size = 50;
@@ -129,8 +154,10 @@ class Virus {
   }
   
   die(){
-    if(this.size > 1){
-      this.size --;
+    if(this.size > 5){
+      this.size /=2;
+    }else{
+      removeDeadVirus();
     }
   }
   move(xResult, yResult) {
