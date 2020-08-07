@@ -36,6 +36,7 @@ function mousePressed(){
   if(centerButtonIsVisible && centerButtonClicked){
     centerButtonY += 5;
     alarmSound.stop();
+    
   }
   
   
