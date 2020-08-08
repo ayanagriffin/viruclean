@@ -45,11 +45,11 @@ class Button {
 
       if (mouseIsPressed && buttonClicked) {
         this.y += 5;
-        if (screen == 0) {
+        if (screen == 0) { // home screen
           if (this.level == 0) {
             level = 0;
             select.play();
-            screen+=2;
+            screen+=2; // go to play screen
           } else if (this.level == 1) {
             level = 1;
             select.play();
@@ -62,9 +62,21 @@ class Button {
             screen++;
           }
           
-        } else if(screen === 1){
-          screen --;
-          console.log("back")
+        } else if(screen === 1){ //tutorial screen
+          
+          if(this.text === "Back"){
+            screen --; // go to home screen
+          
+          }else if(this.text === "Next"){
+            //screen+=2;
+          }
+          
+        } else if(screen === 3){ // end screen
+          if(this.text.equals("Home")){
+            screen -= 3;
+            select.play();
+          } else if (this.text.equals("Play Again"))
+            screen --;
         }
         
         setup();

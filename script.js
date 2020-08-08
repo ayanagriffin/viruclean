@@ -105,8 +105,8 @@ function setup() {
   tutorialButton = new Button(width / 2, height / 2, "Tutorial");
   tryAgainButton = new Button(width * 0.37, height * 0.75, "Play Again");
   homeButton = new Button(width * 0.65, height * 0.75, "Home");
-  backButton = new Button(width * .85, height * .9, "Back");
-  nextButton = new Button(width * .5, height * .9, "Next")
+  backButton = new Button(width * .65, height * .92, "Back");
+  nextButton = new Button(width * .87, height * .92, "Next")
 }
 
 //see screens.js for draw screen functions
