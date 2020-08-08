@@ -23,7 +23,7 @@ let canvas,
   infectedViruses,
   screen = 0,
   buttonW,
-  buttonH,
+  buttonH, healingText, 
   select, startingHealth, vaccines,
   buttonFill,
   buttonShadowFill,
@@ -199,7 +199,7 @@ function removeDeadVirus() {
     }
   }
 
-  if (viruses.length === 0) {
+  if (viruses.length === 0 && !userIsInfected) {
     gameOver("win");
   }
 }

@@ -1,4 +1,4 @@
-/*global createCanvas, Vaccine numVaccines, pillIsUsed, vaccineIsUsed, Pill, vaccines, startingHealth, imgResized, pills, numPills, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, healingText, Vaccine numVaccines, pillIsUsed, vaccineIsUsed, Pill, vaccines, startingHealth, imgResized, pills, numPills, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 /* ----------------------------START SCREEN--------------------------------------- */
 function drawStartScreen() {
@@ -52,6 +52,7 @@ function playScreenSetup() {
   userIsInfected = false;
   gameIsOver = false;
   gameOverText = "";
+  healingText = "";
   imgX = width / 2;
   imgY = height / 2;
 
@@ -97,6 +98,8 @@ function drawPlayScreen() {
 
   if (userIsInfected) {
     pillIsUsed = false;
+    vaccineIsUsed = false;
+    healingText = "";
     for (let i = 0; i < pills.length; i++) {
       pills[i].show();
     }
@@ -122,8 +125,16 @@ function drawPlayScreen() {
     text("Look for medicine to heal you!", width / 2, height / 2 + 30);
     // virusAttach.play();
   } else if(pillIsUsed){
-    text("Yay! Keep going!", width / 2, height / 2);
+    healingText = "Your health is no longer decreasing!"
+    if(viruses.length === 0){
+      gameOver()
+    }
+  } else if(vaccineIsUsed){
+    healingText = "Wow, you're fully healed!"
+    
   }
+  
+  text(healingText, width / 2, height / 2);
   stroke(255);
   strokeWeight(4);
   textFont(font);
