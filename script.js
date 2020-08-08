@@ -36,7 +36,7 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(400, 400);
+  canvas = createCanvas(600, 600);
   canvas.parent("canvas-div");
   colorMode(HSB);
   imgX = width / 2;

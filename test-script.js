@@ -69,7 +69,7 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(400, 400);
+  canvas = createCanvas(600, 600);
   canvas.parent("canvas-div");
   colorMode(HSB);
   if (screen === 1) {
@@ -83,6 +83,7 @@ function setup() {
   mediumButtonY = height * 0.75;
   hardButtonY = height * 0.75;
 }
+
 function draw() {
   if (screen === 0) {
     drawStartScreen();
@@ -107,6 +108,7 @@ function playScreenSetup() {
     timer = 2000;
     health = 500;
   }
+  
   infectedViruses = [];
   viruses = [];
   userIsInfected = false;
