@@ -50,42 +50,34 @@ class Button {
           if (this.level == 0) {
             level = 0;
             select.play();
-            setTimeout(function() {
+            screen = 2;if (this.levesetTimeout(function() {
               setScreen(2);
             }, 100);
-          } else if (this.level == 1) {
-            level = 1;
-            select.play();
-            setTimeout(function() {
-              setScreen(2);
-            }, 100);
-          } else if (this.level == 2) {
-            level = 2;
-            select.play();
-            setTimeout(function() {
+          } else if (this.levescreen = 2setTimeout(function() {
               setScreen(2);
             }, 100);
           }
         } else if (screen == 3) {
           // end screen
           if (this.indicator == 1) {
-            setTimeout(function() {
-              setScreen(0);
-            }, 100);
+            setTimeout(setScreen, 100);
           } else if (this.indicator == 2) {
-            setTimeout(function() {
-              setScreen(2);
-            }, 100);
+            setTimeout(setOtherScreen, 100);
           }
         }
         
+        setup();
       }
     }
   }
 }
 
-function setScreen(screenNumber) {
+function setScreen() {
   select.play();
-  screen = screenNumber;
-  setup();
+  screen = 0;
 }
+
+function setOtherScreen(){
+  screen = 2;
+}
+
