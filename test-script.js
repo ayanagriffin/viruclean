@@ -285,6 +285,7 @@ function mousePressed() {
     }
   }
 }
+
 function mouseReleased() {
   if (screen === 0) {
     if (easyButtonClicked) {
@@ -305,6 +306,7 @@ function mouseReleased() {
     }
   }
 }
+
 function keyPressed() {
   if (screen === 1 && key === "a") {
     currentVirus.isAttacked = false;
