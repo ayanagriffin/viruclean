@@ -68,20 +68,19 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(windowWidth * .4, windowWidth * .4);
+  canvas = createCanvas(600, 600);
   canvas.parent("canvas-div");
   colorMode(HSB);
   if (screen === 1) {
     playScreenSetup();
   }
   
-  buttonY = height * 0.75;
- 
+  
   
   //see buttons.js for button object constructor
-  easyButton = new Button(width / 4,buttonY, "Easy", 0);
-  mediumButton = new Button(width / 2, buttonY, "Medium", 1);
-  hardButton = new Button(width * 0.75, buttonY, "Hard", 2);
+  easyButton = new Button(width / 4, "Easy", 0);
+  mediumButton = new Button(width / 2,  "Medium", 1);
+  hardButton = new Button(width * 0.75, "Hard", 2);
 }
 
 //see screens.js for draw screen functions

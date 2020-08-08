@@ -2,7 +2,7 @@
 
 class Button {
   
-  constructor(x, y, text, buttonLevel) {
+  constructor(x, text, buttonLevel) {
     this.x = x;
     this.y = height * 0.75;
     this.shadowY = height * 0.75 + 5;
