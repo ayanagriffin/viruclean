@@ -55,10 +55,10 @@ let canvas,
   numPills,
   vaccineImg; 
 
-let video;
-let flipVideo;
-let label = '...waiting';
-let classifier;
+// let video;
+// let flipVideo;
+// let label = '...waiting';
+// let classifier;
 
 function preload() {
   virusClicked = loadSound(
@@ -92,16 +92,16 @@ function preload() {
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fvaccine.png?v=1596907887802"
   );
   
-  classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/Ag_4DvWc_/model.json');
+  //classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/Ag_4DvWc_/model.json');
 }
 
 function setup() {
   canvas = createCanvas(600, 600);
   canvas.parent("canvas-div");
   
-  video = createCapture(VIDEO);
-  video.hide();
-  classifyVideo();
+  // video = createCapture(VIDEO);
+  // video.hide();
+  // classifyVideo();
   
   colorMode(HSB);
   if (screen === 2) {
@@ -123,21 +123,21 @@ function setup() {
   nextButton = new Button(width * .87, height * .92, "Next")
 }
 
-function classifyVideo() {
-  classifier.classify(video, gotResults);
-}
+// function classifyVideo() {
+//   classifier.classify(video, gotResults);
+// }
 
-function gotResults(error, results) {
-  // Something went wrong!
-  if (error) {
-    console.error(error);
-    return;
-  }
-  // Store the label and classify again!
-  label = results[0].label;
-  checkMousePosition();
-  classifyVideo();
-}
+// function gotResults(error, results) {
+//   // Something went wrong!
+//   if (error) {
+//     console.error(error);
+//     return;
+//   }
+//   // Store the label and classify again!
+//   label = results[0].label;
+//   checkMousePosition();
+//   classifyVideo();
+// }
 
 
 //see screens.js for draw screen functions
@@ -153,7 +153,7 @@ function draw() {
   }
   
   textFont("Helvetica");
-  text(label, 20, 100); //debug screen order
+  text(frameCount, 20, 100); //debug screen order
 }
 
 //see buttons.js for show and mousePressed functions
@@ -236,9 +236,9 @@ function moveImageX() {
   let xMove = 0;
   let endX = imgX + livingRoomImg.width / 2;
 
-  if (label == "Right" && endX > width) {
+  if (mouseX > width && endX > width) {
     xMove = -5;
-  } else if (label == "Left" && endX < livingRoomImg.width) {
+  } else if (mouseX < 0 && endX < livingRoomImg.width) {
     xMove = 5;
   }
 
@@ -250,9 +250,9 @@ function moveImageY() {
   let endY = imgY + livingRoomImg.height / 2;
 
   let xMove = moveImageX();
-  if (label == "Down"  && endY > height) {
+  if (mouseY > height && endY > height) {
     yMove = -5;
-  } else if (label == "Up" && endY < livingRoomImg.height) {
+  } else if (mouseY < 0 && endY < livingRoomImg.height) {
     yMove = 5;
   }
 
