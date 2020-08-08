@@ -104,7 +104,7 @@ function setup() {
   hardButton = new Button(width * 0.75, height * 0.75, "Hard", 2);
   tutorialButton = new Button(width / 2, height / 2, "Tutorial");
   tryAgainButton = new Button(width * 0.37, height * 0.75, "Play Again");
-  homeButton = new Button(width * 0.65, height * 0.75, "Home");
+  homeButton = new Button(width * 0.65, height * 0.75, "Home", 4);
   backButton = new Button(width * .65, height * .92, "Back");
   nextButton = new Button(width * .87, height * .92, "Next")
 }
@@ -129,9 +129,9 @@ function drawButtons() {
   hardButton.show();
   tutorialButton.show();
 
-  easyButton.startMousePressed();
-  mediumButton.startMousePressed();
-  hardButton.startMousePressed();
+  easyButton.mousePressed();
+  mediumButton.mousePressed();
+  hardButton.mousePressed();
   tutorialButton.mousePressed();
 }
 

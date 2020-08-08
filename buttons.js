@@ -32,7 +32,7 @@ class Button {
     text(this.text, this.x, this.textY);
   }
 
-  function tester() {
+  mousePressed () {
   if (screen === 0 || screen === 3 || screen === 1) {
     let buttonClicked = collidePointRect(
       mouseX,
@@ -44,8 +44,7 @@ class Button {
     );
 
     if (mouseIsPressed && buttonClicked) {
-      this.y += 5;
-      if (screen == 0) {
+      if (screen == 0){
         // home screen
         if (this.level == 0) {
           level = 0;
@@ -62,17 +61,18 @@ class Button {
         } else {
           screen++;
         }
-      } else if (screen === 1) {
+        
+      } else if (screen == 1) {
         //tutorial screen
-
         if (this.text === "Back") {
           screen--; // go to home screen
         } else if (this.text === "Next") {
           //screen+=2;
         }
-      } else if (screen === 3) {
+        
+      } else if (screen == 3) {
         // end screen
-        if (this.text === "Home") {
+        if (this.level == 4) {
           screen = 0;
           setup();
           select.play();
