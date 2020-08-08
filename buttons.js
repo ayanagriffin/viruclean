@@ -44,6 +44,7 @@ class Button {
 
       if (mouseIsPressed && buttonClicked) {
         this.y += 5;
+        
         if (this.level == 0) {
           level = 0;
           select.play();
@@ -54,7 +55,8 @@ class Button {
           level = 2;
           select.play();
         } 
-        this.y -= 7;
+        screen++;
+        setup();
       }
       }
     }
