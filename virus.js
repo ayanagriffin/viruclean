@@ -16,7 +16,7 @@ class Virus {
 
   show() {
     imageMode(CENTER);
-
+    // console.log(this.x, this.y)
     if (!this.infectedUser) {
       image(virusImg, this.x, this.y, this.size, this.size);
     } else {

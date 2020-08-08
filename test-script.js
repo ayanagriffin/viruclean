@@ -153,6 +153,11 @@ function checkMousePosition() {
     for (let i = 0; i < viruses.length; i++) {
       viruses[i].move(xMove, yMove);
     }
+    
+    for (let i = 0; i < pills.length; i++) {
+      pills[i].move(xMove, yMove);
+    }
+    
   } else {
   }
 }
