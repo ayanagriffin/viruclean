@@ -68,7 +68,7 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(600, 600);
+  canvas = createCanvas(windowWidth * .4, windowWidth * .4);
   canvas.parent("canvas-div");
   colorMode(HSB);
   if (screen === 1) {
