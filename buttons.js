@@ -72,13 +72,67 @@ class Button {
           }
           
         } else if(screen === 3){ // end screen
-          if(this.text.equals("Home")){
-            screen -= 3;
+          if(this.text === "Home"){
+            screen = 0;
+            setup();
             select.play();
-          } else if (this.text.equals("Play Again"))
-            screen --;
+          } 
         }
-        
+        setup();
+      }
+      
+      
+    }
+  }
+}
+
+
+function tester() {
+    if (screen === 0 || screen === 3 || screen === 1) {
+      let buttonClicked = collidePointRect(
+        mouseX,
+        mouseY,
+        this.x - this.width / 2,
+        this.y - this.height / 2,
+        this.width,
+        this.height
+      );
+
+      if (mouseIsPressed && buttonClicked) {
+        this.y += 5;
+        if (screen == 0) { // home screen
+          if (this.level == 0) {
+            level = 0;
+            select.play();
+            screen+=2; // go to play screen
+          } else if (this.level == 1) {
+            level = 1;
+            select.play();
+            screen+=2;
+          } else if (this.level == 2) {
+            level = 2;
+            select.play();
+            screen+=2;
+          } else {
+            screen++;
+          }
+          
+        } else if(screen === 1){ //tutorial screen
+          
+          if(this.text === "Back"){
+            screen --; // go to home screen
+          
+          }else if(this.text === "Next"){
+            //screen+=2;
+          }
+          
+        } else if(screen === 3){ // end screen
+          if(this.text === "Home"){
+            screen = 0;
+            setup();
+            select.play();
+          } 
+        }
         setup();
       }
       
