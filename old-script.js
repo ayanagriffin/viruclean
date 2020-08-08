@@ -18,7 +18,7 @@ let canvas,
   gameOverText = "",
   timerCushion,
   userIsInfected = false,
-  infectedViruses = [], screen;
+  infectedViruses = [], screen, pillImg;
 
 function preload() {
   virus_attach = loadSound("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fvirus_attach.wav?v=1596838911494")
@@ -33,6 +33,8 @@ function preload() {
   virusImg = loadImage(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2F6bb45751-0572-4522-8e4d-c9c572b8fe52_smilie-4901128_960_720.png?v=1596824410604"
   );
+  
+  
 }
 
 function setup() {

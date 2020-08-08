@@ -38,7 +38,7 @@ let canvas,
   numViruses, 
   easyButton, 
   mediumButton,
-  hardButton, buttonY;
+  hardButton, buttonY, pillImg, imgResized, pills, numPills;
 
 function preload() {
   virusClicked = loadSound(
@@ -65,6 +65,7 @@ function preload() {
   
   livingRoomImg = loadImage("/assets/room.png");
   virusImg = loadImage("/assets/virus.png");
+  pillImg = loadImage("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fpill.png?v=1596901041477");
 }
 
 function setup() {
