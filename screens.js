@@ -73,7 +73,7 @@ function drawStartScreen() {
 
 function playScreenSetup() {
   if (level === 0) {
-    numViruses = 3;
+    numViruses = 1;
     timer = 10000;
     startingHealth = 1000;
     numPills = 3;

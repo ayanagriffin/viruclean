@@ -153,7 +153,7 @@ function draw() {
   }
   
   textFont("Helvetica");
-  text(label, 10, 100); //debug screen order
+  text(label, 20, 100); //debug screen order
 }
 
 //see buttons.js for show and mousePressed functions

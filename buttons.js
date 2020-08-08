@@ -66,7 +66,6 @@ class Button {
         if (this.indicator == 1) {
           setTimeout(setScreen(0), 50);
         } else if (this.indicator == 2){
-          console.log(this.indicator);
           setTimeout(setScreen(2), 50);
         }
       }
