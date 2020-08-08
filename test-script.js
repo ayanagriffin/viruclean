@@ -62,13 +62,9 @@ function preload() {
   font = loadFont(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-Regular-trial.ttf?v=1596834499234"
   );
-  livingRoomImg = loadImage(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Froom.png?v=1596851689708"
-  );
-
-  virusImg = loadImage(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fvirus.png?v=1596839714148"
-  );
+  
+  livingRoomImg = loadImage("/assets/room.png");
+  virusImg = loadImage("/assets/virus.png");
 }
 
 function setup() {
@@ -78,10 +74,7 @@ function setup() {
   if (screen === 1) {
     playScreenSetup();
   }
-  buttonFill = [5, 50, 100];
-  buttonShadowFill = [5, 60, 100];
-  buttonW = width / 5;
-  buttonH = height / 12;
+  
   easyButtonY = height * 0.75;
   mediumButtonY = height * 0.75;
   hardButtonY = height * 0.75;
