@@ -24,7 +24,7 @@ let canvas,
   screen = 0,
   buttonW,
   buttonH,
-  select, 
+  select, startingHealth,
   buttonFill,
   buttonShadowFill,
   level,
@@ -38,7 +38,7 @@ let canvas,
   numViruses, 
   easyButton, 
   mediumButton,
-  hardButton, tryAgainButton, homeButton, buttonY, pillImg, imgResized, pills, numPills;
+  hardButton, tryAgainButton, homeButton, buttonY, pillImg, imgResized, pills, numPills, vaccineImg;
 
 function preload() {
   virusClicked = loadSound(
@@ -66,6 +66,7 @@ function preload() {
   livingRoomImg = loadImage("/assets/room.png");
   virusImg = loadImage("/assets/virus.png");
   pillImg = loadImage("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fpill.png?v=1596901041477");
+  vaccineImg = loadImage("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fvaccine.png?v=1596907887802");
 }
 
 function setup() {
