@@ -16,7 +16,7 @@ class Pill {
     );
 
     this.image = pillImg;
-    this.isGrowing = false;
+    
     this.direction = 0.25;
   }
 
@@ -67,7 +67,7 @@ class Pill {
 
 class Vaccine {
   constructor() {
-    this.size = round(random(10, 20));
+    this.size = round(random(20, 50));
     this.maxSize = round(this.size * 1.25);
     this.minSize = round(this.size / 2);
     this.x = random(-livingRoomImg.width * 0.3, livingRoomImg.width * 0.65);
@@ -75,7 +75,7 @@ class Vaccine {
       -livingRoomImg.height * 0.05 + this.size,
       livingRoomImg.height * 0.7 - this.size
     );
-
+    
     this.image = vaccineImg;
     this.direction = 0.25;
     this.isVisible = true;
@@ -83,7 +83,7 @@ class Vaccine {
 
   show() {
     if (this.isVisible) {
-      image(this.image, 200, 200, this.size, this.size);
+      image(this.image, this.x, this.y, this.size, this.size);
       this.animate();
     }
   }

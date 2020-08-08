@@ -87,9 +87,7 @@ function drawPlayScreen() {
     viruses[i].show();
   }
 
-  for (let i = 0; i < infectedViruses.length; i++) {
-    infectedViruses[i].show();
-  }
+  
 
   if (gameIsOver) {
     fill("black");
@@ -107,6 +105,11 @@ function drawPlayScreen() {
     for (let i = 0; i < vaccines.length; i++) {
       vaccines[i].show();
     }
+    
+    
+    for (let i = 0; i < infectedViruses.length; i++) {
+    infectedViruses[i].show();
+  }
     textAlign(CENTER);
     fill("black");
     text(

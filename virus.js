@@ -81,10 +81,8 @@ class InfectedVirus {
   }
 
   show() {
-    
-
       image(virusImg, this.x, this.y, this.size, this.size);
-    
    
   }
+  
 }

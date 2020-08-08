@@ -181,6 +181,7 @@ function checkMousePosition() {
         vaccines[i].move(xMove, yMove);
       
       }
+      
     }
   } else {
   }
