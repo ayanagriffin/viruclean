@@ -1,4 +1,4 @@
-/*global createCanvas, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, gameOver, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let canvas,
   livingRoomImg,
@@ -11,7 +11,7 @@ let canvas,
   getMedicine,
   viruses,
   title,
-  currentVirus,
+  currentVirus, numVaccines, 
   hitVirus,
   timer,
   health,
@@ -24,7 +24,7 @@ let canvas,
   screen = 0,
   buttonW,
   buttonH,
-  select, startingHealth,
+  select, startingHealth, vaccines,
   buttonFill,
   buttonShadowFill,
   level,
@@ -127,6 +127,10 @@ function mouseClicked() {
       for (let i = 0; i < pills.length; i++) {
         pills[i].checkClicked();
     }
+      
+      for (let i = 0; i < vaccines.length; i++) {
+        vaccines[i].checkClicked();
+    }
     }
   }
 }
@@ -169,8 +173,14 @@ function checkMousePosition() {
     if(userIsInfected){
       for (let i = 0; i < pills.length; i++) {
       pills[i].move(xMove, yMove);
+      
 
     }
+      
+      for(let i = 0; i < vaccines.length; i++){
+        vaccines[i].move(xMove, yMove);
+      
+      }
     }
   } else {
   }

@@ -1,4 +1,4 @@
-/*global createCanvas, Pill, startingHealth, imgResized, pills, numPills, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, Vaccine numVaccines, Pill, vaccines, startingHealth, imgResized, pills, numPills, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 /* ----------------------------START SCREEN--------------------------------------- */
 function drawStartScreen() {
@@ -29,21 +29,26 @@ function playScreenSetup() {
     timer = 10000;
     startingHealth = 1000;
     numPills = 3;
+    numVaccines = 2;
   } else if (level === 1) {
     numViruses = 6;
     timer = 1500;
-    health = 750;
+    startingHealth = 750;
     numPills = 2;
+    numVaccines = 1;
   } else if (level === 2) {
     numViruses = 9;
     timer = 2000;
-    health = 500;
+    startingHealth = 500;
     numPills = 1;
+    numVaccines = 1;
   }
 
+  health = startingHealth;
   infectedViruses = [];
   viruses = [];
   pills = [];
+  vaccines = [];
   userIsInfected = false;
   gameIsOver = false;
   gameOverText = "";
@@ -57,6 +62,12 @@ function playScreenSetup() {
   for (let i = 0; i < numPills; i++) {
     pills.push(new Pill());
   }
+  
+  for (let i = 0; i < numVaccines; i++) {
+    vaccines.push(new Vaccine());
+    
+  }
+  
   timerCushion = timer / 100;
   healthCushion = health / 100;
 }
@@ -92,6 +103,10 @@ function drawPlayScreen() {
       pills[i].show();
     }
 
+    
+    for (let i = 0; i < vaccines.length; i++) {
+      vaccines[i].show();
+    }
     textAlign(CENTER);
     fill("black");
     text(
