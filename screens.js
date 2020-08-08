@@ -60,7 +60,7 @@ function drawPlayScreen() {
   image(livingRoomImg, imgX, imgY);
   // only want to resize it once to help efficiency
   if(!imgResized){
-    livingRoomImg.resize(windowWidth, 0);
+    livingRoomImg.resize(windowWidth * 1.5, 0);
     imgResized = true;
   }
  
