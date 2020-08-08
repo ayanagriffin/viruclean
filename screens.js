@@ -172,7 +172,7 @@ function drawPlayScreen() {
     text("Your health is decreasing.", width / 2, height / 2 + 10);
     text("Look for medicine to heal you!", width / 2, height / 2 + 30);
     // virusAttach.play();
-  } else if (pillIsUsed) {
+  } else if (pillIsUsed && !gameIsOver) {
     healingText = "Your health is no longer decreasing!";
     if (viruses.length === 0) {
       gameOver("win");

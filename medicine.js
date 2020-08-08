@@ -3,9 +3,10 @@
 /* NOTE: Since Pill and Vaccine do a lot of the same things, there could probably be a "Medicine" 
 parent class and Pill and Vaccine would be its children. I'm a bit iffy on inheritence so that is
 something we could come back to in the future*/
+
 class Pill {
   constructor() {
-    this.size = round(random(10, 20));
+    this.size = round(random(15, 20));
     console.log(this.size);
     this.maxSize = round(this.size * 1.25);
     this.minSize = round(this.size / 2);
@@ -70,7 +71,7 @@ class Pill {
 
 class Vaccine {
   constructor() {
-    this.size = round(random(20, 50));
+    this.size = round(random(35, 50));
     this.maxSize = round(this.size * 1.25);
     this.minSize = round(this.size / 2);
     this.x = random(-livingRoomImg.width * 0.3, livingRoomImg.width * 0.65);
