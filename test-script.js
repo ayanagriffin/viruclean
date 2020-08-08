@@ -218,6 +218,11 @@ function drawButtons() {
   easyButton.show();
   mediumButton.show();
   hardButton.show();
+  
+  easyButton.mousePressed();
+  mediumButton.mousePressed();
+  hardButton.mousePressed();
+  
   // rectMode(CENTER);
   // noStroke();
   //fill(buttonShadowFill);
@@ -252,70 +257,70 @@ function mouseClicked() {
   }
 }
 
-function mousePressed() {
-  if (screen === 0) {
-    easyButtonClicked = collidePointRect(
-      mouseX,
-      mouseY,
-      width / 4 - buttonW / 2,
-      easyButtonY - buttonH / 2,
-      buttonW,
-      buttonH
-    );
-    mediumButtonClicked = collidePointRect(
-      mouseX,
-      mouseY,
-      width / 2 - buttonW / 2,
-      mediumButtonY - buttonH / 2,
-      buttonW,
-      buttonH
-    );
+// function mousePressed() {
+//   if (screen === 0) {
+//     easyButtonClicked = collidePointRect(
+//       mouseX,
+//       mouseY,
+//       width / 4 - buttonW / 2,
+//       easyButtonY - buttonH / 2,
+//       buttonW,
+//       buttonH
+//     );
+//     mediumButtonClicked = collidePointRect(
+//       mouseX,
+//       mouseY,
+//       width / 2 - buttonW / 2,
+//       mediumButtonY - buttonH / 2,
+//       buttonW,
+//       buttonH
+//     );
 
-    hardButtonClicked = collidePointRect(
-      mouseX,
-      mouseY,
-      width * 0.75 - buttonW / 2,
-      hardButtonY - buttonH / 2,
-      buttonW,
-      buttonH
-    );
+//     hardButtonClicked = collidePointRect(
+//       mouseX,
+//       mouseY,
+//       width * 0.75 - buttonW / 2,
+//       hardButtonY - buttonH / 2,
+//       buttonW,
+//       buttonH
+//     );
     
-    if (easyButtonClicked) {
-      easyButton.y += 5;
-      level = 0;
-      select.play();
-    } else if (mediumButtonClicked) {
-      mediumButton.y += 5;
-      level = 1;
-      select.play();
-    } else if (hardButtonClicked) {
-      hardButton.y += 5;
-      level = 2;
-      select.play();
-    }
-  }
-}
+//     if (easyButtonClicked) {
+//       easyButton.y += 5;
+//       level = 0;
+//       select.play();
+//     } else if (mediumButtonClicked) {
+//       mediumButton.y += 5;
+//       level = 1;
+//       select.play();
+//     } else if (hardButtonClicked) {
+//       hardButton.y += 5;
+//       level = 2;
+//       select.play();
+//     }
+//   }
+// }
 
-function mouseReleased() {
-  if (screen === 0) {
-    if (easyButtonClicked) {
-      easyButtonClicked = false;
-      easyButton.y -= 7;
-      screen++;
-      setup();
-    } else if (mediumButtonClicked) {
-      mediumButtonClicked = false;
-      mediumButton.y -= 7;
-      screen++;
-      setup();
-    } else if (hardButtonClicked) {
-      hardButtonClicked = false;
-      hardButton.y -= 7;
-      screen++;
-      setup();
-    }
-  }
-}
+// function mouseReleased() {
+//   if (screen === 0) {
+//     if (easyButtonClicked) {
+//       easyButtonClicked = false;
+//       easyButton.y -= 7;
+//       screen++;
+//       setup();
+//     } else if (mediumButtonClicked) {
+//       mediumButtonClicked = false;
+//       mediumButton.y -= 7;
+//       screen++;
+//       setup();
+//     } else if (hardButtonClicked) {
+//       hardButtonClicked = false;
+//       hardButton.y -= 7;
+//       screen++;
+//       setup();
+//     }
+//   }
+// }
 
 function keyPressed() {
   if (screen === 1 && key === "a") {

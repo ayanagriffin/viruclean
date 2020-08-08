@@ -1,4 +1,5 @@
 class Button {
+  
   constructor(x, y, text, buttonLevel) {
     this.x = x;
     this.y = y;
@@ -11,6 +12,7 @@ class Button {
     this.text = text;
     this.corner = 10;
     this.level = buttonLevel;
+    this.buttonClicked = false;
   }
 
   show() {
@@ -41,44 +43,19 @@ class Button {
       );
 
       if (mouseIsPressed && buttonClicked) {
-        select.play();
-
         this.y += 5;
         if (this.level == 0) {
           level = 0;
+          select.play();
         } else if (this.level == 1) {
           level = 1;
           select.play();
         } else if (this.level == 2) {
           level = 2;
           select.play();
-        }
-      } else {
-        
+        } 
+        this.y -= 7;
+      }
       }
     }
   }
-  
-  
-}
-
-function mouseReleased() {
-  if (screen === 0) {
-    if (easyButtonClicked) {
-      easyButtonClicked = false;
-      easyButtonY -= 7;
-      screen++;
-      setup();
-    } else if (mediumButtonClicked) {
-      mediumButtonClicked = false;
-      mediumButtonY -= 7;
-      screen++;
-      setup();
-    } else if (hardButtonClicked) {
-      hardButtonClicked = false;
-      hardButtonY -= 7;
-      screen++;
-      setup();
-    }
-  }
-}
