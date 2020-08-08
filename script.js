@@ -53,7 +53,11 @@ let canvas,
   imgResized,
   pills,
   numPills,
-  vaccineImg;
+  vaccineImg; 
+
+let video;
+let label = '...waiting';
+let classifier;;
 
 function preload() {
   virusClicked = loadSound(
@@ -86,6 +90,8 @@ function preload() {
   vaccineImg = loadImage(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fvaccine.png?v=1596907887802"
   );
+  
+  //classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/Ag_4DvWc_/model.json');
 }
 
 function setup() {
