@@ -77,6 +77,10 @@ function drawPlayScreen() {
   imageMode(CENTER);
 
   image(livingRoomImg, imgX, imgY);
+  
+   stroke(255);
+  strokeWeight(4);
+  textFont(font);
   // only want to resize it once to help efficiency
   if (!imgResized) {
     livingRoomImg.resize(windowWidth * 1.5, 0);
@@ -121,23 +125,25 @@ function drawPlayScreen() {
       width / 2,
       height / 2 - 10
     );
-    text("Your health is decreasing!", width / 2, height / 2 + 10);
+    text("Your health is decreasing.", width / 2, height / 2 + 10);
     text("Look for medicine to heal you!", width / 2, height / 2 + 30);
     // virusAttach.play();
   } else if(pillIsUsed){
     healingText = "Your health is no longer decreasing!"
     if(viruses.length === 0){
-      gameOver()
+      gameOver("win");
     }
   } else if(vaccineIsUsed){
     healingText = "Wow, you're fully healed!"
+    if(viruses.length === 0){
+      gameOver("win");
+    }
     
   }
   
+  
+ 
   text(healingText, width / 2, height / 2);
-  stroke(255);
-  strokeWeight(4);
-  textFont(font);
   handleTime();
   handleHealth("");
   fill("black");

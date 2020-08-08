@@ -115,6 +115,9 @@ function mouseClicked() {
     setup();
   }
   if (screen === 1 && !gameIsOver) {
+    pillIsUsed = false;
+    vaccineIsUsed = false;
+    healingText = "";
     for (let i = 0; i < viruses.length; i++) {
       if (viruses[i].checkClicked()) {
         //console.log("clicked");
