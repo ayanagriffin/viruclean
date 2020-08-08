@@ -236,9 +236,9 @@ function moveImageX() {
   let xMove = 0;
   let endX = imgX + livingRoomImg.width / 2;
 
-  if (mouseX > width && endX > width) {
+  if (label == "Right" && endX > width) {
     xMove = -5;
-  } else if (mouseX < 0 && endX < livingRoomImg.width) {
+  } else if (label == "Left" && endX < livingRoomImg.width) {
     xMove = 5;
   }
 
@@ -250,7 +250,7 @@ function moveImageY() {
   let endY = imgY + livingRoomImg.height / 2;
 
   let xMove = moveImageX();
-  if (mouseY > height && endY > height) {
+  if (label == "Down" && endY > height) {
     yMove = -5;
   } else if (mouseY < 0 && endY < livingRoomImg.height) {
     yMove = 5;
