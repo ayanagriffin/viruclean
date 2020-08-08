@@ -9,8 +9,7 @@ class Virus {
       livingRoomImg.height * 0.7 - this.size
     );
     
-    this.x = 200;
-    this.y = 200;
+   
     this.isAttacked = false;
     this.isAlive = true;
     this.maxSize = 150;
