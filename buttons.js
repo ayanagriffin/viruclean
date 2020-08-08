@@ -33,7 +33,7 @@ class Button {
   }
 
   mousePressed() {
-    if (screen === 0 || screen === 3) {
+    if (screen === 0 || screen === 3 || screen === 1) {
       let buttonClicked = collidePointRect(
         mouseX,
         mouseY,
@@ -62,7 +62,11 @@ class Button {
             screen++;
           }
           
-        } 
+        } else if(screen === 1){
+          screen --;
+          console.log("back")
+        }
+        
         setup();
       }
       
