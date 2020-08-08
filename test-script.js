@@ -114,10 +114,16 @@ function mouseClicked() {
   if (screen === 1 && !gameIsOver) {
     for (let i = 0; i < viruses.length; i++) {
       if (viruses[i].checkClicked()) {
-        console.log("clicked");
+        //console.log("clicked");
         //userIsFighting = true;
         currentVirus = viruses[i];
       }
+    }
+    
+    if(userIsInfected){
+      for (let i = 0; i < pills.length; i++) {
+        pills[i].checkClicked();
+    }
     }
   }
 }
@@ -160,6 +166,7 @@ function checkMousePosition() {
     if(userIsInfected){
       for (let i = 0; i < pills.length; i++) {
       pills[i].move(xMove, yMove);
+
     }
     }
   } else {
