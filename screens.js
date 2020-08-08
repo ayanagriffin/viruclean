@@ -1,5 +1,19 @@
 /*global createCanvas, backButton, healingText, Vaccine numVaccines, pillIsUsed, vaccineIsUsed, Pill, vaccines, startingHealth, imgResized, pills, numPills, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
+
+/*
+
+  SCREEN 0: HOME SCREEN
+  SCREEN 1: TUTORIAL SCREEN
+  
+  (thinking of adding another tutorial screen right here)
+  
+  SCREEN 2: GAME SCREEN
+  SCREEN 3: GAME OVER SCREEN
+  
+  */
+
+
 /* ----------------------------START SCREEN--------------------------------------- */
 function drawStartScreen() {
   background("#ffc9b2");
@@ -42,6 +56,15 @@ function drawTutorialScreen(){
   checkMousePosition();
   backButton.show();
   backButton.mousePressed();
+  
+  fill(255);
+  rect(width / 2, height / 2, width * .8, height / 5, 20)
+  
+  fill(0);
+  textFont(font);
+  
+  text("Move your cursor outside of the canvas to move around the room. Try it now!", width / 2, height * .6, width * .8, height / 4)
+  
 }
 
 /* ---------------------------- PLAY SCREEN --------------------------------------- */

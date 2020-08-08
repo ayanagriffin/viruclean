@@ -32,7 +32,7 @@ let canvas,
   startingHealth,
   vaccines,
   buttonFill,
-  buttonShadowFill,
+  buttonShadowFill, nextButton,
   level,
   easyButtonY,
   mediumButtonY,
@@ -106,6 +106,7 @@ function setup() {
   tryAgainButton = new Button(width * 0.37, height * 0.75, "Play Again");
   homeButton = new Button(width * 0.65, height * 0.75, "Home");
   backButton = new Button(width * .85, height * .9, "Back");
+  nextButton = new Button(width * .5, height * .9, "Next")
 }
 
 //see screens.js for draw screen functions
