@@ -116,8 +116,6 @@ function playScreenSetup() {
   }
 
   timerCushion = timer / 100;
- 
- // health = 1000;
   healthCushion = health / 100;
 }
 
@@ -177,6 +175,8 @@ function drawPlayScreen() {
   text("Time", 10, 15);
   textAlign(RIGHT);
   text("Health", width - 20, 15);
+  textAlign(CENTER)
+  text("Viruses Remaining: ", width / 2, height * .9)
   console.log(viruses.length);
 }
 
