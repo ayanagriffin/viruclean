@@ -63,12 +63,11 @@ function playScreenSetup() {
   for (let i = 0; i < numPills; i++) {
     pills.push(new Pill());
   }
-  
+
   for (let i = 0; i < numVaccines; i++) {
     vaccines.push(new Vaccine());
-    
   }
-  
+
   timerCushion = timer / 100;
   healthCushion = health / 100;
 }
@@ -77,8 +76,8 @@ function drawPlayScreen() {
   imageMode(CENTER);
 
   image(livingRoomImg, imgX, imgY);
-  
-   stroke(255);
+
+  stroke(255);
   strokeWeight(4);
   textFont(font);
   // only want to resize it once to help efficiency
@@ -91,7 +90,6 @@ function drawPlayScreen() {
   for (let i = 0; i < viruses.length; i++) {
     viruses[i].show();
   }
-
 
   if (gameIsOver) {
     fill("black");
@@ -108,16 +106,13 @@ function drawPlayScreen() {
       pills[i].show();
     }
 
-    
-    
     for (let i = 0; i < vaccines.length; i++) {
       vaccines[i].show();
     }
-    
-    
+
     for (let i = 0; i < infectedViruses.length; i++) {
-    infectedViruses[i].show();
-  }
+      infectedViruses[i].show();
+    }
     textAlign(CENTER);
     fill("black");
     text(
@@ -128,21 +123,18 @@ function drawPlayScreen() {
     text("Your health is decreasing.", width / 2, height / 2 + 10);
     text("Look for medicine to heal you!", width / 2, height / 2 + 30);
     // virusAttach.play();
-  } else if(pillIsUsed){
-    healingText = "Your health is no longer decreasing!"
-    if(viruses.length === 0){
+  } else if (pillIsUsed) {
+    healingText = "Your health is no longer decreasing!";
+    if (viruses.length === 0) {
       gameOver("win");
     }
-  } else if(vaccineIsUsed){
-    healingText = "Wow, you're fully healed!"
-    if(viruses.length === 0){
+  } else if (vaccineIsUsed) {
+    healingText = "Wow, you're fully healed!";
+    if (viruses.length === 0) {
       gameOver("win");
     }
-    
   }
-  
-  
- 
+
   text(healingText, width / 2, height / 2);
   handleTime();
   handleHealth("");
@@ -187,9 +179,9 @@ function drawEndScreen() {
   textFont(font);
   textSize(20);
   text(gameOverText, width / 2, height * 0.45);
-  
+
   tryAgainButton.show();
   homeButton.show();
-  
+
   homeButton.mousePressed();
 }

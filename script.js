@@ -230,7 +230,7 @@ function handleHealth() {
   if (health > 0) {
     fill(health / healthCushion, 100, 100);
     rectMode(CORNERS);
-    rect(width - 10, 20, width - health / healthCushion, 30);
+    rect(width - 10, 20, width - 10 - health / healthCushion, 30);
   } else {
     gameOver("health");
   }
