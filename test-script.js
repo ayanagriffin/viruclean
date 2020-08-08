@@ -130,14 +130,14 @@ function keyPressed() {
 
 function checkMousePosition() {
   if (!gameIsOver) {
-    let endX = imgX + windowWidth / 2;
+    let endX = imgX + livingRoomImg.width / 2;
     let endY = imgY + livingRoomImg.height / 2;
     let xMove = 0;
     let yMove = 0;
 
     if (mouseX > width && endX > width) {
       xMove = -5;
-    } else if (mouseX < 0 && endX < windowWidth) {
+    } else if (mouseX < 0 && endX < livingRoomImg.width) {
       xMove = 5;
     }
 

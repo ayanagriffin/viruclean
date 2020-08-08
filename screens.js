@@ -1,5 +1,6 @@
 /*global createCanvas, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
+let imgResized;
 
 /* ----------------------------START SCREEN--------------------------------------- */
 function drawStartScreen() {
@@ -42,8 +43,6 @@ function playScreenSetup() {
   gameOverText = "";
   imgX = width / 2;
   imgY = height / 2;
-  // image(livingRoomImg, imgX, imgY);
-  // livingRoomImg.resize(windowWidth, 0);
 
   for (let i = 0; i < numViruses; i++) {
     viruses.push(new Virus());
@@ -56,7 +55,16 @@ function playScreenSetup() {
 
 function drawPlayScreen() {
   imageMode(CENTER);
-  image(livingRoomImg, imgX, imgY, windowWidth);
+  console.log(livingRoomImg);
+  
+  image(livingRoomImg, imgX, imgY);
+  // only want to resize it once to help efficiency
+  if(!imgResized){
+    livingRoomImg.resize(windowWidth, 0);
+    imgResized = true;
+  }
+ 
+  
 
   checkMousePosition();
   for (let i = 0; i < viruses.length; i++) {
