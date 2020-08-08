@@ -86,6 +86,7 @@ function setup() {
   mediumButtonY = height * 0.75;
   hardButtonY = height * 0.75;
   
+  //see buttons.js for button object constructor
   easyButton = new Button(width / 4,easyButtonY, "Easy", 0);
   mediumButton = new Button(width / 2, mediumButtonY, "Medium", 1);
   hardButton = new Button(width * 0.75, hardButtonY, "Hard", 2);
@@ -194,7 +195,9 @@ function drawPlayScreen() {
   textAlign(RIGHT);
   text("Health", width - 20, 15);
   textAlign(CENTER);
+  
   if (level === 0 || level === 1) {
+    rect(width - 100 , height * 0.92 , 100, height - 90);
     text("Viruses Remaining: ", width / 2, height * 0.9);
     textFont("Helvetica");
     text(viruses.length, width * 0.7, height * 0.9);
@@ -214,6 +217,7 @@ function drawEndScreen() {
   text("click to try again", width / 2, height * 0.55);
 }
 
+//see buttons.js for show and mousePressed functions
 function drawButtons() {
   easyButton.show();
   mediumButton.show();
@@ -222,23 +226,6 @@ function drawButtons() {
   easyButton.mousePressed();
   mediumButton.mousePressed();
   hardButton.mousePressed();
-  
-  // rectMode(CENTER);
-  // noStroke();
-  //fill(buttonShadowFill);
-  //rect(width / 2, height * 0.75 + 5, buttonW, buttonH, 10);
-  //rect(width / 4, height * 0.75 + 5, buttonW, buttonH, 10);
-  //rect(width * 0.75, height * 0.75 + 5, buttonW, buttonH, 10);
-  //fill(buttonFill);
-  //rect(width / 2, mediumButtonY, buttonW, buttonH, 10);
-  //rect(width / 4, easyButtonY, buttonW, buttonH, 10);
-  //rect(width * 0.75, hardButtonY, buttonW, buttonH, 10);
-  // textAlign(CENTER);
-  // textSize(12);
-  // fill("white");
-  //text("Easy", width / 4, height * 0.764);
-  //text("Medium", width / 2, height * 0.764);
-  //text("Hard", width * 0.75, height * 0.764);
 }
 
 function mouseClicked() {
@@ -256,7 +243,6 @@ function mouseClicked() {
     }
   }
 }
-
 
 function keyPressed() {
   if (screen === 1 && key === "a") {
