@@ -1,7 +1,7 @@
 /*global height, width, color, rectMode, playScreenSetup, CENTER, noStroke, fill, rect, textAlign, textSize, text, mouseX, mouseY, collidePointRect, mouseIsPressed, level, select */
 
 class Button {
-  constructor(x, y, text, buttonLevel) {
+  constructor(x, y, text, buttonLevel, indicator) {
     this.x = x;
     this.y = y;
     this.shadowY = this.y + 5;
@@ -13,6 +13,7 @@ class Button {
     this.text = text;
     this.corner = 10;
     this.level = buttonLevel;
+    this.indicator = indicator;
     this.buttonClicked = false;
   }
 
@@ -62,14 +63,12 @@ class Button {
   
       } else if (screen == 3) {
         // end screen
-        if (this.level == 4) {
-          screen = 0;
+        if (this.indicator == 1) {
           setup();
+          gameIsOver = false;
           select.play();
-        } else if (this.level == 5){
-          playScreenSetup();
-          screen--;
-        }
+          screen = 0;
+        } 
       }
       setup();
     }
