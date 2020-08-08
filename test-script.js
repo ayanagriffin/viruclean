@@ -197,7 +197,10 @@ function drawPlayScreen() {
   textAlign(CENTER);
   
   if (level === 0 || level === 1) {
-    rect(width - 100 , height * 0.92 , 100, height - 90);
+    fill('white');
+    noStroke();
+    rect(width - 130, height * 0.93 , 160, height - 85, 20);
+    fill('black');
     text("Viruses Remaining: ", width / 2, height * 0.9);
     textFont("Helvetica");
     text(viruses.length, width * 0.7, height * 0.9);
