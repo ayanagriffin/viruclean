@@ -223,6 +223,7 @@ function drawButtons() {
   text("Medium", width / 2, height * 0.764);
   text("Hard", width * 0.75, height * 0.764);
 }
+
 function mouseClicked() {
   if (screen === 2) {
     screen = 0;
