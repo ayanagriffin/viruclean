@@ -64,16 +64,18 @@ class Button {
       } else if (screen == 3) {
         // end screen
         if (this.indicator == 1) {
-          setup();
-          gameIsOver = false;
-          select.play();
-          screen = 0;
+          setTimeout(setHome, 50);
         } 
       }
+      //setTimeout(setup, 100);
       setup();
     }
   }
 }
-
+   
 }
 
+function setHome(){
+  select.play();
+  screen = 0;
+}
