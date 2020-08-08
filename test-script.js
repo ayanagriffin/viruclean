@@ -154,10 +154,14 @@ function checkMousePosition() {
       viruses[i].move(xMove, yMove);
     }
     
-    for (let i = 0; i < pills.length; i++) {
+    
+    
+    
+    if(userIsInfected){
+      for (let i = 0; i < pills.length; i++) {
       pills[i].move(xMove, yMove);
     }
-    
+    }
   } else {
   }
 }

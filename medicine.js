@@ -2,22 +2,21 @@
 
 class Pill{
   constructor(){
-    this.size = random(10, 40);
-    this.maxSize = round(this.size * 1.5);
-    this.minSize = this.size / 2;
+    this.size = round(random(10, 20));
+    console.log(this.size)
+    this.maxSize = round(this.size * 1.25);
+    this.minSize = round(this.size / 2);
     this.x = random(-livingRoomImg.width * 0.3, livingRoomImg.width * 0.65);
     this.y = random(
       -livingRoomImg.height * 0.05 + this.size,
       livingRoomImg.height * 0.7 - this.size
     );
     
-    this.x = 200;
-    this.y = 200;
-   
     this.image = pillImg;
     this.isGrowing = false;
     this.direction = .25;
     
+    console.log(this.x, this.y)
   }
   
   show(){
@@ -32,12 +31,24 @@ class Pill{
   }
   
   animate(){
-    console.log(this.size)
     if(this.size === this.maxSize || this.size === this.minSize){
       this.direction = -this.direction;
     }
     
     this.size += this.direction;
+  }
+  
+  checkClicked(){
+    let pillClicked = collidePointCircle(mouseX,
+      mouseY,
+      this.x,
+      this.y,
+      this.size);
+    
+    if(pillClicked){
+      console.log("clicked");
+    }
+    
   }
   
   
