@@ -17,6 +17,40 @@ function drawStartScreen() {
 
 /* ---------------------------- PLAY SCREEN --------------------------------------- */
 
+function playScreenSetup() {
+  if (level === 0) {
+    numViruses = 3;
+    timer = 1000;
+    health = 1000;
+  } else if (level === 1) {
+    numViruses = 6;
+    timer = 1500;
+    health = 750;
+  } else if (level === 2) {
+    numViruses = 9;
+    timer = 2000;
+    health = 500;
+  }
+  
+  infectedViruses = [];
+  viruses = [];
+  userIsInfected = false;
+  gameIsOver = false;
+  gameOverText = "";
+  imgX = width / 2;
+  imgY = height / 2;
+  image(livingRoomImg, imgX, imgY);
+  livingRoomImg.resize(windowWidth, 0);
+
+  for (let i = 0; i < numViruses; i++) {
+    viruses.push(new Virus());
+  }
+
+  timerCushion = timer / 100;
+  healthCushion = health / 100;
+}
+
+
 function drawPlayScreen() {
   imageMode(CENTER);
   image(livingRoomImg, imgX, imgY);

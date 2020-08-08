@@ -97,6 +97,9 @@ function draw() {
   text("Health", width - 20, 15);
 }
 
+
+
+
 function mouseClicked() {
   if (!gameIsOver) {
     for (let i = 0; i < viruses.length; i++) {
