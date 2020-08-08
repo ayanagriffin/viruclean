@@ -129,6 +129,18 @@ function drawPlayScreen() {
 }
 
 /* ----------------------------END SCREEN --------------------------------------- */
+function gameOver(result) {
+  if (result === "health") {
+    gameOverText = "Your health was too low to continue.";
+  } else if (result === "time") {
+    gameOverText = "You ran out of time.";
+  } else if (result === "win") {
+    gameOverText = "Yay! You killed all of the viruses!";
+  }
+
+  gameIsOver = true;
+  screen++;
+}
 
 function drawEndScreen() {
   noStroke();
@@ -136,9 +148,8 @@ function drawEndScreen() {
   fill(255);
   textFont(font);
   textSize(20);
-//   textAlign(CENTER);
-     text(gameOverText, width / 2, height * 0.45);
-//   text("click to try again", width / 2, height * 0.55);
+  text(gameOverText, width / 2, height * 0.45);
   
   tryAgainButton.show();
+  homeButton.show();
 }

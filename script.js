@@ -38,7 +38,7 @@ let canvas,
   numViruses, 
   easyButton, 
   mediumButton,
-  hardButton, tryAgainButton, buttonY, pillImg, imgResized, pills, numPills;
+  hardButton, tryAgainButton, homeButton, buttonY, pillImg, imgResized, pills, numPills;
 
 function preload() {
   virusClicked = loadSound(
@@ -82,7 +82,8 @@ function setup() {
   easyButton = new Button(width / 4, height * 0.75, "Easy", 0);
   mediumButton = new Button(width / 2, height * 0.75,  "Medium", 1);
   hardButton = new Button(width * 0.75, height * 0.75, "Hard", 2);
-  tryAgainButton =  new Button(width/2, height * 0.75, "Play Again");
+  tryAgainButton =  new Button(width*0.37, height * 0.75, "Play Again");
+  homeButton = new Button(width*0.65, height * 0.75, "Home");
 }
 
 //see screens.js for draw screen functions
@@ -216,15 +217,3 @@ function handleHealth() {
   }
 }
 
-function gameOver(result) {
-  if (result === "health") {
-    gameOverText = "Your health was too low to continue.";
-  } else if (result === "time") {
-    gameOverText = "You ran out of time.";
-  } else if (result === "win") {
-    gameOverText = "Yay! You killed all of the viruses!";
-  }
-
-  gameIsOver = true;
-  screen++;
-}
