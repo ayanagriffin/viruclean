@@ -38,6 +38,8 @@ function drawTutorialScreen(){
     livingRoomImg.resize(windowWidth * 1.5, 0);
     imgResized = true;
   }
+  
+  checkMousePosition();
 }
 
 /* ---------------------------- PLAY SCREEN --------------------------------------- */

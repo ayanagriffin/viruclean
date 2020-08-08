@@ -1,4 +1,4 @@
-/*global createCanvas, gameOver, drawTutorialScreen, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, gameOver,tutorialScreenSetup, drawTutorialScreen, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let canvas,
   livingRoomImg,
@@ -38,7 +38,7 @@ let canvas,
   numViruses, 
   easyButton, 
   mediumButton,
-  hardButton, tryAgainButton, homeButton, buttonY, pillImg, imgResized, pills, numPills, vaccineImg;
+  hardButton, tryAgainButton, homeButton, buttonY, tutorialButton, pillImg, imgResized, pills, numPills, vaccineImg;
 
 function preload() {
   virusClicked = loadSound(
@@ -75,6 +75,8 @@ function setup() {
   colorMode(HSB);
   if (screen === 2) {
     playScreenSetup();
+  } else if(screen === 1){
+    tutorialScreenSetup();
   }
   
   
@@ -83,6 +85,7 @@ function setup() {
   easyButton = new Button(width / 4, height * 0.75, "Easy", 0);
   mediumButton = new Button(width / 2, height * 0.75,  "Medium", 1);
   hardButton = new Button(width * 0.75, height * 0.75, "Hard", 2);
+  tutorialButton = new Button(width / 2, height / 2, "Tutorial");
   tryAgainButton =  new Button(width*0.37, height * 0.75, "Play Again");
   homeButton = new Button(width*0.65, height * 0.75, "Home");
 }
@@ -106,18 +109,20 @@ function drawButtons() {
   easyButton.show();
   mediumButton.show();
   hardButton.show();
+  tutorialButton.show()
   
   easyButton.mousePressed();
   mediumButton.mousePressed();
   hardButton.mousePressed();
+  tutorialButton.mousePressed();
 }
 
 function mouseClicked() {
-  if (screen === 2) {
+  if (screen === 3) {
     screen = 0;
     setup();
   }
-  if (screen === 1 && !gameIsOver) {
+  if (screen === 2 && !gameIsOver) {
     pillIsUsed = false;
     vaccineIsUsed = false;
     healingText = "";
@@ -146,7 +151,7 @@ function mouseClicked() {
 }
 
 function keyPressed() {
-  if (screen === 1 && key === "a") {
+  if (screen === 2 && key === "a") {
     currentVirus.isAttacked = false;
     currentVirus.isAlive = false;
   }
@@ -195,6 +200,13 @@ function checkMousePosition() {
     }
   } else {
   }
+}
+
+function moveImageX(){
+  let 
+  
+  
+  
 }
 
 function removeDeadVirus() {

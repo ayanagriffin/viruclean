@@ -4,8 +4,8 @@ class Button {
   constructor(x, y, text, buttonLevel) {
     this.x = x;
     this.y = y;
-    this.shadowY = height * 0.75 + 5;
-    this.textY = height * 0.764;
+    this.shadowY = this.y + 5;
+    this.textY = this.y + 4;
     this.width = width / 5;
     this.height = height / 12;
     this.buttonColor = color(5, 50, 100);
@@ -33,7 +33,7 @@ class Button {
   }
 
   mousePressed() {
-    if (screen === 0 || screen === 2) {
+    if (screen === 0 || screen === 3) {
       let buttonClicked = collidePointRect(
         mouseX,
         mouseY,
@@ -49,17 +49,20 @@ class Button {
           if (this.level == 0) {
             level = 0;
             select.play();
+            screen+=2;
           } else if (this.level == 1) {
             level = 1;
             select.play();
+            screen+=2;
           } else if (this.level == 2) {
             level = 2;
             select.play();
+            screen+=2;
+          } else {
+            screen++;
           }
-          screen++;
-        } //else if (screen == 2) {
-        //   screen = 0;
-        // }
+          
+        } 
         setup();
       }
       
