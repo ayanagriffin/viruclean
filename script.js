@@ -55,10 +55,10 @@ let canvas,
   numPills,
   vaccineImg; 
 
-// let video;
-// let flipVideo;
-// let label = '...waiting';
-// let classifier;
+let video;
+let flipVideo;
+let label = '...waiting';
+let classifier;
 
 function preload() {
   virusClicked = loadSound(
@@ -92,16 +92,16 @@ function preload() {
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fvaccine.png?v=1596907887802"
   );
   
-  //classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/Ag_4DvWc_/model.json');
+  classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/Ag_4DvWc_/model.json');
 }
 
 function setup() {
   canvas = createCanvas(600, 600);
   canvas.parent("canvas-div");
   
-  // video = createCapture(VIDEO);
-  // video.hide();
-  // classifyVideo();
+  video = createCapture(VIDEO);
+  video.hide();
+  classifyVideo();
   
   colorMode(HSB);
   if (screen === 2) {
@@ -123,21 +123,21 @@ function setup() {
   nextButton = new Button(width * .87, height * .92, "Next")
 }
 
-// function classifyVideo() {
-//   classifier.classify(video, gotResults);
-// }
+function classifyVideo() {
+  classifier.classify(video, gotResults);
+}
 
-// function gotResults(error, results) {
-//   // Something went wrong!
-//   if (error) {
-//     console.error(error);
-//     return;
-//   }
-//   // Store the label and classify again!
-//   label = results[0].label;
-//   checkMousePosition();
-//   classifyVideo();
-// }
+function gotResults(error, results) {
+  // Something went wrong!
+  if (error) {
+    console.error(error);
+    return;
+  }
+  // Store the label and classify again!
+  label = results[0].label;
+  checkMousePosition();
+  classifyVideo();
+}
 
 
 //see screens.js for draw screen functions
