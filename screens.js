@@ -21,6 +21,25 @@ function drawStartScreen() {
   drawButtons();
 }
 
+/* ---------------------------- TUTORIAL SCREEN --------------------------------------- */
+
+function tutorialScreenSetup(){
+  imgX = width / 2;
+  imgY = height / 2;
+  imgResized = false;
+}
+
+function drawTutorialScreen(){
+  imageMode(CENTER);
+
+  image(livingRoomImg, imgX, imgY);
+  
+  if (!imgResized) {
+    livingRoomImg.resize(windowWidth * 1.5, 0);
+    imgResized = true;
+  }
+}
+
 /* ---------------------------- PLAY SCREEN --------------------------------------- */
 
 function playScreenSetup() {
@@ -44,6 +63,7 @@ function playScreenSetup() {
     numVaccines = 1;
   }
 
+  imgResized = false;
   health = startingHealth;
   infectedViruses = [];
   viruses = [];

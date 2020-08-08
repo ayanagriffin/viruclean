@@ -1,4 +1,4 @@
-/*global createCanvas, gameOver, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, gameOver, drawTutorialScreen, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let canvas,
   livingRoomImg,
@@ -73,7 +73,7 @@ function setup() {
   canvas = createCanvas(600, 600);
   canvas.parent("canvas-div");
   colorMode(HSB);
-  if (screen === 1) {
+  if (screen === 2) {
     playScreenSetup();
   }
   
@@ -91,9 +91,12 @@ function setup() {
 function draw() {
   if (screen === 0) {
     drawStartScreen();
-  } else if (screen === 1) {
-    drawPlayScreen();
+  }else if(screen === 1){
+    drawTutorialScreen();
+   
   } else if (screen === 2) {
+    drawPlayScreen();
+  } else if (screen === 3) {
     drawEndScreen();
   }
 }
