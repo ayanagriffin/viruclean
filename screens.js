@@ -25,7 +25,7 @@ function playScreenSetup() {
     numViruses = 3;
     timer = 1000;
     health = 1000;
-    numPills = 10;
+    numPills = 1;
   } else if (level === 1) {
     numViruses = 6;
     timer = 1500;

@@ -10,8 +10,13 @@ class Pill{
       -livingRoomImg.height * 0.05 + this.size,
       livingRoomImg.height * 0.7 - this.size
     );
+    
+    this.x = 200;
+    this.y = 200;
    
     this.image = pillImg;
+    this.isGrowing = false;
+    this.direction = .25;
     
   }
   
@@ -27,19 +32,13 @@ class Pill{
   }
   
   animate(){
-    if(this.size < this.maxSize){
-      this.shrink();
-    }else{
-      this.shrink();
+    console.log(this.size)
+    if(this.size === this.maxSize || this.size === this.minSize){
+      this.direction = -this.direction;
     }
-      
+    
+    this.size += this.direction;
   }
   
-  grow(){
-    this.size += 0.25;
-  }
   
-  shrink(){
-    this.size -= 0.25;
-  }
 }
