@@ -12,12 +12,13 @@ let canvas,
   viruses,
   title,
   currentVirus,
-    hitVirus,
+  hitVirus,
   timer,
   health,
   gameIsOver,
   gameOverText,
-  timerCushion, healthCushion,
+  timerCushion,
+  healthCushion,
   userIsInfected,
   infectedViruses,
   screen = 0,
@@ -33,11 +34,16 @@ let canvas,
   easyButtonClicked,
   virusClicked,
   mediumButtonClicked,
-  hardButtonClicked, numViruses;
+  hardButtonClicked,
+  numViruses;
 
 function preload() {
-  virusClicked= loadSound("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fclick_virus.wav?v=1596841270818")
-  hitVirus= loadSound("https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fhit_virus.wav?v=1596840265502")
+  virusClicked = loadSound(
+    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fclick_virus.wav?v=1596841270818"
+  );
+  hitVirus = loadSound(
+    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fhit_virus.wav?v=1596840265502"
+  );
   select = loadSound(
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fselect.wav?v=1596839457762"
   );
@@ -88,15 +94,15 @@ function draw() {
 }
 
 function playScreenSetup() {
-  if(level === 0){
+  if (level === 0) {
     numViruses = 3;
     timer = 1000;
     health = 1000;
-  }else if(level === 1){
+  } else if (level === 1) {
     numViruses = 6;
     timer = 1500;
     health = 750;
-  }else if(level === 2){
+  } else if (level === 2) {
     numViruses = 9;
     timer = 2000;
     health = 500;
@@ -175,9 +181,14 @@ function drawPlayScreen() {
   text("Time", 10, 15);
   textAlign(RIGHT);
   text("Health", width - 20, 15);
-  textAlign(CENTER)
-  text("Viruses Remaining: ", width / 2, height * .9)
-  console.log(viruses.length);
+  textAlign(CENTER);
+  if (level === 0 || level === 1) {
+    text("Viruses Remaining: ", width / 2, height * 0.9);
+    textFont("Helvetica");
+    text(viruses.length, width * 0.7, height * 0.9);
+  }
+
+  //console.log(viruses.length);
 }
 
 function drawEndScreen() {
@@ -326,7 +337,7 @@ function removeDeadVirus() {
   for (let i = viruses.length - 1; i >= 0; i--) {
     if (viruses[i] === currentVirus) {
       viruses.splice(i, 1);
-   hitVirus.play()
+      hitVirus.play();
     }
   }
 
@@ -352,7 +363,6 @@ function handleTime() {
 
 function handleHealth() {
   if (userIsInfected) {
-    
     health -= 0.5;
   }
 
