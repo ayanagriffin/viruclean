@@ -103,7 +103,7 @@ function setup() {
   mediumButton = new Button(width / 2, height * 0.75, "Medium", 1);
   hardButton = new Button(width * 0.75, height * 0.75, "Hard", 2);
   tutorialButton = new Button(width / 2, height / 2, "Tutorial");
-  tryAgainButton = new Button(width * 0.37, height * 0.75, "Play Again");
+  tryAgainButton = new Button(width * 0.37, height * 0.75, "Play Again", 5);
   homeButton = new Button(width * 0.65, height * 0.75, "Home", 4);
   backButton = new Button(width * .65, height * .92, "Back");
   nextButton = new Button(width * .87, height * .92, "Next")
@@ -120,6 +120,9 @@ function draw() {
   } else if (screen === 3) {
     drawEndScreen();
   }
+  
+  // textFont("Helvetica");
+  // text(screen, 10, 100); //debug screen order
 }
 
 //see buttons.js for show and mousePressed functions
@@ -136,10 +139,10 @@ function drawButtons() {
 }
 
 function mouseClicked() {
-  if (screen === 3) {
-    screen = 0;
-    setup();
-  }
+  // if (screen === 3) {
+  //   screen = 0;
+  //   setup();
+  // }
   if (screen === 2 && !gameIsOver) {
     pillIsUsed = false;
     vaccineIsUsed = false;

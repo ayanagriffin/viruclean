@@ -1,4 +1,4 @@
-/*global height, width, color, rectMode, CENTER, noStroke, fill, rect, textAlign, textSize, text, mouseX, mouseY, collidePointRect, mouseIsPressed, level, select */
+/*global height, width, color, rectMode, playScreenSetup, CENTER, noStroke, fill, rect, textAlign, textSize, text, mouseX, mouseY, collidePointRect, mouseIsPressed, level, select */
 
 class Button {
   constructor(x, y, text, buttonLevel) {
@@ -58,24 +58,17 @@ class Button {
           level = 2;
           select.play();
           screen += 2;
-        } else {
-          screen++;
-        }
-        
-      } else if (screen == 1) {
-        //tutorial screen
-        if (this.text === "Back") {
-          screen--; // go to home screen
-        } else if (this.text === "Next") {
-          //screen+=2;
-        }
-        
+        } 
+  
       } else if (screen == 3) {
         // end screen
         if (this.level == 4) {
           screen = 0;
           setup();
           select.play();
+        } else if (this.level == 5){
+          playScreenSetup();
+          screen--;
         }
       }
       setup();
