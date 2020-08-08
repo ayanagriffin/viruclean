@@ -134,11 +134,14 @@ function drawStartScreen() {
   text("title", width / 2, height * 0.25);
   textFont(font);
   textSize(12);
-  text("instructions", width / 2, height * 0.45);
-  text("click to start", width / 2, height * 0.55);
+  text("Pose for the camera using these motions to\n find and eradicate the virus!", width / 2, height * 0.35);
+  text("Pick a Level to Start", width / 2, height * 0.65);
+  textSize(8);
   text("made for melonjam twentytwenty", width / 2, height * 0.95);
   drawButtons();
 }
+
+
 function drawPlayScreen() {
   imageMode(CENTER);
   image(livingRoomImg, imgX, imgY);
@@ -214,10 +217,11 @@ function drawButtons() {
   rect(width / 4, easyButtonY, buttonW, buttonH, 10);
   rect(width * 0.75, hardButtonY, buttonW, buttonH, 10);
   textAlign(CENTER);
+  textSize(12);
   fill("white");
-  text("easy", width / 4, height * 0.76);
-  text("medium", width / 2, height * 0.76);
-  text("hard", width * 0.75, height * 0.76);
+  text("Easy", width / 4, height * 0.764);
+  text("Medium", width / 2, height * 0.764);
+  text("Hard", width * 0.75, height * 0.764);
 }
 function mouseClicked() {
   if (screen === 2) {
@@ -282,17 +286,17 @@ function mouseReleased() {
   if (screen === 0) {
     if (easyButtonClicked) {
       easyButtonClicked = false;
-      easyButtonY -= 5;
+      easyButtonY -= 7;
       screen++;
       setup();
     } else if (mediumButtonClicked) {
       mediumButtonClicked = false;
-      mediumButtonY -= 5;
+      mediumButtonY -= 7;
       screen++;
       setup();
     } else if (hardButtonClicked) {
       hardButtonClicked = false;
-      hardButtonY -= 5;
+      hardButtonY -= 7;
       screen++;
       setup();
     }
