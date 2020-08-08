@@ -1,4 +1,4 @@
-/*global createCanvas, Vaccine numVaccines, Pill, vaccines, startingHealth, imgResized, pills, numPills, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, Vaccine numVaccines, pillIsUsed, vaccineIsUsed, Pill, vaccines, startingHealth, imgResized, pills, numPills, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 /* ----------------------------START SCREEN--------------------------------------- */
 function drawStartScreen() {
@@ -87,7 +87,6 @@ function drawPlayScreen() {
     viruses[i].show();
   }
 
-  
 
   if (gameIsOver) {
     fill("black");
@@ -97,10 +96,12 @@ function drawPlayScreen() {
   }
 
   if (userIsInfected) {
+    pillIsUsed = false;
     for (let i = 0; i < pills.length; i++) {
       pills[i].show();
     }
 
+    
     
     for (let i = 0; i < vaccines.length; i++) {
       vaccines[i].show();
@@ -120,6 +121,8 @@ function drawPlayScreen() {
     text("Your health is decreasing!", width / 2, height / 2 + 10);
     text("Look for medicine to heal you!", width / 2, height / 2 + 30);
     // virusAttach.play();
+  } else if(pillIsUsed){
+    text("Yay! Keep going!", width / 2, height / 2);
   }
   stroke(255);
   strokeWeight(4);

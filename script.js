@@ -6,7 +6,7 @@ let canvas,
   imgY,
   font,
   finalImg,
-  virusImg,
+  virusImg,pillIsUsed, vaccineIsUsed,
   virusAttach,
   getMedicine,
   viruses,
@@ -124,12 +124,16 @@ function mouseClicked() {
     }
     
     if(userIsInfected){
-      for (let i = 0; i < pills.length; i++) {
-        pills[i].checkClicked();
+      for (let i = pills.length - 1; i >= 0 ; i--) {
+        if(pills[i].checkClicked()){
+          pills.splice(i, 1);
+        }
     }
       
-      for (let i = 0; i < vaccines.length; i++) {
-        vaccines[i].checkClicked();
+      for (let i = vaccines.length - 1; i >= 0; i--) {
+        if(vaccines[i].checkClicked()){
+          vaccines.splice(i, 1);
+        }
     }
     }
   }

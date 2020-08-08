@@ -1,4 +1,4 @@
-/*global createCanvas, startingHealth, health, vaccineImg, infectedViruses, pillImg, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, pillIsUsed, vaccineIsUsed, startingHealth, health, vaccineImg, infectedViruses, pillImg, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 /* NOTE: Since Pill and Vaccine do a lot of the same things, there could probably be a "Medicine" 
 parent class and Pill and Vaccine would be its children. I'm a bit iffy on inheritence so that is
@@ -49,11 +49,14 @@ class Pill {
 
     if (pillClicked) {
       infectedViruses.splice(-1, 1);
-      this.reset();
+      pillIsUsed = true;
+      // this.reset();
       if (infectedViruses.length === 0) {
         userIsInfected = false;
       }
     }
+    
+    return pillClicked;
   }
 
   reset() {
@@ -115,6 +118,9 @@ class Vaccine {
       this.isVisible = false;
       userIsInfected = false;
       health = startingHealth;
+      vaccineIsUsed = true;
     }
+    
+    return vaccineClicked;
   }
 }
