@@ -1,7 +1,6 @@
 /*global height, width, color, rectMode, CENTER, noStroke, fill, rect, textAlign, textSize, text, mouseX, mouseY, collidePointRect, mouseIsPressed, level, select */
 
 class Button {
-  
   constructor(x, y, text, buttonLevel) {
     this.x = x;
     this.y = y;
@@ -34,8 +33,8 @@ class Button {
   }
 
   mousePressed() {
-    if (screen === 0) {
-     let buttonClicked = collidePointRect(
+    if (screen === 0 || screen === 2) {
+      let buttonClicked = collidePointRect(
         mouseX,
         mouseY,
         this.x - this.width / 2,
@@ -46,21 +45,25 @@ class Button {
 
       if (mouseIsPressed && buttonClicked) {
         this.y += 5;
-       if(screen == 0){ 
-        if (this.level == 0) {
-          level = 0;
-          select.play();
-        } else if (this.level == 1) {
-          level = 1;
-          select.play();
-        } else if (this.level == 2) {
-          level = 2;
-          select.play();
-        } 
-        screen++;
-       } else
+        if (screen == 0) {
+          if (this.level == 0) {
+            level = 0;
+            select.play();
+          } else if (this.level == 1) {
+            level = 1;
+            select.play();
+          } else if (this.level == 2) {
+            level = 2;
+            select.play();
+          }
+          screen++;
+        } //else if (screen == 2) {
+        //   screen = 0;
+        // }
         setup();
       }
-      }
+      
+      
     }
   }
+}

@@ -152,4 +152,6 @@ function drawEndScreen() {
   
   tryAgainButton.show();
   homeButton.show();
+  
+  homeButton.mousePressed();
 }
