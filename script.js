@@ -152,8 +152,8 @@ function draw() {
     drawEndScreen();
   }
   
-  textFont("Helvetica");
-  text(frameCount, 20, 100); //debug screen order
+  // textFont("Helvetica");
+  // text(frameCount, 20, 100); //debug screen order
 }
 
 //see buttons.js for show and mousePressed functions
