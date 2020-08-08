@@ -60,7 +60,7 @@ function preload() {
     "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-Regular-trial.ttf?v=1596834499234"
   );
   livingRoomImg = loadImage(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fliving%20room.png?v=1596851205516"
+    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Froom.png?v=1596851689708"
   );
 
   virusImg = loadImage(
