@@ -1,4 +1,5 @@
 /* CSS files add styling rules to your content */
+
 body {
   font-family: "Yanone Kaffeesatz";
   background: hsl(185, 100%, 95%);
@@ -17,6 +18,8 @@ p {
   color: hsl(16, 100%, 80%);
   margin: -20px;
 }
+
+
 #canvas-div {
   padding: 0;
   margin: auto;
