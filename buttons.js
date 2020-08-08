@@ -59,7 +59,10 @@ class Button {
           level = 2;
           select.play();
           screen = 2;
-        } 
+        } else if (this.text == "Tutorial"){
+          select.play();
+          screen = 1;
+        }
   
       } else if (screen == 3) {
         // end screen
@@ -68,6 +71,9 @@ class Button {
         } else if (this.indicator == 2){
           setTimeout(setOtherScreen, 50);
         }
+      } else if (screen === 1){
+        select.play();
+        screen = 0;
       }
       setup();
     }

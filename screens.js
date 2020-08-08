@@ -37,37 +37,35 @@ function drawStartScreen() {
 
 /* ---------------------------- TUTORIAL SCREEN --------------------------------------- */
 
-// function tutorialScreenSetup(){
-//   imgX = width / 2;
-//   imgY = height / 2;
-//   imgResized = false;
-// }
+function tutorialScreenSetup(){
+  imgX = width / 2;
+  imgY = height / 2;
+  imgResized = false;
+}
 
-// function drawTutorialScreen(){
-//   imageMode(CENTER);
+function drawTutorialScreen(){
+  imageMode(CENTER);
 
-//   image(livingRoomImg, imgX, imgY);
+  image(livingRoomImg, imgX, imgY);
   
-//   if (!imgResized) {
-//     livingRoomImg.resize(windowWidth * 1.5, 0);
-//     imgResized = true;
-//   }
+  if (!imgResized) {
+    livingRoomImg.resize(windowWidth * 1.5, 0);
+    imgResized = true;
+  }
   
-//   checkMousePosition();
-//   backButton.show();
-//   backButton.mousePressed();
-//   nextButton.show();
-//   nextButton.mousePressed();
+  checkMousePosition();
+  backButton.show();
+  backButton.mousePressed();
   
-//   fill(255);
-//   rect(width / 2, height / 2, width * .8, height / 5, 20)
+  fill(255);
+  rect(width / 2, height / 2, width * .8, height / 5, 20)
   
-//   fill(0);
-//   textFont(font);
+  fill(0);
+  textFont(font);
   
-//   text("Move your cursor outside of the canvas to move around the room. Try it now!", width / 2, height * .6, width * .8, height / 4)
+  text("Move your cursor outside of the canvas to move around the room. Try it now!", width / 2, height * .6, width * .8, height / 4)
   
-// }
+}
 
 /* ---------------------------- PLAY SCREEN --------------------------------------- */
 

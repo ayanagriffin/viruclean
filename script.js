@@ -106,9 +106,9 @@ function setup() {
   colorMode(HSB);
   if (screen === 2) {
     playScreenSetup();
-   } //else if (screen === 1) {
-  //   tutorialScreenSetup();
-  // }
+   } else if (screen === 1) {
+     tutorialScreenSetup();
+   }
 
   //see buttons.js for button object constructor
   easyButton = new Button(width / 4, height * 0.75, "Easy", 0);
@@ -119,8 +119,8 @@ function setup() {
   tryAgainButton = new Button(width * 0.37, height * 0.75, "Play Again", level, 2);
   homeButton = new Button(width * 0.65, height * 0.75, "Home", level, 1);
   
-  backButton = new Button(width * .65, height * .92, "Back");
-  nextButton = new Button(width * .87, height * .92, "Next")
+  backButton = new Button(width * .15, height * .92, "Back");
+  //nextButton = new Button(width * .87, height * .92, "Next")
 }
 
 function classifyVideo() {
