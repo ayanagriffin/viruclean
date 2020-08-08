@@ -1,4 +1,4 @@
-/*global createCanvas, imageMode, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let canvas,
   livingRoomImg,
@@ -38,7 +38,7 @@ let canvas,
   numViruses, 
   easyButton, 
   mediumButton,
-  hardButton;
+  hardButton, buttonY;
 
 function preload() {
   virusClicked = loadSound(
@@ -75,14 +75,13 @@ function setup() {
     playScreenSetup();
   }
   
-  easyButtonY = height * 0.75;
-  mediumButtonY = height * 0.75;
-  hardButtonY = height * 0.75;
+  buttonY = height * 0.75;
+ 
   
   //see buttons.js for button object constructor
-  easyButton = new Button(width / 4,easyButtonY, "Easy", 0);
-  mediumButton = new Button(width / 2, mediumButtonY, "Medium", 1);
-  hardButton = new Button(width * 0.75, hardButtonY, "Hard", 2);
+  easyButton = new Button(width / 4,buttonY, "Easy", 0);
+  mediumButton = new Button(width / 2, buttonY, "Medium", 1);
+  hardButton = new Button(width * 0.75, buttonY, "Hard", 2);
 }
 
 //see screens.js for draw screen functions

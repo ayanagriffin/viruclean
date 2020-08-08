@@ -1,8 +1,10 @@
+/*global height, width, color, rectMode, CENTER, noStroke, fill, rect, textAlign, textSize, text, mouseX, mouseY, collidePointRect, mouseIsPressed, level, select */
+
 class Button {
   
   constructor(x, y, text, buttonLevel) {
     this.x = x;
-    this.y = y;
+    this.y = height * 0.75;
     this.shadowY = height * 0.75 + 5;
     this.textY = height * 0.764;
     this.width = width / 5;
