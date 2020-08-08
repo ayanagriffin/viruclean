@@ -35,7 +35,10 @@ let canvas,
   virusClicked,
   mediumButtonClicked,
   hardButtonClicked,
-  numViruses;
+  numViruses, 
+  easyButton, 
+  mediumButton,
+  hardButton;
 
 function preload() {
   virusClicked = loadSound(
@@ -82,6 +85,10 @@ function setup() {
   easyButtonY = height * 0.75;
   mediumButtonY = height * 0.75;
   hardButtonY = height * 0.75;
+  
+  easyButton = new Button(width / 4,easyButtonY, "Easy");
+  mediumButton = new Button(width / 2, mediumButtonY, "Medium");
+  hardButton = new Button(width * 0.75, hardButtonY, "Hard");
 }
 
 function draw() {
@@ -208,20 +215,22 @@ function drawEndScreen() {
 }
 
 function drawButtons() {
+  easyButton.show();
+  medium
   rectMode(CENTER);
   noStroke();
   fill(buttonShadowFill);
   rect(width / 2, height * 0.75 + 5, buttonW, buttonH, 10);
-  rect(width / 4, height * 0.75 + 5, buttonW, buttonH, 10);
+  //rect(width / 4, height * 0.75 + 5, buttonW, buttonH, 10);
   rect(width * 0.75, height * 0.75 + 5, buttonW, buttonH, 10);
   fill(buttonFill);
   rect(width / 2, mediumButtonY, buttonW, buttonH, 10);
-  rect(width / 4, easyButtonY, buttonW, buttonH, 10);
+  //rect(width / 4, easyButtonY, buttonW, buttonH, 10);
   rect(width * 0.75, hardButtonY, buttonW, buttonH, 10);
   textAlign(CENTER);
   textSize(12);
   fill("white");
-  text("Easy", width / 4, height * 0.764);
+  //text("Easy", width / 4, height * 0.764);
   text("Medium", width / 2, height * 0.764);
   text("Hard", width * 0.75, height * 0.764);
 }
@@ -269,6 +278,7 @@ function mousePressed() {
       buttonW,
       buttonH
     );
+    
     if (easyButtonClicked) {
       select.play();
 
