@@ -28,7 +28,7 @@ function playScreenSetup() {
     numViruses = 3;
     timer = 10000;
     health = 1000;
-    numPills = 2;
+    numPills = 3;
   } else if (level === 1) {
     numViruses = 6;
     timer = 1500;
@@ -135,8 +135,10 @@ function drawEndScreen() {
   background("#ffc9b2");
   fill(255);
   textFont(font);
-  textSize(12);
-  textAlign(CENTER);
-  text(gameOverText, width / 2, height * 0.45);
-  text("click to try again", width / 2, height * 0.55);
+  textSize(20);
+//   textAlign(CENTER);
+     text(gameOverText, width / 2, height * 0.45);
+//   text("click to try again", width / 2, height * 0.55);
+  
+  tryAgainButton.show();
 }

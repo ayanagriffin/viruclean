@@ -2,9 +2,9 @@
 
 class Button {
   
-  constructor(x, text, buttonLevel) {
+  constructor(x, y, text, buttonLevel) {
     this.x = x;
-    this.y = height * 0.75;
+    this.y = y;
     this.shadowY = height * 0.75 + 5;
     this.textY = height * 0.764;
     this.width = width / 5;

@@ -38,7 +38,7 @@ let canvas,
   numViruses, 
   easyButton, 
   mediumButton,
-  hardButton, buttonY, pillImg, imgResized, pills, numPills;
+  hardButton, tryAgainButton, buttonY, pillImg, imgResized, pills, numPills;
 
 function preload() {
   virusClicked = loadSound(
@@ -79,9 +79,10 @@ function setup() {
   
   
   //see buttons.js for button object constructor
-  easyButton = new Button(width / 4, "Easy", 0);
-  mediumButton = new Button(width / 2,  "Medium", 1);
-  hardButton = new Button(width * 0.75, "Hard", 2);
+  easyButton = new Button(width / 4, height * 0.75, "Easy", 0);
+  mediumButton = new Button(width / 2, height * 0.75,  "Medium", 1);
+  hardButton = new Button(width * 0.75, height * 0.75, "Hard", 2);
+  tryAgainButton =  new Button(width/2, height * 0.75, "Play Again");
 }
 
 //see screens.js for draw screen functions
