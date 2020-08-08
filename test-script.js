@@ -216,8 +216,8 @@ function drawEndScreen() {
 
 function drawButtons() {
   easyButton.show();
-  mediumButton.show()
-  hardButton.show()
+  mediumButton.show();
+  hardButton.show();
   // rectMode(CENTER);
   // noStroke();
   //fill(buttonShadowFill);
@@ -281,16 +281,15 @@ function mousePressed() {
     );
     
     if (easyButtonClicked) {
-      select.play();
-
-      easyButtonY += 5;
+      easyButton.y += 5;
       level = 0;
+      select.play();
     } else if (mediumButtonClicked) {
-      mediumButtonY += 5;
+      mediumButton.y += 5;
       level = 1;
       select.play();
     } else if (hardButtonClicked) {
-      hardButtonY += 5;
+      hardButton.y += 5;
       level = 2;
       select.play();
     }
@@ -301,17 +300,17 @@ function mouseReleased() {
   if (screen === 0) {
     if (easyButtonClicked) {
       easyButtonClicked = false;
-      easyButtonY -= 7;
+      easyButton.y -= 7;
       screen++;
       setup();
     } else if (mediumButtonClicked) {
       mediumButtonClicked = false;
-      mediumButtonY -= 7;
+      mediumButton.y -= 7;
       screen++;
       setup();
     } else if (hardButtonClicked) {
       hardButtonClicked = false;
-      hardButtonY -= 7;
+      hardButton.y -= 7;
       screen++;
       setup();
     }
