@@ -18,7 +18,7 @@ function drawStartScreen() {
   textFont(title);
   textSize(50);
   textAlign(CENTER);
-  text("Viru    Clean", width / 2, height * 0.25);
+  text("Viru   Clean", width / 2, height * 0.25);
   textFont(font);
   textSize(12);
   text(
@@ -28,9 +28,9 @@ function drawStartScreen() {
   );
   
   imageMode(CENTER);
-  image(virusImg, width* 0.455, height * .15, 70, 70)
-  image(pillImg, width* 0.27, height * .45, 65, 65)
-  image(vaccineImg, width* 0.62, height * .45, 70, 70)
+  image(sprayBottleImg, width* 0.46, height * .222, 70, 70)
+  image(pillImg, width* 0.32, height * .50, 65, 65)
+  image(vaccineImg, width* 0.67, height * .50, 70, 70)
 
   text("Pick a Level to Start", width / 2, height * 0.65);
   textSize(8);
