@@ -130,13 +130,13 @@ function drawTutorial(){
 
 function playScreenSetup() {
   if (level === 0) {
-    numViruses = 3;
+    numViruses = 4;
     timer = 1500;
     //startingHealth = 1000;
     numPills = 2;
     numVaccines = 2;
   } else if (level === 1) {
-    numViruses = 6;
+    numViruses = 8;
     timer = 1500;
    // startingHealth = 750;
     numPills = 2;

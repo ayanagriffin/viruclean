@@ -299,7 +299,7 @@ function handleTime() {
 
 function handleHealth() {
   if (userIsInfected) {
-    health -= 0.5;
+    health -= 0.8;
   }
 
   if (health > 0) {
