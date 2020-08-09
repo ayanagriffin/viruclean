@@ -97,7 +97,7 @@ function drawTutorial(){
   textAlign(CENTER);
   text("To look around the room...", width / 2, height * .69, width * .8, height / 4)
   textSize(10);
-  text("Pose for the camera using these four poses!\n\n Try it out!", width / 2, height * .73, width * .8, height / 4)
+  text("Pose for the camera using these four poses!\n\n Allow the camera permissions and try it out!", width / 2, height * .73, width * .8, height / 4)
   
   image(rightPose, width* 0.7, height * .72, 65, 65);
   image(leftPose, width* 0.58, height * .72, 65, 65);
