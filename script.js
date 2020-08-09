@@ -59,7 +59,8 @@ let canvas,
   upPose,
   downPose,
   rightPose,
-  leftPose;
+  leftPose,
+  paragraphFont;
 
 let video;
 let flipVideo;
@@ -73,8 +74,9 @@ function preload() {
   getMedicine = loadSound("/assets/sound_files/get_medicine.wav");
   virusAttach = loadSound("/assets/sound_files/virus_attack.wav");
   
-  title = loadFont("/asset/fonts/Heading-Pro-Wide-ExtraBold-trial.ttf");
-  font = loadFont("/asset/fonts/Heading-Pro-Wide-Regular-trial.ttf");
+  title = loadFont("/assets/fonts/Heading-Pro-Wide-ExtraBold-trial.ttf");
+  font = loadFont("/assets/fonts/Heading-Pro-Wide-Regular-trial.ttf");
+  paragraphFont = loadFont("/assets/fonts/Poppins-Light.ttf");
 
   livingRoomImg = loadImage("/assets/images/room.png");
   virusImg = loadImage("/assets/images/virus.png");

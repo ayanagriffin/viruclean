@@ -69,31 +69,36 @@ function drawTutorial(){
   text("How to Play", width / 2, height * .22, width * .8, height / 4)
   
   image(virusImg, width* 0.2, height * .20, 65, 65);
-  textSize(10);
+  textSize(12);
   textAlign(LEFT);
-  text("This is the virus.", width * 0.7, height * 0.29, width * .8, height / 4);
-  text("To eradicate it, click on it, then press the spacebar \n\nbefore it gets too big!", width * 0.7, height * 0.32, width * .8, height / 4);
+  textFont(paragraphFont);
+  text("This is the VIRUS.", width * 0.7, height * 0.28, width * .8, height / 4);
+  text("To eradicate it, click on it, then press the spacebar \n\nbefore it gets too big!", width * 0.7, height * 0.31, width * .8, height / 4);
   
   textSize(14);
   textAlign(CENTER);
+  textFont(font);
   text("If the virus hits you...", width / 2, height * .41, width * .8, height / 4)
   
   image(pillImg, width* 0.2, height * .37, 55, 55);
-  textSize(10);
+  textSize(12);
   textAlign(LEFT);
-  text("This is your medicine.", width * 0.7, height * 0.47, width * .8, height / 4);
-  text("Find and click on it to stop your health from\n\ndecreasing.", width * 0.7, height * 0.5, width * .8, height / 4);
+  textFont(paragraphFont);
+  text("This is your medicine.", width * 0.7, height * 0.46, width * .8, height / 4);
+  text("Find and click on it to stop your health from\n\ndecreasing.", width * 0.7, height * 0.49, width * .8, height / 4);
   
   image(vaccineImg, width* 0.2, height * .49, 55, 55);
-  textSize(10);
+  textSize(12);
   textAlign(LEFT);
-  text("This is the vaccine.", width * 0.7, height * 0.59, width * .8, height / 4);
+  text("This is the vaccine.", width * 0.7, height * 0.573, width * .8, height / 4);
   text("Find and click on it to restore your health.", width * 0.7, height * 0.62, width * .8, height / 4);
   
   textSize(14);
   textAlign(CENTER);
+  textFont(font);
   text("To look around the room...", width / 2, height * .69, width * .8, height / 4)
-  textSize(10);
+  textSize(12);
+  textFont(paragraphFont);
   text("Pose for the camera using these four poses!\n\n Allow the camera permissions and try it out!", width / 2, height * .73, width * .8, height / 4)
   
   image(rightPose, width* 0.7, height * .72, 65, 65);
