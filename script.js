@@ -203,7 +203,7 @@ function mouseClicked() {
 }
 
 function keyPressed() {
-  if (screen === 2 && key === "a") {
+  if (screen === 2 && key === " ") {
     currentVirus.isAttacked = false;
     currentVirus.isAlive = false;
   }

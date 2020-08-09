@@ -5,9 +5,6 @@
 
   SCREEN 0: HOME SCREEN
   SCREEN 1: TUTORIAL SCREEN
-  
-  (thinking of adding another tutorial screen right here)
-  
   SCREEN 2: GAME SCREEN
   SCREEN 3: GAME OVER SCREEN
   
@@ -25,7 +22,7 @@ function drawStartScreen() {
   textFont(font);
   textSize(12);
   text(
-    "Pose for the camera using these motions to\n find and eradicate the virus!",
+    "Pose for the camera to\n find and eradicate the virus!",
     width / 2,
     height * 0.35
   );
@@ -74,8 +71,8 @@ function drawTutorial(){
   image(virusImg, width* 0.2, height * .20, 65, 65);
   textSize(10);
   textAlign(LEFT);
-  text("This is the Coronavirus.", width * 0.7, height * 0.29, width * .8, height / 4);
-  text("To eradicate it, click on it, then press 'a' before it\n\ngets too big!", width * 0.7, height * 0.32, width * .8, height / 4);
+  text("This is the virus.", width * 0.7, height * 0.29, width * .8, height / 4);
+  text("To eradicate it, click on it, then press the spacebar \n\nbefore it gets too big!", width * 0.7, height * 0.32, width * .8, height / 4);
   
   textSize(14);
   textAlign(CENTER);
@@ -85,13 +82,13 @@ function drawTutorial(){
   textSize(10);
   textAlign(LEFT);
   text("This is your medicine.", width * 0.7, height * 0.47, width * .8, height / 4);
-  text("Find and click on it to stop your health from\n\ndecreasing", width * 0.7, height * 0.5, width * .8, height / 4);
+  text("Find and click on it to stop your health from\n\ndecreasing.", width * 0.7, height * 0.5, width * .8, height / 4);
   
   image(vaccineImg, width* 0.2, height * .49, 55, 55);
   textSize(10);
   textAlign(LEFT);
   text("This is the vaccine.", width * 0.7, height * 0.59, width * .8, height / 4);
-  text("Find and click on it to restore your health", width * 0.7, height * 0.62, width * .8, height / 4);
+  text("Find and click on it to restore your health.", width * 0.7, height * 0.62, width * .8, height / 4);
   
   textSize(14);
   textAlign(CENTER);
