@@ -71,7 +71,9 @@ function drawTutorial(){
   textSize(20);
   text("How to Play", width / 2, height * .28, width * .8, height / 4)
   
-  image(virusImg, width/2, height * .5, 75, 75);
+  image(virusImg, width* 0.2, height * .3, 75, 75);
+  
+  text("This is the Coronavirus", width * 0.3, height * 0.3, width * .8, height / 4);
   
 }
 
