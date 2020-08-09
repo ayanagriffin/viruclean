@@ -54,16 +54,24 @@ function drawTutorialScreen(){
   }
   
   checkMousePosition();
+  
+  fill(255);
+  rect(width / 2, height / 2, width * .9, height *0.8, 20)
+  
   backButton.show();
   backButton.mousePressed();
   
-  fill(255);
-  rect(width / 2, height / 2, width * .8, height / 5, 20)
+  drawTutorial();
   
+}
+
+function drawTutorial(){
   fill(0);
   textFont(font);
+  textSize(20);
+  text("How to Play", width / 2, height * .28, width * .8, height / 4)
   
-  text("Move your cursor outside of the canvas to move around the room. Try it now!", width / 2, height * .6, width * .8, height / 4)
+  image(virusImg, width/2, height * .5, 75, 75);
   
 }
 

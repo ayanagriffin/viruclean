@@ -24,7 +24,7 @@ let canvas,
   healthCushion,
   userIsInfected,
   infectedViruses,
-  screen = 0,
+  screen = 1,
   buttonW,
   buttonH,
   healingText,
@@ -252,7 +252,7 @@ function moveImageY() {
   let xMove = moveImageX();
   if (label == "Down" && endY > height) {
     yMove = -5;
-  } else if (mouseY < 0 && endY < livingRoomImg.height) {
+  } else if (label == "Up" && endY < livingRoomImg.height) {
     yMove = 5;
   }
 
