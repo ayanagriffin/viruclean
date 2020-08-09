@@ -71,8 +71,9 @@ function drawTutorial(){
   image(virusImg, width* 0.2, height * .20, 65, 65);
   textSize(12);
   textAlign(LEFT);
-  textFont(paragraphFont);
+  textFont(pBoldFont);
   text("This is the VIRUS.", width * 0.7, height * 0.28, width * .8, height / 4);
+  textFont(paragraphFont);
   text("To eradicate it, click on it, then press the spacebar \n\nbefore it gets too big!", width * 0.7, height * 0.31, width * .8, height / 4);
   
   textSize(14);
@@ -83,15 +84,18 @@ function drawTutorial(){
   image(pillImg, width* 0.2, height * .37, 55, 55);
   textSize(12);
   textAlign(LEFT);
+  textFont(pBoldFont);
+  text("This is your MEDICINE.", width * 0.7, height * 0.46, width * .8, height / 4);
   textFont(paragraphFont);
-  text("This is your medicine.", width * 0.7, height * 0.46, width * .8, height / 4);
   text("Find and click on it to stop your health from\n\ndecreasing.", width * 0.7, height * 0.49, width * .8, height / 4);
   
   image(vaccineImg, width* 0.2, height * .49, 55, 55);
   textSize(12);
   textAlign(LEFT);
-  text("This is the vaccine.", width * 0.7, height * 0.573, width * .8, height / 4);
-  text("Find and click on it to restore your health.", width * 0.7, height * 0.62, width * .8, height / 4);
+  textFont(pBoldFont);
+  text("This is the VACCINE.", width * 0.7, height * 0.58, width * .8, height / 4);
+  textFont(paragraphFont);
+  text("Find and click on it to restore your health.", width * 0.7, height * 0.615, width * .8, height / 4);
   
   textSize(14);
   textAlign(CENTER);
@@ -101,15 +105,20 @@ function drawTutorial(){
   textFont(paragraphFont);
   text("Pose for the camera using these four poses!\n\n Allow the camera permissions and try it out!", width / 2, height * .73, width * .8, height / 4)
   
+  image(upPose, width* 0.24, height * .72, 65, 65);
+  image(downPose, width* 0.40, height * .72, 65, 65);
+  image(rightPose, width* 0.65, height * .72, 65, 65);
+  image(leftPose, width* 0.54, height * .72, 65, 65);
   image(rightPose, width* 0.7, height * .72, 65, 65);
-  image(leftPose, width* 0.58, height * .72, 65, 65);
-  image(upPose, width* 0.25, height * .72, 65, 65);
-  image(downPose, width* 0.42, height * .72, 65, 65);
+  image(stillPose, width* 0.9, height * .72, 65, 65);
   
+  textFont(pBoldFont);
   text("up", width / 4, height * .8)
   text("down", width / 2.4, height * .8)
   text("left", width * .56, height * .8)
   text("right", width * .715, height * .8)
+  text("still", width * .715, height * .8)
+
 
   
 }

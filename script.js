@@ -60,7 +60,7 @@ let canvas,
   downPose,
   rightPose,
   leftPose,
-  paragraphFont;
+  paragraphFont, pBoldFont, stillPose;
 
 let video;
 let flipVideo;
@@ -77,6 +77,7 @@ function preload() {
   title = loadFont("/assets/fonts/Heading-Pro-Wide-ExtraBold-trial.ttf");
   font = loadFont("/assets/fonts/Heading-Pro-Wide-Regular-trial.ttf");
   paragraphFont = loadFont("/assets/fonts/Poppins-Light.ttf");
+  pBoldFont = loadFont("/assets/fonts/Poppins-SemiBold.ttf");
 
   livingRoomImg = loadImage("/assets/images/room.png");
   virusImg = loadImage("/assets/images/virus.png");
@@ -87,6 +88,7 @@ function preload() {
   downPose = loadImage("/assets/images/down.png");
   leftPose = loadImage("/assets/images/left.png");
   rightPose = loadImage("/assets/images/right.png");
+  stillPose = loadImage("/assets/images/still.png");
 
   classifier = ml5.imageClassifier(
     "https://teachablemachine.withgoogle.com/models/Ag_4DvWc_/model.json"
