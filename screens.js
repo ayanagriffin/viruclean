@@ -99,7 +99,13 @@ function drawTutorial(){
   textSize(10);
   text("Pose for the camera using these four poses!\n\n Try it out!", width / 2, height * .73, width * .8, height / 4)
   
+  image(rightPose, width* 0.7, height * .72, 65, 65);
+  image(leftPose, width* 0.58, height * .72, 65, 65);
+  image(upPose, width* 0.25, height * .72, 65, 65);
+  image(downPose, width* 0.42, height * .72, 65, 65);
   
+  text("up", width / 5, height )
+
   
 }
 

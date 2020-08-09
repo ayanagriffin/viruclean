@@ -53,7 +53,8 @@ let canvas,
   imgResized,
   pills,
   numPills,
-  vaccineImg,; 
+  vaccineImg,
+  upPose, downPose, rightPose, leftPose; 
 
 let video;
 let flipVideo;
@@ -87,6 +88,10 @@ function preload() {
   virusImg = loadImage("/assets/virus.png");
   pillImg = loadImage( "/assets/pill.png");
   vaccineImg = loadImage( "/assets/vaccine.png");
+  upPose = loadImage("/assets/up.png");
+  downPose = loadImage("/assets/down.png");
+  leftPose = loadImage("/assets/left.png");
+  rightPose = loadImage("/assets/right.png");
   
   
   
