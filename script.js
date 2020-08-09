@@ -53,7 +53,7 @@ let canvas,
   imgResized,
   pills,
   numPills,
-  vaccineImg; 
+  vaccineImg,; 
 
 let video;
 let flipVideo;
@@ -87,6 +87,8 @@ function preload() {
   virusImg = loadImage("/assets/virus.png");
   pillImg = loadImage( "/assets/pill.png");
   vaccineImg = loadImage( "/assets/vaccine.png");
+  
+  
   
   classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/Ag_4DvWc_/model.json');
 }
