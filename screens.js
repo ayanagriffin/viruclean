@@ -66,14 +66,22 @@ function drawTutorialScreen(){
 }
 
 function drawTutorial(){
-  fill(0);
+   fill(0);
   textFont(font);
   textSize(20);
   text("How to Play", width / 2, height * .28, width * .8, height / 4)
   
-  image(virusImg, width* 0.2, height * .3, 75, 75);
+  image(virusImg, width* 0.2, height * .28, 65, 65);
+  textSize(10);
+  textAlign(LEFT);
+  text("This is the Coronavirus.", width * 0.7, height * 0.37, width * .8, height / 4);
+  text("To eradicate it, click on it, then press 'a' before it\n\ngets too big!", width * 0.7, height * 0.41, width * .8, height / 4);
   
-  text("This is the Coronavirus", width * 0.3, height * 0.3, width * .8, height / 4);
+  image(virusImg, width* 0.2, height * .48, 65, 65);
+  textSize(10);
+  textAlign(LEFT);
+  text("This is your medicine.", width * 0.7, height * 0.57, width * .8, height / 4);
+  text("If the virus hits you, click on it to stop your health\n\nfrom decreasing", width * 0.7, height * 0.61, width * .8, height / 4);
   
 }
 
