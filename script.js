@@ -60,7 +60,7 @@ let canvas,
   downPose,
   rightPose,
   leftPose,
-  paragraphFont, pBoldFont, stillPose;
+  paragraphFont, pBoldFont, stillPose, sprayBottleImg;
 
 let video;
 let flipVideo;
@@ -72,7 +72,7 @@ function preload() {
   hitVirus = loadSound("/assets/sound_files/hit_virus.wav");
   select = loadSound("/assets/sound_files/select.wav");
   getMedicine = loadSound("/assets/sound_files/get_medicine.wav");
-  virusAttach = loadSound("/assets/sound_files/virus_attack.wav");
+  virusAttach = loadSound("/assets/sound_files/virus_attach.wav");
   
   title = loadFont("/assets/fonts/Heading-Pro-Wide-ExtraBold-trial.ttf");
   font = loadFont("/assets/fonts/Heading-Pro-Wide-Regular-trial.ttf");
@@ -83,6 +83,7 @@ function preload() {
   virusImg = loadImage("/assets/images/virus.png");
   pillImg = loadImage("/assets/images/pill.png");
   vaccineImg = loadImage("/assets/images/vaccine.png");
+  sprayBottleImg = loadImage("/assets/images/spraybottle.png");
 
   upPose = loadImage("/assets/images/up.png");
   downPose = loadImage("/assets/images/down.png");
@@ -126,7 +127,8 @@ function setup() {
   homeButton = new Button(width * 0.65, height * 0.75, "Home", level, 1);
 
   backButton = new Button(width * 0.15, height * 0.92, "Back");
-  
+ 
+  noCursor();
 }
 
 function classifyVideo() {
@@ -156,7 +158,10 @@ function draw() {
   } else if (screen === 3) {
     drawEndScreen();
   }
-
+ 
+  //cursor("/assets/images/spraybottle.png");
+  
+ image(sprayBottleImg, mouseX, mouseY, 30, 30);
   // textFont("Helvetica");
   // text(frameCount, 20, 100); //debug screen order
 }
