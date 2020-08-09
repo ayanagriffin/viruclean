@@ -1,4 +1,4 @@
-/*global createCanvas, backButton, virusImg, vaccineImg, leftPose, rightPose, upPose, downPose, pillImg, tryAgainButton, homeButton, nextButton, healingText, Vaccine numVaccines, pillIsUsed, vaccineIsUsed, Pill, vaccines, startingHealth, imgResized, pills, numPills, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, backButton, pBoldFont, paragraphFont, stillPose, virusImg, vaccineImg, leftPose, rightPose, upPose, downPose, pillImg, tryAgainButton, homeButton, nextButton, healingText, Vaccine numVaccines, pillIsUsed, vaccineIsUsed, Pill, vaccines, startingHealth, imgResized, pills, numPills, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 
 /*
@@ -106,21 +106,18 @@ function drawTutorial(){
   text("Pose for the camera using these four poses!\n\n Allow the camera permissions and try it out!", width / 2, height * .73, width * .8, height / 4)
   
   image(upPose, width* 0.24, height * .72, 65, 65);
-  image(downPose, width* 0.40, height * .72, 65, 65);
-  image(rightPose, width* 0.65, height * .72, 65, 65);
+  image(downPose, width* 0.39, height * .72, 65, 65);
+  image(rightPose, width* 0.64, height * .72, 65, 65);
   image(leftPose, width* 0.54, height * .72, 65, 65);
-  image(rightPose, width* 0.7, height * .72, 65, 65);
-  image(stillPose, width* 0.9, height * .72, 65, 65);
+  image(stillPose, width* 0.78, height * .72, 65, 65);
   
   textFont(pBoldFont);
-  text("up", width / 4, height * .8)
-  text("down", width / 2.4, height * .8)
-  text("left", width * .56, height * .8)
-  text("right", width * .715, height * .8)
-  text("still", width * .715, height * .8)
-
-
-  
+  text("Up", width / 4, height * .8)
+  text("Down", width / 2.4, height * .8)
+  text("Left", width * .56, height * .8)
+  text("Right", width * .715, height * .8)
+  text("Stop Screen", width * .73, height * .8)
+ 
 }
 
 /* ---------------------------- PLAY SCREEN --------------------------------------- */
