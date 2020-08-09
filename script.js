@@ -85,12 +85,8 @@ function preload() {
 
   livingRoomImg = loadImage("/assets/room.png");
   virusImg = loadImage("/assets/virus.png");
-  pillImg = loadImage(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fpill.png?v=1596901041477"
-  );
-  vaccineImg = loadImage(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fvaccine.png?v=1596907887802"
-  );
+  pillImg = loadImage( "/assets/pill.png");
+  vaccineImg = loadImage( "/assets/vaccine.png");
   
   classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/Ag_4DvWc_/model.json');
 }

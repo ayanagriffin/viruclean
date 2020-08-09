@@ -71,17 +71,27 @@ function drawTutorial(){
   textSize(20);
   text("How to Play", width / 2, height * .28, width * .8, height / 4)
   
-  image(virusImg, width* 0.2, height * .28, 65, 65);
+  image(virusImg, width* 0.2, height * .26, 65, 65);
   textSize(10);
   textAlign(LEFT);
-  text("This is the Coronavirus.", width * 0.7, height * 0.37, width * .8, height / 4);
-  text("To eradicate it, click on it, then press 'a' before it\n\ngets too big!", width * 0.7, height * 0.41, width * .8, height / 4);
+  text("This is the Coronavirus.", width * 0.7, height * 0.35, width * .8, height / 4);
+  text("To eradicate it, click on it, then press 'a' before it\n\ngets too big!", width * 0.7, height * 0.38, width * .8, height / 4);
   
-  image(virusImg, width* 0.2, height * .48, 65, 65);
+  textSize(14);
+  textAlign(CENTER);
+  text("If the virus hits you...", width / 2, height * .47, width * .8, height / 4)
+  
+  image(pillImg, width* 0.2, height * .44, 65, 65);
   textSize(10);
   textAlign(LEFT);
-  text("This is your medicine.", width * 0.7, height * 0.57, width * .8, height / 4);
-  text("If the virus hits you, click on it to stop your health\n\nfrom decreasing", width * 0.7, height * 0.61, width * .8, height / 4);
+  text("This is your medicine.", width * 0.7, height * 0.53, width * .8, height / 4);
+  text("Find and click on it to stop your health from\n\ndecreasing", width * 0.7, height * 0.56, width * .8, height / 4);
+  
+  image(vaccineImg, width* 0.2, height * .56, 65, 65);
+  textSize(10);
+  textAlign(LEFT);
+  text("This is the vaccine.", width * 0.7, height * 0.66, width * .8, height / 4);
+  text("Find and click on it to restore your health", width * 0.7, height * 0.69, width * .8, height / 4);
   
 }
 
