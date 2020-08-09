@@ -133,7 +133,7 @@ function playScreenSetup() {
     numViruses = 3;
     timer = 1500;
     //startingHealth = 1000;
-    numPills = 1;
+    numPills = 2;
     numVaccines = 2;
   } else if (level === 1) {
     numViruses = 6;
@@ -163,6 +163,8 @@ function playScreenSetup() {
   imgX = width / 2;
   imgY = height / 2;
 
+  pillIsUsed = false;
+  vaccineIsUsed = false;
   for (let i = 0; i < numViruses; i++) {
     viruses.push(new Virus());
   }
@@ -235,7 +237,7 @@ function drawPlayScreen() {
     if (viruses.length === 0) {
       gameOver("win");
     }
-  } else if (vaccineIsUsed) {
+  } else if (vaccineIsUsed && !gameIsOver) {
     healingText = "Wow, you're fully healed!";
     if (viruses.length === 0) {
       gameOver("win");
@@ -267,6 +269,7 @@ function drawPlayScreen() {
 
 /* ----------------------------END SCREEN --------------------------------------- */
 function gameOver(result) {
+  healingText = "";
   if (result === "health") {
     gameOverText = "Your health was too low to continue.";
   } else if (result === "time") {
