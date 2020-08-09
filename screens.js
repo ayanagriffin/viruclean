@@ -133,7 +133,7 @@ function playScreenSetup() {
     numViruses = 3;
     timer = 1500;
     //startingHealth = 1000;
-    numPills = 3;
+    numPills = 1;
     numVaccines = 2;
   } else if (level === 1) {
     numViruses = 6;
@@ -145,7 +145,7 @@ function playScreenSetup() {
     numViruses = round(random(15, 20));
     timer = 2000;
    // startingHealth = 500;
-    numPills = 1;
+    numPills = 3;
     numVaccines = 1;
   }
 

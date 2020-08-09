@@ -37,7 +37,7 @@ class Virus {
 
   grow() {
     if (this.size < this.maxSize) {
-      this.size += 1;
+      this.size += 4;
     } 
     else {
       handleHealth();

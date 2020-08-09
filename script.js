@@ -180,10 +180,11 @@ function drawButtons() {
 }
 
 function mouseClicked() {
+  healingText = "";
   if (screen === 2 && !gameIsOver) {
     pillIsUsed = false;
     vaccineIsUsed = false;
-    healingText = "";
+    
     for (let i = 0; i < viruses.length; i++) {
       if (viruses[i].checkClicked()) {
         //console.log("clicked");
