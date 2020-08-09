@@ -29,8 +29,8 @@ function drawStartScreen() {
     height * 0.34
   );
   
-  image(pillImg, width* 0.25, height * .45, 70, 70)
-  image(vaccineImg, width* 0.65, height * .45, 70, 70)
+  image(pillImg, width* 0.27, height * .45, 65, 65)
+  image(vaccineImg, width* 0.62, height * .45, 70, 70)
   
   text("Pick a Level to Start", width / 2, height * 0.65);
   textSize(8);
