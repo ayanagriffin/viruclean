@@ -16,13 +16,13 @@ function drawStartScreen() {
   background("#ffc9b2");
   fill(255);
   textFont(title);
-  textSize(70);
+  textSize(65);
   textAlign(CENTER);
-  text("title", width / 2, height * 0.25);
+  text("ViruClean", width / 2, height * 0.25);
   textFont(font);
   textSize(12);
   text(
-    "Pose for the camera to\n find and eradicate the virus!",
+    "Pose for the camera to find and eradicate the coronavirus before it's too late!",
     width / 2,
     height * 0.35
   );
@@ -74,7 +74,7 @@ function drawTutorial(){
   textFont(pBoldFont);
   text("This is the VIRUS.", width * 0.7, height * 0.28, width * .8, height / 4);
   textFont(paragraphFont);
-  text("To eradicate it, click on it, then press the spacebar \n\nbefore it gets too big!", width * 0.7, height * 0.31, width * .8, height / 4);
+  text("To eradicate it, click it, then press the spacebar to\n\n'spray' it before it gets too big!", width * 0.7, height * 0.31, width * .8, height / 4);
   
   textSize(14);
   textAlign(CENTER);

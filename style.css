@@ -1,5 +1,9 @@
 /* CSS files add styling rules to your content */
 
+html{
+  cursor: url("/assets/images/spraybottle.png"), default;
+  
+}
 body {
   font-family: "Yanone Kaffeesatz";
   background: hsl(185, 100%, 95%);

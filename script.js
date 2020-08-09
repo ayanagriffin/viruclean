@@ -1,4 +1,4 @@
-/*global createCanvas, gameOver,tutorialScreenSetup, drawTutorialScreen, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, gameOver,noCursor, tutorialScreenSetup, drawTutorialScreen, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 let canvas,
   livingRoomImg,
@@ -24,7 +24,7 @@ let canvas,
   healthCushion,
   userIsInfected,
   infectedViruses,
-  screen = 1,
+  screen = 0,
   buttonW,
   buttonH,
   healingText,
@@ -115,7 +115,7 @@ function setup() {
   easyButton = new Button(width / 4, height * 0.75, "Easy", 0);
   mediumButton = new Button(width / 2, height * 0.75, "Medium", 1);
   hardButton = new Button(width * 0.75, height * 0.75, "Hard", 2);
-  tutorialButton = new Button(width / 2, height / 2, "Tutorial");
+  tutorialButton = new Button(width / 2, height / 2, "How to Play");
 
   tryAgainButton = new Button(
     width * 0.37,

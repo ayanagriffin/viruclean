@@ -59,7 +59,7 @@ class Button {
           level = 2;
           select.play();
           screen = 2;
-        } else if (this.text == "Tutorial"){
+        } else if (this.text == "How to Play"){
           select.play();
           screen = 1;
         }
