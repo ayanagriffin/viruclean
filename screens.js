@@ -16,16 +16,22 @@ function drawStartScreen() {
   background("#ffc9b2");
   fill(255);
   textFont(title);
-  textSize(65);
+  textSize(50);
   textAlign(CENTER);
-  text("ViruClean", width / 2, height * 0.25);
+  text("Viru    Clean", width / 2, height * 0.25);
+  image(virusImg, width* 0.4, height * .15, 70, 70)
+  //image(sprayBottleImg, width* 0.8, height * .155, 65, 65)
   textFont(font);
   textSize(12);
   text(
-    "Pose for the camera to find and eradicate the coronavirus before it's too late!",
+    "Pose for the camera to find and eradicate the\n\ncoronavirus before it's too late!",
     width / 2,
-    height * 0.35
+    height * 0.34
   );
+  
+  image(pillImg, width* 0.25, height * .45, 70, 70)
+  image(vaccineImg, width* 0.65, height * .45, 70, 70)
+  
   text("Pick a Level to Start", width / 2, height * 0.65);
   textSize(8);
   text("made for melonjam twentytwenty", width / 2, height * 0.95);
