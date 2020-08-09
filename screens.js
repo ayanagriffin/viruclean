@@ -19,7 +19,6 @@ function drawStartScreen() {
   textSize(50);
   textAlign(CENTER);
   text("Viru    Clean", width / 2, height * 0.25);
-  image(virusImg, width* 0.4, height * .15, 70, 70)
   //image(sprayBottleImg, width* 0.8, height * .155, 65, 65)
   textFont(font);
   textSize(12);
@@ -29,9 +28,10 @@ function drawStartScreen() {
     height * 0.34
   );
   
+  image(virusImg, width* 0.4, height * .15, 70, 70)
   image(pillImg, width* 0.27, height * .45, 65, 65)
   image(vaccineImg, width* 0.62, height * .45, 70, 70)
-  
+
   text("Pick a Level to Start", width / 2, height * 0.65);
   textSize(8);
   text("made for melonjam twentytwenty", width / 2, height * 0.95);

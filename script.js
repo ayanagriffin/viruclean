@@ -172,7 +172,7 @@ function drawButtons() {
   mediumButton.show();
   hardButton.show();
   tutorialButton.show();
-
+  
   easyButton.mousePressed();
   mediumButton.mousePressed();
   hardButton.mousePressed();
