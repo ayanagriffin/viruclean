@@ -114,24 +114,25 @@ function drawTutorial(){
 function playScreenSetup() {
   if (level === 0) {
     numViruses = 3;
-    timer = 10000;
-    startingHealth = 1000;
+    timer = 1500;
+    //startingHealth = 1000;
     numPills = 3;
     numVaccines = 2;
   } else if (level === 1) {
     numViruses = 6;
     timer = 1500;
-    startingHealth = 750;
+   // startingHealth = 750;
     numPills = 2;
     numVaccines = 1;
   } else if (level === 2) {
-    numViruses = 9;
+    numViruses = round(random(15, 20));
     timer = 2000;
-    startingHealth = 500;
+   // startingHealth = 500;
     numPills = 1;
     numVaccines = 1;
   }
 
+  startingHealth = 1000;
   imgResized = false;
   health = startingHealth;
   infectedViruses = [];

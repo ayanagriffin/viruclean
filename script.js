@@ -24,7 +24,7 @@ let canvas,
   healthCushion,
   userIsInfected,
   infectedViruses,
-  screen = 0,
+  screen = 1,
   buttonW,
   buttonH,
   healingText,
@@ -32,7 +32,8 @@ let canvas,
   startingHealth,
   vaccines,
   buttonFill,
-  buttonShadowFill, nextButton,
+  buttonShadowFill,
+  nextButton,
   level,
   easyButtonY,
   mediumButtonY,
@@ -45,7 +46,8 @@ let canvas,
   easyButton,
   mediumButton,
   hardButton,
-  tryAgainButton, backButton, 
+  tryAgainButton,
+  backButton,
   homeButton,
   buttonY,
   tutorialButton,
@@ -54,75 +56,72 @@ let canvas,
   pills,
   numPills,
   vaccineImg,
-  upPose, downPose, rightPose, leftPose; 
+  upPose,
+  downPose,
+  rightPose,
+  leftPose;
 
 let video;
 let flipVideo;
-let label = '...waiting';
+let label = "...waiting";
 let classifier;
 
 function preload() {
-  virusClicked = loadSound(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fclick_virus.wav?v=1596841270818"
-  );
-  hitVirus = loadSound(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fhit_virus.wav?v=1596840265502"
-  );
-  select = loadSound(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fselect.wav?v=1596839457762"
-  );
-  getMedicine = loadSound(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fget_medicine.wav?v=1596838831595"
-  );
-  virusAttach = loadSound(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2Fvirus_attach.wav?v=1596838911494"
-  );
-  title = loadFont(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-ExtraBold-trial.ttf?v=1596837029666"
-  );
-  font = loadFont(
-    "https://cdn.glitch.com/b409a92a-1f80-49e0-a812-620661773dbd%2FHeading-Pro-Wide-Regular-trial.ttf?v=1596834499234"
-  );
+  virusClicked = loadSound("/assets/sound_files/click_virus.wav");
+  hitVirus = loadSound("/assets/sound_files/hit_virus.wav");
+  select = loadSound("/assets/sound_files/select.wav");
+  getMedicine = loadSound("/assets/sound_files/get_medicine.wav");
+  virusAttach = loadSound("/assets/sound_files/virus_attack.wav");
+  
+  title = loadFont("/asset/fonts/Heading-Pro-Wide-ExtraBold-trial.ttf");
+  font = loadFont("/asset/fonts/Heading-Pro-Wide-Regular-trial.ttf");
 
-  livingRoomImg = loadImage("/assets/room.png");
-  virusImg = loadImage("/assets/virus.png");
-  pillImg = loadImage( "/assets/pill.png");
-  vaccineImg = loadImage( "/assets/vaccine.png");
-  upPose = loadImage("/assets/up.png");
-  downPose = loadImage("/assets/down.png");
-  leftPose = loadImage("/assets/left.png");
-  rightPose = loadImage("/assets/right.png");
-  
-  
-  
-  classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/Ag_4DvWc_/model.json');
+  livingRoomImg = loadImage("/assets/images/room.png");
+  virusImg = loadImage("/assets/images/virus.png");
+  pillImg = loadImage("/assets/images/pill.png");
+  vaccineImg = loadImage("/assets/images/vaccine.png");
+
+  upPose = loadImage("/assets/images/up.png");
+  downPose = loadImage("/assets/images/down.png");
+  leftPose = loadImage("/assets/images/left.png");
+  rightPose = loadImage("/assets/images/right.png");
+
+  classifier = ml5.imageClassifier(
+    "https://teachablemachine.withgoogle.com/models/Ag_4DvWc_/model.json"
+  );
 }
 
 function setup() {
   canvas = createCanvas(600, 600);
   canvas.parent("canvas-div");
-  
+
   video = createCapture(VIDEO);
   video.hide();
   classifyVideo();
-  
+
   colorMode(HSB);
   if (screen === 2) {
     playScreenSetup();
-   } else if (screen === 1) {
-     tutorialScreenSetup();
-   }
+  } else if (screen === 1) {
+    tutorialScreenSetup();
+  }
 
   //see buttons.js for button object constructor
   easyButton = new Button(width / 4, height * 0.75, "Easy", 0);
   mediumButton = new Button(width / 2, height * 0.75, "Medium", 1);
   hardButton = new Button(width * 0.75, height * 0.75, "Hard", 2);
   tutorialButton = new Button(width / 2, height / 2, "Tutorial");
-  
-  tryAgainButton = new Button(width * 0.37, height * 0.75, "Play Again", level, 2);
+
+  tryAgainButton = new Button(
+    width * 0.37,
+    height * 0.75,
+    "Play Again",
+    level,
+    2
+  );
   homeButton = new Button(width * 0.65, height * 0.75, "Home", level, 1);
-  
-  backButton = new Button(width * .15, height * .92, "Back");
+
+  backButton = new Button(width * 0.15, height * 0.92, "Back");
   //nextButton = new Button(width * .87, height * .92, "Next")
 }
 
@@ -142,7 +141,6 @@ function gotResults(error, results) {
   classifyVideo();
 }
 
-
 //see screens.js for draw screen functions
 function draw() {
   if (screen === 0) {
@@ -154,7 +152,7 @@ function draw() {
   } else if (screen === 3) {
     drawEndScreen();
   }
-  
+
   // textFont("Helvetica");
   // text(frameCount, 20, 100); //debug screen order
 }
@@ -165,7 +163,7 @@ function drawButtons() {
   mediumButton.show();
   hardButton.show();
   tutorialButton.show();
-  
+
   easyButton.mousePressed();
   mediumButton.mousePressed();
   hardButton.mousePressed();
@@ -173,7 +171,6 @@ function drawButtons() {
 }
 
 function mouseClicked() {
-
   if (screen === 2 && !gameIsOver) {
     pillIsUsed = false;
     vaccineIsUsed = false;

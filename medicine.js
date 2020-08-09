@@ -6,7 +6,7 @@ something we could come back to in the future*/
 
 class Pill {
   constructor() {
-    this.size = round(random(15, 20));
+    this.size = round(random(20, 30));
     console.log(this.size);
     this.maxSize = round(this.size * 1.25);
     this.minSize = round(this.size / 2);
