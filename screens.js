@@ -112,11 +112,11 @@ function drawTutorial(){
   image(stillPose, width* 0.78, height * .72, 65, 65);
   
   textFont(pBoldFont);
-  text("Up", width / 4, height * .8)
-  text("Down", width / 2.4, height * .8)
-  text("Left", width * .56, height * .8)
-  text("Right", width * .715, height * .8)
-  text("Stop Screen", width * .73, height * .8)
+  text("Up", width / 4.25, height * .8)
+  text("Down", width / 2.55, height * .8)
+  text("Left", width * .52, height * .8)
+  text("Right", width * .65, height * .8)
+  text("Stop Screen", width * .785, height * .8)
  
 }
 

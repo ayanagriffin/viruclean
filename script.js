@@ -126,7 +126,7 @@ function setup() {
   homeButton = new Button(width * 0.65, height * 0.75, "Home", level, 1);
 
   backButton = new Button(width * 0.15, height * 0.92, "Back");
-  //nextButton = new Button(width * .87, height * .92, "Next")
+  
 }
 
 function classifyVideo() {
