@@ -1,4 +1,4 @@
-/*global createCanvas, backButton, nextButton, healingText, Vaccine numVaccines, pillIsUsed, vaccineIsUsed, Pill, vaccines, startingHealth, imgResized, pills, numPills, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
+/*global createCanvas, backButton, virusImg, vaccineImg, leftPose, rightPose, upPose, downPose, pillImg, tryAgainButton, homeButton, nextButton, healingText, Vaccine numVaccines, pillIsUsed, vaccineIsUsed, Pill, vaccines, startingHealth, imgResized, pills, numPills, font, handleTime, handleHealth, livingRoomImg, timerCushion, healthCushion, checkMousePosition, title, drawButtons, level, numViruses, timer, health, infectedViruses, viruses, gameIsOver, userIsInfected, imgX, imgY, gameOverText, imageMode, playScreenSetup, drawStartScreen, drawEndScreen, Button, drawPlayScreen, collidePointRect, Virus, stroke, strokeWeight, LEFT, RIGHT, round, textAlign, rectMode, CORNER, random, key, image, collidePointCircle, ellipse, CORNERS, colorMode, loadImage, textSize, getAudioContext, loadFont, textFont, textAlign, text, noStroke, HSB, background, collideRectCircle, mouseX, mouseY, fill, windowWidth, windowHeight, width, height, soundFormats, loadSound, rect, rectMode, CENTER*/
 
 
 /*
@@ -104,7 +104,10 @@ function drawTutorial(){
   image(upPose, width* 0.25, height * .72, 65, 65);
   image(downPose, width* 0.42, height * .72, 65, 65);
   
-  text("up", width / 5, height )
+  text("up", width / 4, height * .8)
+  text("down", width / 2.4, height * .8)
+  text("left", width * .56, height * .8)
+  text("right", width * .715, height * .8)
 
   
 }
