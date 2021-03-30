@@ -1,6 +1,9 @@
+
 # ViruClean
 
 Viruclean will literally get you moving as you use your body to move around a room to get rid of a pesky virus! This was made for [MelonJam](https://melon-jam.devpost.com/) and won **Third Place**! Check out our Devpost submission [here](https://devpost.com/software/viruclean).
+
+<img width="1047" alt="Screen Shot 2021-03-30 at 10 55 17 AM" src="https://user-images.githubusercontent.com/69114559/113033956-6c8f4900-9146-11eb-9a7e-8bd7226f30ad.png">
 
 ## Inspiration
 
