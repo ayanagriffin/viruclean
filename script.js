@@ -68,28 +68,28 @@ let label = "...waiting";
 let classifier;
 
 function preload() {
-  virusClicked = loadSound("/assets/sound_files/click_virus.wav");
-  hitVirus = loadSound("/assets/sound_files/hit_virus.wav");
-  select = loadSound("/assets/sound_files/select.wav");
-  getMedicine = loadSound("/assets/sound_files/get_medicine.wav");
-  virusAttach = loadSound("/assets/sound_files/virus_attach.wav");
+  virusClicked = loadSound("./assets/sound_files/click_virus.wav");
+  hitVirus = loadSound("./assets/sound_files/hit_virus.wav");
+  select = loadSound("./assets/sound_files/select.wav");
+  getMedicine = loadSound("./assets/sound_files/get_medicine.wav");
+  virusAttach = loadSound("./assets/sound_files/virus_attach.wav");
   
-  title = loadFont("/assets/fonts/Heading-Pro-Wide-ExtraBold-trial.ttf");
-  font = loadFont("/assets/fonts/Heading-Pro-Wide-Regular-trial.ttf");
-  paragraphFont = loadFont("/assets/fonts/Poppins-Light.ttf");
-  pBoldFont = loadFont("/assets/fonts/Poppins-SemiBold.ttf");
+  title = loadFont("./assets/fonts/Heading-Pro-Wide-ExtraBold-trial.ttf");
+  font = loadFont("./assets/fonts/Heading-Pro-Wide-Regular-trial.ttf");
+  paragraphFont = loadFont("./assets/fonts/Poppins-Light.ttf");
+  pBoldFont = loadFont("./assets/fonts/Poppins-SemiBold.ttf");
 
-  livingRoomImg = loadImage("/assets/images/room.png");
-  virusImg = loadImage("/assets/images/virus.png");
-  pillImg = loadImage("/assets/images/pill.png");
-  vaccineImg = loadImage("/assets/images/vaccine.png");
-  sprayBottleImg = loadImage("/assets/images/spraybottle.png");
+  livingRoomImg = loadImage("./assets/images/room.png");
+  virusImg = loadImage("./assets/images/virus.png");
+  pillImg = loadImage("./assets/images/pill.png");
+  vaccineImg = loadImage("./assets/images/vaccine.png");
+  sprayBottleImg = loadImage("./assets/images/spraybottle.png");
 
-  upPose = loadImage("/assets/images/up.png");
-  downPose = loadImage("/assets/images/down.png");
-  leftPose = loadImage("/assets/images/left.png");
-  rightPose = loadImage("/assets/images/right.png");
-  stillPose = loadImage("/assets/images/still.png");
+  upPose = loadImage("./assets/images/up.png");
+  downPose = loadImage("./assets/images/down.png");
+  leftPose = loadImage("./assets/images/left.png");
+  rightPose = loadImage("./assets/images/right.png");
+  stillPose = loadImage("./assets/images/still.png");
 
   classifier = ml5.imageClassifier(
     "https://teachablemachine.withgoogle.com/models/Ag_4DvWc_/model.json"
@@ -159,7 +159,7 @@ function draw() {
     drawEndScreen();
   }
  
-  //cursor("/assets/images/spraybottle.png");
+  //cursor("./assets/images/spraybottle.png");
   
  image(sprayBottleImg, mouseX, mouseY, 30, 30);
   // textFont("Helvetica");
