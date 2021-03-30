@@ -5,6 +5,8 @@ Viruclean will literally get you moving as you use your body to move around a ro
 
 <img width="1047" alt="Screen Shot 2021-03-30 at 10 55 17 AM" src="https://user-images.githubusercontent.com/69114559/113033956-6c8f4900-9146-11eb-9a7e-8bd7226f30ad.png">
 
+<img width="1056" alt="Screen Shot 2021-03-30 at 10 58 32 AM" src="https://user-images.githubusercontent.com/69114559/113034379-df98bf80-9146-11eb-82c3-4bb755211063.png">
+
 ## Inspiration
 
 When the theme of MelonJam was announced to be “Outbreak”, one thing popped straight into our (and I’m sure a lot of other people’s) minds; the pandemic. We took this idea and ran with it, but added in our own aesthetics to make it visually appealing and less scary than the reality of the world right now.
